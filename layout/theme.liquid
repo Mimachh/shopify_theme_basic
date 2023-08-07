@@ -18,15 +18,12 @@
       content="width=device-width,initial-scale=1,shrink-to-fit=no">
     {{ content_for_header }}
     <!-- Header hook for plugins -->
-    <link
-      rel='stylesheet'
-      type='text/css'
-      media='screen'
-      href='{{ 'application.css' | asset_url }}'>
+
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'application.js' | asset_url | script_tag }}
   </head>
-  <body>
+  <body
+    class="bg-light">
     <main
       role="main">
       {% section 'header' %}

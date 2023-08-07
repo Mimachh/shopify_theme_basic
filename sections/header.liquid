@@ -1,5 +1,7 @@
 {% assign main_menu_linklist = linklists[section.settings.menu].links %}
 
+
+
   <div
   class="relative mx-auto max-w-[1400px] px-4 md:px-8">
   <div
@@ -15,7 +17,7 @@
         class="-mr-2 -my-2 ml-3 md:hidden">
         <button
           type="button"
-          class="bg-white p-2 inline-flex items-center md:justify-center focus:outline-none"
+          class="p-2 inline-flex items-center md:justify-center focus:outline-none"
           id="navMobileMenuButton">
           {% render 'icon-menu' %}
         </button>
@@ -46,14 +48,14 @@
                       <a
                         href="{{ childlink.url }}"
                         class="-m-3 p-3 flex items start rounded-lg 
-                        hover:bg-gray-100 hover:text-gray-800
+                        hoverLink
                         {% if childlink.active == true %}
                           activeLink
                         {% endif %}">
                         <div
                           class="ml-4">
                           <p
-                            class="text-base font-medium">
+                            class="text-base font-medium ">
                             {{ childlink.title }}
                           </p>
                         </div>
@@ -70,7 +72,7 @@
               <a
                 href="{{ link.url }}"
                 class="
-                text-base text-gray-500 hover:text-gray-900
+                text-base hoverLink text-gray-500
                 rounded-md px-4 py-2
                 {% if link.active == true %}
                   activeLink
@@ -99,23 +101,26 @@
           {% render 'icon-shopping-bag' %}
         </a>
 
-        <a
-          href="{{ routes.account_login_url }}"
-          class='text-base text-gray-500 hover:text-gray-900
-          rounded-md px-4 py-2
-          {% if template == 'customers/login' %}
-            activeLink
-          {% endif %}'>Login
-        </a>
-        <a
-          href="{{ routes.account_register_url }}"
-          class='text-base text-gray-500 hover:text-gray-900
-          rounded-md px-4 py-2
-          {% if template == 'customers/register' %}
-            activeLink
-          {% endif %}'>Register
-        </a>
+        {% if shop.customer_accounts_enabled %}
+          <a
+            href="{{ routes.account_login_url }}"
+            class='text-base text-gray-500 hover:text-gray-900
+            rounded-md px-4 py-2
+            {% if template == 'customers/login' %}
+              activeLink
+            {% endif %}'>Login
+          </a>
+          <a
+            href="{{ routes.account_register_url }}"
+            class='text-base text-gray-500 hover:text-gray-900
+            rounded-md px-4 py-2
+            {% if template == 'customers/register' %}
+              activeLink
+            {% endif %}'>Register
+          </a>
+        {% endif %}
       </div>
+
     </div>
   </div>
 
@@ -139,7 +144,7 @@
             <button
               id="navMobileMenuButtonClose"
               type="button"
-              class="bg-white rounded-md p-2">
+              class=" rounded-md p-2">
               {% render 'icon-close' %}
             </button>
           </div>
@@ -158,7 +163,7 @@
                   <button
                     data-dropdown-mobile-button-id="{{ forloop.index }}"
                     type="button"
-                    class="dropdown-button-mobile text-base text-gray-500 hover:text-gray-900 flex items-center justify-between w-full">
+                    class="dropdown-button-mobile text-base text-gray-500 hover:text-gray-900 rounded-md flex items-center justify-between w-full">
                     <div>{{ link.title }}</div>
                     {% render 'icon-dropdown' %}
                   </button>
@@ -171,9 +176,12 @@
                         class=" grid gap-y-7 py-3">
                         <a
                           href="{{ childlink.url }}"
-                          class="-m-3 p-3 mt-2 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
+                          class="-m-3 p-3 mt-2 flex items-center rounded-md hoverLink text-gray-500
+                          {% if childlink.active == true %}
+                            activeLink
+                          {% endif %}">
                           <span
-                            class="ml-3 text-base font-medium text-gray-500">{{ childlink.title }}</span>
+                            class="ml-3 text-base font-medium ">{{ childlink.title }}</span>
                         </a>
                       </div>
                     {% endfor %}
@@ -183,11 +191,38 @@
               {% else %}
                 <a
                   href="{{ link.url }}"
-                  class="-m-3 p-3 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
+                  class="-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                  {% if link.active == true %}
+                    activeLink
+                  {% endif %}">
                   {{ link.title }}
                 </a>
               {% endif %}
             {% endfor %}
+            <a
+              href="{{ routes.cart_url }}"
+              class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+              {% if template contains 'cart' %}
+                activeLink
+              {% endif %}'>
+              {% render 'icon-shopping-bag' %}
+            </a>
+            {% if shop.customer_accounts_enabled %}
+              <a
+                href="{{ routes.account_login_url }}"
+                class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                {% if template == 'customers/login' %}
+                  activeLink
+                {% endif %}'>Login
+              </a>
+              <a
+                href="{{ routes.account_register_url }}"
+                class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                {% if template == 'customers/register' %}
+                  activeLink
+                {% endif %}'>Register
+              </a>
+            {% endif %}
           </nav>
         </div>
       </div>

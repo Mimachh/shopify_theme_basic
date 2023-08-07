@@ -1,0 +1,9 @@
+{
+    "general": {
+      "404": {
+        "title": "Page inconnue",
+        "subtext_html": "La page que vous cherchez n'existe pas !"
+      }
+    }
+  }
+  

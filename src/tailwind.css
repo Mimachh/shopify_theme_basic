@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 .activeLink {
-    @apply bg-red-600 text-white;
+    @apply bg-dark text-light;
+}
+
+.hoverLink {
+    @apply hover:bg-dark hover:text-light transition-colors duration-150 ease-in;
 }
