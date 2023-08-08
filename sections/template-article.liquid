@@ -1,30 +1,74 @@
-{% for block in section.blocks %}
-  {% case block.type %}
-    {% when 'article_title' %}
-    <h1>{{ article.title }}</h1>
-    {% when 'article_author' %}
-    {% if section.settings.enable_author %}
-      <small>{{ article.author }}</small>
-    {% endif %}
-    {% when 'article_published_date' %}
-    {% if section.settings.enable_published_date %}
-      <time
-        datetime="{{article.published_at | date: '%d-%m-%Y'}}">
-        {{ article.published_at | date: '%d-%m-%Y' }}
-      </time>
-    {% endif %}
-    {% when 'featured_image' %}
-    <img
-      src="{{ article.image | img_url: 'large' }}"
-      alt="{{ article.image.alt }}">
-    {% when 'article_content' %}
-    <div>
-      {{ article.content }}
-    </div>
-{% else %}
+<article
+  class="py-8">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'article_title' %}
+      <div
+        class="flex items-center justify-center mt-8">
+        <div
+          class="max-w-7xl mx-auto">
+          <a
+            href="{{ blog.url }}"
+            class="text-center text-base uppercase text-gray-500 hover:text-gray-900 font-bold">{{ blog.title }}</a>
+          <h1
+            class="font-bold text-4xl md:text-6xl">{{ article.title }}</h1>
+        </div>
+      </div>
+      {% when 'article_author' %}
+      <div
+        class="flex items-center justify-center">
+        <div
+          class="max-w-7xl mx-auto">
+          {% if section.settings.enable_author %}
+            <small>{{ article.author }}</small>
+          {% endif %}
+        </div>
+      </div>
 
-  {% endcase %}
-{% endfor %}
+      {% when 'article_published_date' %}
+      <div
+        class="flex items-center justify-center">
+        <div
+          class="max-w-7xl mx-auto">
+          {% if section.settings.enable_published_date %}
+            {%- assign french_months = "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre" | split: "," -%}
+            {%- assign published_date = article.published_at | date: '%d-%m-%Y' -%}
+
+            <time
+              datetime="{{ published_date }}">
+              {{ published_date | replace_first: "-", " " | replace_first: "-", " " | replace: "-", " " | replace: published_date | date: "%d %B %Y" }}
+            </time>
+          {% endif %}
+        </div>
+      </div>
+
+      {% when 'featured_image' %}
+      <div
+        class="max-w-7xl rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
+        {% if article.image != blank %}
+          <img
+            src="{{ article.image | img_url: 'large' }}"
+            alt="{{ article.image.alt }}"
+            class="w-full h-80 md:h-96 object-cover object-center">
+        {% else %}
+          {% assign placeholder_image = 'lifestyle-2' %}
+          {{ placeholder_image | placeholder_svg_tag: 'bg-silver w-full h-80 md:h-96 object-cover object-center p-5' }}
+        {% endif %}
+      </div>
+
+      {% when 'article_content' %}
+      <div
+        class="flex items-center justify-center">
+        <div
+          class="max-w-4xl mx-auto">
+          {{ article.content }}
+        </div>
+      </div>
+  {% else %}
+
+    {% endcase %}
+  {% endfor %}
+</article>
 
 
 
