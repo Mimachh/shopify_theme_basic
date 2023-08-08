@@ -1,5 +1,7 @@
 <article
-  class="py-8 px-4">
+  class="py-8 px-4"
+  itemscope
+  itemtype="http://schema.org/BlogPosting">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'article_title' %}
@@ -11,16 +13,20 @@
             href="{{ blog.url }}"
             class="text-center block text-sm md:text-base uppercase text-gray-500 hover:text-gray-900 font-bold">{{ blog.title }}</a>
           <h1
-            class="font-bold text-4xl md:text-6xl text-center">{{ article.title }}</h1>
+            class="font-bold text-4xl md:text-6xl text-center"
+            itemprop="headline">{{ article.title }}</h1>
         </div>
       </div>
       {% when 'article_author' %}
       <div
         class="flex items-center justify-center">
         <div
-          class="max-w-7xl mx-auto">
+          class="max-w-7xl mx-auto"
+          itemscope
+          itemtype="http://schema.org/Person">
           {% if section.settings.enable_author %}
-            <small>{{ article.author }}</small>
+            <small
+              itemprop="author">{{ article.author }}</small>
           {% endif %}
         </div>
       </div>
@@ -35,7 +41,8 @@
             {%- assign published_date = article.published_at | date: '%d-%m-%Y' -%}
 
             <time
-              datetime="{{ published_date }}">
+              datetime="{{ published_date }}"
+              itemprop="datePublished dateCreated">
               {{ published_date | replace_first: "-", " " | replace_first: "-", " " | replace: "-", " " | replace: published_date | date: "%d %B %Y" }}
             </time>
           {% endif %}
@@ -44,10 +51,11 @@
 
       {% when 'featured_image' %}
       <div
+        itemprop="image"
         class="max-w-7xl rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
         {% if article.image != blank %}
           <img
-            src="{{ article.image | img_url: 'large' }}"
+            src="{{ article.image | img_url: 'medium' }}"
             alt="{{ article.image.alt }}"
             class="w-full h-80 md:h-96 object-cover object-center">
         {% else %}
@@ -58,9 +66,10 @@
 
       {% when 'article_content' %}
       <div
-        class="flex items-center justify-center">
+        class="flex items-center justify-center my-8">
         <div
-          class="max-w-4xl mx-auto">
+          class="max-w-5xl mx-auto md:mx-0 leading-relaxed text-md md:text-lg"
+          itemprop="articleBody">
           {{ article.content }}
         </div>
       </div>
@@ -71,23 +80,88 @@
 </article>
 
 {% if blog.comments_enabled? %}
+  <hr>
   <div
     id="comments"
-    class="my-8">
+    class="my-8 pb-8">
     {% if article.comments_count > 0 %}
-      {% else %}
-        There are no comments in this article
+      <div
+        class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
+        <h1
+          class="text-lg mb-5 font-medium">See what people are saying</h1>
+
+        {% paginate article.comments by 5 %}
+          {% for comm in article.comments %}
+            <div
+              class="flex-1 border my-4 md:my-12 px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+              <span
+                class="comment-author">{{ comm.author }}</span>
+              <span
+                class="text-xs text-metal">{{ comm.created_at | date: format: 'on_date' }}</span>
+              <p
+                class="text-sm">{{ comm.content }}</p>
+            </div>
+          {% endfor %}
+
+          {% if paginate.pages > 1 %}
+            {{ paginate | default_pagination }}
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    {% else %}
+      There are no comments in this article
     {% endif %}
   </div>
 
+  <hr>
+
   <div
     id="comment_form"
-    class="mb-8">
+    class="pb-12 pt-16">
+
     {% form 'new_comment', article %}
       <div
         class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">
+        <h2
+          class="text-lg mb-5 font-medium">What do you want to share with us ?</h2>
+        {% if form.errors %}
+          <div
+            class="border p-5">
+            <div
+              class="flex flex-row items-center w-full my-3">
+              <div
+                class="text-red-500">
+                {% render 'icon-failed' %}
+              </div>
+              <div
+                class="text-sm font-medium ml-3">
+                Oh no ! Your comment was not posted
+              </div>
+            </div>
+            <ul
+              class="px-4 mb-3 ml-7 list-decimal">
+              {% for error in form.errors %}
+                <li>
+                  <span>{{ form.errors.messages[error] }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% elsif form.posted_successfully? %}
+          <div
+            class="flex flex-row items-center w-full my-3 p-5">
+            <div
+              class="text-green-500">
+              {% render 'icon-success' %}
+            </div>
+            <div
+              class="text-sm font-medium ml-3">
+              Comment is posted successfully
+            </div>
+          </div>
+        {% endif %}
         <div
-          class="px-1 md:flex mb-3">
+          class="px-1 md:flex mb-3 pb-5">
 
           <div
             class="px-3 md:w-1/2">
@@ -122,7 +196,7 @@
         </div>
 
         <div
-          class="px-1 md:flex mb-3">
+          class="px-1 md:flex mb-3 pb-5">
           <div
             class="md:w-full px-3">
             <label
@@ -137,7 +211,7 @@
         </div>
 
         <div
-          class="px-1 md:flex mb-3">
+          class="px-1 md:flex mb-3 py-5">
           <div
             class="md:w-full px-3">
             <input
@@ -150,6 +224,34 @@
     {% endform %}
   </div>
 {% endif %}
+
+<script
+  type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+                                                                                    "@type": "BlogPosting",
+                                                                                    "headling": {{ article.title | json }},
+  "articleBody": {{ article.content | strip_html | json }},
+  {% if article.excerpt != blank %}
+    "description": {{ article.excerpt | strip_html | json }},
+  {% endif %}
+  {% if article.image %}
+    "image": [
+    {{ article.image | img_url: "medium" | prepend: "https:" | json }}
+    ],
+  {% endif %}
+  "datePublished": {{ article.published_at | date: format: "default" | json }},
+  "dateCreated": {{ article.created_at | date: format: "default" | json }},
+  "author": {
+                                                                                        "@type": "Person",
+                                                                                        "name": {{ article.author | json }}
+  },
+  "publisher": {
+                                                                                        "@type": "Organization",
+                                                                                        "name": {{ shop.name | json }}
+  }
+  }
+</script>
 
 {% schema %}
   {
