@@ -9,3 +9,7 @@
 .hoverLink {
     @apply hover:bg-dark hover:text-light transition-colors duration-150 ease-in;
 }
+
+.transitionColor {
+    @apply transition-colors duration-150 ease-in;
+}
