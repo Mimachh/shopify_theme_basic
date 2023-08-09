@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    {% render 'pagination', pagination: paginate %}
+    {% render 'pagination', pagination: paginate, vendor: section.settings.vendor %}
   {% endpaginate %}
 </div>
 
@@ -29,7 +29,13 @@
         "default": 6,
         "label": "Number of profucts per page"
       }
-    ]
+    ],
+    "blocks": [
+      {
+        "type": "vendor",
+        "name": "Vendor",
+        "limit": 1
+      }
     ]
   }
 {% endschema %}

@@ -17,7 +17,7 @@
         <div
           class="px-2 pb-2 pt-1">
           <p
-            class="text-sm text-metal">{{ section.settings.vendor }}</p>
+            class="text-sm text-metal">{{ vendor }}</p>
           <p
             class="text-dark uppercase font-medium text-md md:text-lg">{{ product.title }}</p>
 
@@ -29,17 +29,3 @@
     </div>
   </a>
 </div>
-
-{% schema %}
-  {
-    "name": "Template Product Card",
-    "blocks": [
-      {
-        "type": "vendor",
-        "name": "Vendor",
-        "label": "Display Vendor",
-        "limit": 1
-      }
-    ]
-  }
-{% endschema %}
