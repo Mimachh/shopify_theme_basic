@@ -93,23 +93,34 @@
           </div>
           <div
             class="w-full my-4 md:w-80">
-            <h3
-              class="text-xl">Subtotal: {{ cart.total_price | money }}</h3>
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'subtotal' %}
+                <h3
+                  class="text-xl">Subtotal: {{ cart.total_price | money }}</h3>
+                {% when 'update_button' %}
+                <div
+                  class="my-4 bg-dark rounded-xl relative z-0 group">
+                  <button
+                    name="update"
+                    type="submit"
+                    class="w-full p-3 border border-dark bg-light text-dark font-medium rounded-xl transitionAll hoverTranslate">Update</button>
+                </div>
+                {% when 'checkout_button' %}
+                <div
+                  class="my-4 bg-dark rounded-xl relative z-0 group">
+                  <button
+                    name="checkout"
+                    type="submit"
+                    class="relative z-1 rounded-xl w-full p-3 border bg-silver border-dark text-dark font-medium transitionAll hoverTranslate">Checkout</button>
+                </div>
+            {% else %}
 
-            <div
-              class="my-4 bg-dark rounded-xl relative z-0 group">
-              <button
-                name="update"
-                type="submit"
-                class="w-full p-3 border border-dark bg-light text-dark font-medium rounded-xl transitionAll hoverTranslate">Update</button>
-            </div>
-            <div
-              class="my-4 bg-dark rounded-xl relative z-0 group">
-              <button
-                name="checkout"
-                type="submit"
-                class="relative z-1 rounded-xl w-full p-3 border bg-silver border-dark text-dark font-medium transitionAll hoverTranslate">Checkout</button>
-            </div>
+              {% endcase %}
+            {% endfor %}
+
+
+
           </div>
         </div>
       </form>
