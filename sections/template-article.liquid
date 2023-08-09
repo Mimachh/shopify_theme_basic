@@ -79,7 +79,7 @@
           {% endfor %}
 
           <div class="max-w-6xl mx-auto">
-            {% render 'pagination' %}
+            {% render 'pagination', pagination: paginate %}
           </div>
         {% endpaginate %}
       </div>
@@ -178,8 +178,8 @@
 <script type="application/ld+json">
   {
   "@context": "http://schema.org",
-                                                                                        "@type": "BlogPosting",
-                                                                                        "headling": {{ article.title | json }},
+                                                                                          "@type": "BlogPosting",
+                                                                                          "headling": {{ article.title | json }},
   "articleBody": {{ article.content | strip_html | json }},
   {% if article.excerpt != blank %}
     "description": {{ article.excerpt | strip_html | json }},
@@ -192,12 +192,12 @@
   "datePublished": {{ article.published_at | date: format: "default" | json }},
   "dateCreated": {{ article.created_at | date: format: "default" | json }},
   "author": {
-                                                                                            "@type": "Person",
-                                                                                            "name": {{ article.author | json }}
+                                                                                              "@type": "Person",
+                                                                                              "name": {{ article.author | json }}
   },
   "publisher": {
-                                                                                            "@type": "Organization",
-                                                                                            "name": {{ shop.name | json }}
+                                                                                              "@type": "Organization",
+                                                                                              "name": {{ shop.name | json }}
   }
   }
 </script>
