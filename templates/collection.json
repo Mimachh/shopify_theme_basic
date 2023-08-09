@@ -1,8 +1,15 @@
 {
-    "sections": {
-        "template": {
-            "type": "template-collection"
-        }
-    },
-    "order": ["template"]
+  "sections": {
+    "template": {
+      "type": "template-collection",
+      "settings": {
+        "number_of_products_per_page": 6,
+        "display_vendor": true,
+        "custom_image": "shopify:\/\/shop_images\/cool-background.png"
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
 }
