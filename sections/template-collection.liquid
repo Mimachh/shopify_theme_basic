@@ -4,6 +4,16 @@
     <h1
       class="pageTitle">{{ collection.title }}</h1>
     <div
+      class="px-4 py-8">
+      <img
+        src="{{ section.settings.custom_image | img_url: 'medium' }}"
+        alt="Custom Image">
+
+      {% paginate collection.products by section.settings.number_of_products_per_page %}
+        <!-- Le reste de votre code pour afficher les produits -->
+      {% endpaginate %}
+    </div>
+    <div
       class="max-w-6xl mx-auto">
       <div
         class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -33,6 +43,10 @@
         "id": "display_vendor",
         "default": true,
         "label": "Display Vendor"
+      }, {
+        "type": "image_picker",
+        "id": "custom_image",
+        "label": "Custom Image"
       }
     ]
   }

@@ -7,10 +7,13 @@
       <div
         class="bg-white border border-dark rounded-2xl overflow-hidden p-2  cursor-pointer hoverTranslate transitionAll">
         {% if product.featured_image %}
-          <img
-            class="w-full h-72 object-cover  rounded-2xl border border-dark transition duration-150 hover:scale-125 transform ease-in"
-            src="{{ product.featured_image | img_url: 'medium' }}"
-            alt="{{ product.featured_image.alt }}">
+          <div
+            class="h-72 w-full overflow-hidden rounded-xl border border-dark">
+            <img
+              class="w-full h-72 object-cover  transition duration-150 group-hover:scale-105 transform ease-in"
+              src="{{ product.featured_image | img_url: 'medium' }}"
+              alt="{{ product.featured_image.alt }}">
+          </div>
         {% else %}
           {{ 'product-1' | placeholder_svg_tag: "w-full h-72 rounded-2xl border border-dark object-cover bg-silver" }}
         {% endif %}
