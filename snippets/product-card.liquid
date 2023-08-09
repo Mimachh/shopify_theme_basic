@@ -1,0 +1,31 @@
+<div
+  class="w-full py-3 px-3">
+  <a
+    href="{{ product.url }}">
+    <div
+      class="bg-dark w-full h-fit rounded-2xl group">
+      <div
+        class="bg-white border border-dark rounded-2xl overflow-hidden p-2  cursor-pointer hoverTranslate transitionAll">
+        {% if product.featured_image %}
+          <img
+            class="w-full h-72 object-cover  rounded-2xl border border-dark"
+            src="{{ product.featured_image | img_url: 'medium' }}"
+            alt="{{ product.featured_image.alt }}">
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: "w-full h-72 rounded-2xl border border-dark object-cover bg-silver" }}
+        {% endif %}
+        <div
+          class="px-2 pb-2 pt-1">
+          <p
+            class="text-sm text-metal">{{ product.vendor }}</p>
+          <p
+            class="text-dark uppercase font-medium text-md md:text-lg">{{ product.title }}</p>
+
+
+          <p
+            class="text-metal text-lg md:text-xl font-bold">{{ product.price | money_with_currency }}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

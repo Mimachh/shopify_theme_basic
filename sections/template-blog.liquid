@@ -1,15 +1,24 @@
-<div class="py-8">
+<div
+  class="py-8">
   {% paginate blog.articles by section.settings.number_of_blog_posts %}
 
-    <h1 class="text-center text-4xl font-bold py-8 uppercase">{{ blog.title }}</h1>
+    <h1
+      class="pageTitle">{{ blog.title }}</h1>
 
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div
+      class="max-w-6xl mx-auto">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {% for article in blog.articles %}
-          <div class="w-full py-6 px-3">
-            <a href="{{ article.url }}" aria-label="Link for article">
-              <div class="bg-dark w-full h-fit rounded-2xl group">
-                <div class="bg-white border border-dark rounded-2xl overflow-hidden p-2 hoverTranslate transitionAll cursor-pointer">
+          <div
+            class="w-full py-6 px-3">
+            <a
+              href="{{ article.url }}"
+              aria-label="Link for article">
+              <div
+                class="bg-dark w-full h-fit rounded-2xl group">
+                <div
+                  class="bg-white border border-dark rounded-2xl overflow-hidden p-2 hoverTranslate transitionAll cursor-pointer">
                   {% if article.image %}
                     <img
                       class="w-full h-32 object-cover  rounded-2xl border border-dark"
@@ -18,8 +27,10 @@
                   {% else %}
                     {{ 'image' | placeholder_svg_tag: 'w-full h-32 object-cover bg-gray-100 rounded-2xl border border-dark' }}
                   {% endif %}
-                  <div class="p-4">
-                    <h1 class="text-xl font-bold my-4">{{ article.title }}</h1>
+                  <div
+                    class="p-4">
+                    <h1
+                      class="text-xl font-bold my-4">{{ article.title }}</h1>
 
                     {% if article.excerpt.size > 0 %}
                       <p>{{ article.excerpt | strip_html | truncatewords: 15 }}</p>
@@ -35,7 +46,8 @@
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto">
+    <div
+      class="max-w-6xl mx-auto">
       {% render 'pagination', pagination: paginate %}
     </div>
   {% endpaginate %}

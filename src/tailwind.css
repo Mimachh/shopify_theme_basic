@@ -21,3 +21,7 @@
 .transitionAll {
     @apply transition-all duration-150 ease-in;
 }
+
+.pageTitle {
+    @apply text-center text-4xl font-bold py-8 uppercase;
+}
