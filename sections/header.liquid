@@ -1,235 +1,236 @@
 {% assign main_menu_linklist = linklists[section.settings.menu].links %}
 
 
-
+<div
+  class="bg-white">
   <div
-  class="relative mx-auto max-w-[1400px] px-4 md:px-8">
-  <div
-    class="mx-auto px-4 sm:px-6">
-    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-      <!-- STORE NAME / STORE LOGO -->
-      <div
-        class="flex md:justify-start lg:flex-1 truncate">
-        <h1
-          class="text-lg md:text-xl font-bold truncate">{{ section.settings.desktop_menu_title }}</h1>
-      </div>
-      <div
-        class="-mr-2 -my-2 ml-3 md:hidden">
-        <button
-          type="button"
-          class="p-2 inline-flex items-center md:justify-center focus:outline-none"
-          id="navMobileMenuButton">
-          {% render 'icon-menu' %}
-        </button>
-      </div>
-      <!-- NAVIGATION MENU -->
-      <nav
-        class="hidden md:flex space-x-10">
-        {% for link in main_menu_linklist %}
-          {% if link.links != blank %}
-            <div
-              class="relative">
-              <button
-                type="button"
-                class="dropdown-button inline-flex items-center text-base text-gray-500 hover:text-gray-900"
-                data-dropdown-button-id="{{ forloop.index }}">
-                {{ link.title }}
-                {% render 'icon-dropdown' %}
-              </button>
-
-              <div
-                class="dropdown-content hidden absolute z-10 -ml-5 mt-5 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
-                data-dropdown-id="{{ forloop.index }}">
-                <div
-                  class="shadow-lg border ring-black ring-opacity-5 overflow-hidden rounded-lg">
-                  <div
-                    class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                    {% for childlink in link.links %}
-                      <a
-                        href="{{ childlink.url }}"
-                        class="-m-3 p-3 flex items start rounded-lg 
-                        hoverLink
-                        {% if childlink.active == true %}
-                          activeLink
-                        {% endif %}">
-                        <div
-                          class="ml-4">
-                          <p
-                            class="text-base font-medium ">
-                            {{ childlink.title }}
-                          </p>
-                        </div>
-                      </a>
-                    {% endfor %}
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% else %}
-            <div
-              class="relative">
-              <a
-                href="{{ link.url }}"
-                class="
-                text-base hoverLink text-gray-500
-                rounded-md px-4 py-2
-                {% if link.active == true %}
-                  activeLink
-                {% endif %}">
-                {{ link.title }}
-              </a>
-            </div>
-          {% endif %}
-
-
-        {% endfor %}
-
-
-
-      </nav>
-
-      <div
-        class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
-        <a
-          href="{{ routes.cart_url }}"
-          class='whitespace-nowrap text-base text-gray-500 hover:text-gray-900
-          rounded-md px-4 py-2
-          {% if template contains 'cart' %}
-            activeLink
-          {% endif %}'>
-          {% render 'icon-shopping-bag' %}
-        </a>
-
-        {% if shop.customer_accounts_enabled %}
-          <a
-            href="{{ routes.account_login_url }}"
-            class='text-base text-gray-500 hover:text-gray-900
-            rounded-md px-4 py-2
-            {% if template == 'customers/login' %}
-              activeLink
-            {% endif %}'>Login
-          </a>
-          <a
-            href="{{ routes.account_register_url }}"
-            class='text-base text-gray-500 hover:text-gray-900
-            rounded-md px-4 py-2
-            {% if template == 'customers/register' %}
-              activeLink
-            {% endif %}'>Register
-          </a>
-        {% endif %}
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div
-    class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left hidden md:hidden"
-    id="navMobileMenu">
+    class="relative mx-auto max-w-[1400px] px-4 md:px-8">
     <div
-      class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
-      <div class="p-5 divide-y-2 divide-gray-50">
-
-        <!-- MOBILE MENU HEADER TITLE PLUS CLOSE BUTTON -->
+      class="mx-auto px-4 sm:px-6">
+      <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+        <!-- STORE NAME / STORE LOGO -->
         <div
-          class="flex items-center justify-between pb-3">
-          <div>
-            <h1
-              class="text-lg font-bold">{{ section.settings.mobile_menu_title }}</h1>
-          </div>
-          <div
-            class="-mr-2">
-            <button
-              id="navMobileMenuButtonClose"
-              type="button"
-              class=" rounded-md p-2">
-              {% render 'icon-close' %}
-            </button>
-          </div>
+          class="flex md:justify-start lg:flex-1 truncate">
+          <h1
+            class="text-lg md:text-xl font-bold truncate">{{ section.settings.desktop_menu_title }}</h1>
         </div>
-
-        <!-- NAVIGATION LINKS FOR MOBILE MENU -->
         <div
-          class="pt-3">
-          <nav
-            class="grid gap-y-7">
+          class="-mr-2 -my-2 ml-3 md:hidden">
+          <button
+            type="button"
+            class="p-2 inline-flex items-center md:justify-center focus:outline-none"
+            id="navMobileMenuButton">
+            {% render 'icon-menu' %}
+          </button>
+        </div>
+        <!-- NAVIGATION MENU -->
+        <nav
+          class="hidden md:flex space-x-10">
+          {% for link in main_menu_linklist %}
+            {% if link.links != blank %}
+              <div
+                class="relative">
+                <button
+                  type="button"
+                  class="dropdown-button inline-flex items-center text-base text-gray-500 hover:text-gray-900"
+                  data-dropdown-button-id="{{ forloop.index }}">
+                  {{ link.title }}
+                  {% render 'icon-dropdown' %}
+                </button>
 
-            {% for link in main_menu_linklist %}
-              {% if link.links != blank %}
                 <div
-                  class="relative">
-                  <button
-                    data-dropdown-mobile-button-id="{{ forloop.index }}"
-                    type="button"
-                    class="dropdown-button-mobile text-base text-gray-500 hover:text-gray-900 rounded-md flex items-center justify-between w-full">
-                    <div>{{ link.title }}</div>
-                    {% render 'icon-dropdown' %}
-                  </button>
-
+                  class="dropdown-content hidden absolute z-10 -ml-5 mt-5 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                  data-dropdown-id="{{ forloop.index }}">
                   <div
-                    class="hidden dropdown-content-mobile"
-                    data-dropdown-mobile-id="{{ forloop.index }}">
-                    {% for childlink in link.links %}
-                      <div
-                        class=" grid gap-y-7 py-3">
+                    class="shadow-lg border ring-black ring-opacity-5 overflow-hidden rounded-lg">
+                    <div
+                      class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                      {% for childlink in link.links %}
                         <a
                           href="{{ childlink.url }}"
-                          class="-m-3 p-3 mt-2 flex items-center rounded-md hoverLink text-gray-500
+                          class="-m-3 p-3 flex items start rounded-lg 
+                          hoverLink
                           {% if childlink.active == true %}
                             activeLink
                           {% endif %}">
-                          <span
-                            class="ml-3 text-base font-medium ">{{ childlink.title }}</span>
+                          <div
+                            class="ml-4">
+                            <p
+                              class="text-base font-medium ">
+                              {{ childlink.title }}
+                            </p>
+                          </div>
                         </a>
-                      </div>
-                    {% endfor %}
-                  </div>
+                      {% endfor %}
 
+                    </div>
+                  </div>
                 </div>
-              {% else %}
+              </div>
+            {% else %}
+              <div
+                class="relative">
                 <a
                   href="{{ link.url }}"
-                  class="-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                  class="
+                  text-base hoverLink text-gray-500
+                  rounded-md px-4 py-2
                   {% if link.active == true %}
                     activeLink
                   {% endif %}">
                   {{ link.title }}
                 </a>
-              {% endif %}
-            {% endfor %}
-            <a
-              href="{{ routes.cart_url }}"
-              class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
-              {% if template contains 'cart' %}
-                activeLink
-              {% endif %}'>
-              {% render 'icon-shopping-bag' %}
-            </a>
-            {% if shop.customer_accounts_enabled %}
-              <a
-                href="{{ routes.account_login_url }}"
-                class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
-                {% if template == 'customers/login' %}
-                  activeLink
-                {% endif %}'>Login
-              </a>
-              <a
-                href="{{ routes.account_register_url }}"
-                class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
-                {% if template == 'customers/register' %}
-                  activeLink
-                {% endif %}'>Register
-              </a>
+              </div>
             {% endif %}
-          </nav>
+
+
+          {% endfor %}
+
+
+
+        </nav>
+
+        <div
+          class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
+          <a
+            href="{{ routes.cart_url }}"
+            class='whitespace-nowrap text-base text-gray-500 hover:text-gray-900
+            rounded-md px-4 py-2
+            {% if template contains 'cart' %}
+              activeLink
+            {% endif %}'>
+            {% render 'icon-shopping-bag' %}
+          </a>
+
+          {% if shop.customer_accounts_enabled %}
+            <a
+              href="{{ routes.account_login_url }}"
+              class='text-base text-gray-500 hover:text-gray-900
+              rounded-md px-4 py-2
+              {% if template == 'customers/login' %}
+                activeLink
+              {% endif %}'>Login
+            </a>
+            <a
+              href="{{ routes.account_register_url }}"
+              class='text-base text-gray-500 hover:text-gray-900
+              rounded-md px-4 py-2
+              {% if template == 'customers/register' %}
+                activeLink
+              {% endif %}'>Register
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left hidden md:hidden"
+      id="navMobileMenu">
+      <div
+        class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
+        <div class="p-5 divide-y-2 divide-gray-50">
+
+          <!-- MOBILE MENU HEADER TITLE PLUS CLOSE BUTTON -->
+          <div
+            class="flex items-center justify-between pb-3">
+            <div>
+              <h1
+                class="text-lg font-bold">{{ section.settings.mobile_menu_title }}</h1>
+            </div>
+            <div
+              class="-mr-2">
+              <button
+                id="navMobileMenuButtonClose"
+                type="button"
+                class=" rounded-md p-2">
+                {% render 'icon-close' %}
+              </button>
+            </div>
+          </div>
+
+          <!-- NAVIGATION LINKS FOR MOBILE MENU -->
+          <div
+            class="pt-3">
+            <nav
+              class="grid gap-y-7">
+
+              {% for link in main_menu_linklist %}
+                {% if link.links != blank %}
+                  <div
+                    class="relative">
+                    <button
+                      data-dropdown-mobile-button-id="{{ forloop.index }}"
+                      type="button"
+                      class="dropdown-button-mobile text-base text-gray-500 hover:text-gray-900 rounded-md flex items-center justify-between w-full">
+                      <div>{{ link.title }}</div>
+                      {% render 'icon-dropdown' %}
+                    </button>
+
+                    <div
+                      class="hidden dropdown-content-mobile"
+                      data-dropdown-mobile-id="{{ forloop.index }}">
+                      {% for childlink in link.links %}
+                        <div
+                          class=" grid gap-y-7 py-3">
+                          <a
+                            href="{{ childlink.url }}"
+                            class="-m-3 p-3 mt-2 flex items-center rounded-md hoverLink text-gray-500
+                            {% if childlink.active == true %}
+                              activeLink
+                            {% endif %}">
+                            <span
+                              class="ml-3 text-base font-medium ">{{ childlink.title }}</span>
+                          </a>
+                        </div>
+                      {% endfor %}
+                    </div>
+
+                  </div>
+                {% else %}
+                  <a
+                    href="{{ link.url }}"
+                    class="-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                    {% if link.active == true %}
+                      activeLink
+                    {% endif %}">
+                    {{ link.title }}
+                  </a>
+                {% endif %}
+              {% endfor %}
+              <a
+                href="{{ routes.cart_url }}"
+                class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                {% if template contains 'cart' %}
+                  activeLink
+                {% endif %}'>
+                {% render 'icon-shopping-bag' %}
+              </a>
+              {% if shop.customer_accounts_enabled %}
+                <a
+                  href="{{ routes.account_login_url }}"
+                  class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                  {% if template == 'customers/login' %}
+                    activeLink
+                  {% endif %}'>Login
+                </a>
+                <a
+                  href="{{ routes.account_register_url }}"
+                  class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
+                  {% if template == 'customers/register' %}
+                    activeLink
+                  {% endif %}'>Register
+                </a>
+              {% endif %}
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 {% schema %}
   {
     "name": "Navbar",

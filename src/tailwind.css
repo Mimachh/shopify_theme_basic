@@ -13,3 +13,11 @@
 .transitionColor {
     @apply transition-colors duration-150 ease-in;
 }
+
+.hoverTranslate {
+    @apply group-hover:translate-x-[-6px] group-hover:translate-y-[-6px];
+}
+
+.transitionAll {
+    @apply transition-all duration-150 ease-in;
+}
