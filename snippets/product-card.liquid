@@ -16,8 +16,11 @@
         {% endif %}
         <div
           class="px-2 pb-2 pt-1">
-          <p
-            class="text-sm text-metal">{{ vendor }}</p>
+          {% if vendor %}
+            <p
+              class="text-sm text-metal">{{ product.vendor }}</p>
+          {% endif %}
+
           <p
             class="text-dark uppercase font-medium text-md md:text-lg">{{ product.title }}</p>
 
