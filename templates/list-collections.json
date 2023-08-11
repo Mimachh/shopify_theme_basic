@@ -3,10 +3,17 @@
     "template": {
       "type": "template-list-collections",
       "settings": {
+        "title": "Collections"
+      }
+    },
+    "c5b51f7a-5b48-498b-af96-fcf0bbc9698a": {
+      "type": "contact-form",
+      "settings": {
       }
     }
   },
   "order": [
-    "template"
+    "template",
+    "c5b51f7a-5b48-498b-af96-fcf0bbc9698a"
   ]
 }
