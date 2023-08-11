@@ -3,8 +3,10 @@
   {% form 'contact' %}
     <div
       class="max-w-6xl bg-primaryDark mx-auto justify-center flex-1 items-center px-4 border border-dark rounded-xl pb-4 md:pb-6">
-      <h1
-        class="text-xl md:text-3xl font-bold text-center py-8">Contact Form</h1>
+      {% if section.settings.title != blank %}
+        <h1
+          class="text-xl md:text-3xl font-bold text-center py-8">{{ section.settings.title }}</h1>
+      {% endif %}
       {% if form.errors %}
         <div
           class="border p-5">
@@ -102,6 +104,14 @@
 {% schema %}
   {
     "name": "Contact Form",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Contact"
+      }
+    ],
     "presets": [
       {
         "name": "Contact Form"
