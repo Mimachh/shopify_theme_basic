@@ -1,0 +1,40 @@
+<div
+  class="flex flex-col items-center my-8">
+  {% form 'contact' %}
+    <label
+      for="contact_name">Name</label>
+    <input
+      type="text"
+      name="contact[name]"
+      id="contact_name">
+
+    <label
+      for="contact_email">Email</label>
+    <input
+      type="email"
+      name="contact[email]"
+      id="contact_email">
+
+    <label
+      for="contact_message">Message</label>
+    <textarea
+      name="contact[body]"
+      id="contact_message"></textarea>
+
+    <input
+      type="submit"
+      value="Submit">
+  {% endform %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Contact Form",
+    "presets": [
+      {
+        "name": "Contact Form"
+      }
+    ]
+  }
+{% endschema %}
