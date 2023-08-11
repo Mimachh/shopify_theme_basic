@@ -1,21 +1,22 @@
 <div
-  class="px-4 py-8">
+  class="">
   {% paginate collection.products by section.settings.number_of_products_per_page %}
-    <h1
-      class="pageTitle">{{ collection.title }}</h1>
+    {% comment %} <h1
+    class="pageTitle">{{ collection.title }}</h1> {% endcomment %}
     <div
-      class="">
-      <img
-        class="w-full h-30"
-        src="{{ section.settings.custom_image | img_url: 'medium' }}"
-        alt="Custom Image">
-
-      {% paginate collection.products by section.settings.number_of_products_per_page %}
-        <!-- Le reste de votre code pour afficher les produits -->
-      {% endpaginate %}
+      class="relative my-12 h-72 w-full flex justify-center items-center"
+      style="background-image: url('{{ section.settings.custom_image | img_url: 'original' }}'); background-size: cover; background-position: center;">
+      <div
+        class="bg-tahiti z-1 absolute inset-0 opacity-25 blur-md invert sepia"></div>
+      {% comment %} <img
+      class="w-full h-72"
+      src="{{ section.settings.custom_image | img_url: 'medium' }}"
+      alt="Custom Image"> {% endcomment %}
+      <h1
+        class="pageTitle text-light relative z-5">{{ collection.title }}</h1>
     </div>
     <div
-      class="max-w-6xl mx-auto">
+      class="max-w-6xl mx-auto px-4 py-8">
       <div
         class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {% for product in collection.products %}
