@@ -1,19 +1,32 @@
 <div
   class="flex flex-col items-center my-8">
   {% form 'contact' %}
-    <label
-      for="contact_name">Name</label>
-    <input
-      type="text"
-      name="contact[name]"
-      id="contact_name">
+    <div
+      class="max-w-6xl mx-auto justify-center flex items-center px-4">
+      <div
+        class="flex px-1 mb-3">
+        <div
+          class="px-3 md:w-1/2">
+          <label
+            for="contact_name">Name</label>
+          <input
+            type="text"
+            name="contact[name]"
+            id="contact_name">
+        </div>
+        <div
+          class="px-3 md:w-1/2">
+          <label
+            for="contact_email">Email</label>
+          <input
+            type="email"
+            name="contact[email]"
+            id="contact_email">
+        </div>
+      </div>
+    </div>
 
-    <label
-      for="contact_email">Email</label>
-    <input
-      type="email"
-      name="contact[email]"
-      id="contact_email">
+
 
     <label
       for="contact_message">Message</label>
