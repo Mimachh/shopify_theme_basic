@@ -1,0 +1,29 @@
+<div
+  class="flex flex-col items-center my-8">
+  <h1
+    class="text-center text-3xl">{{ section.settings.title }}</h1>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Banner",
+        "label": "Title"
+      }, {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner"
+      }
+    ]
+  }
+{% endschema %}
