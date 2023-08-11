@@ -6,12 +6,16 @@
   <div
     class="max-w-6xl mx-auto">
     <div
-      class="grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+      class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      {% for product in section.settings.featured_collection.products limit: section.settings.number_of_products_to_show %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
-{% for product in section.settings.featured_collection.products %}{% endfor %}
-{% render 'product-card', product: product %}
+
+
 {% schema %}
   {
     "name": "Featured Collection",
@@ -25,6 +29,13 @@
         "type": "collection",
         "id": "featured_collection",
         "label": "Collection"
+      }, {
+        "type": "range",
+        "id": "number_of_products_to_show",
+        "min": 4,
+        "max": 12,
+        "default": 4,
+        "label": "Number of products to show"
       }
     ]
   }
