@@ -735,8 +735,16 @@ video {
   height: fit-content;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
+}
+
+.min-h-\[90vh\] {
+  min-height: 90vh;
 }
 
 .w-20 {
@@ -852,6 +860,10 @@ video {
   justify-content: space-between;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -930,6 +942,10 @@ video {
 
 .border {
   border-width: 1px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
 }
 
 .border-none {
@@ -1784,6 +1800,11 @@ video {
   background-color: rgb(120 220 202 / 0.95);
 }
 
+.bg-bubble-gum {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 119 233 / var(--tw-bg-opacity));
+}
+
 .bg-current {
   background-color: currentColor;
 }
@@ -2636,6 +2657,11 @@ video {
 
 .text-center {
   text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -3575,8 +3601,16 @@ video {
   transition-duration: 150ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .activeLink {
@@ -3630,6 +3664,12 @@ video {
   text-transform: uppercase;
 }
 
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:border-light:hover {
   --tw-border-opacity: 1;
   border-color: rgb(245 245 245 / var(--tw-border-opacity));
@@ -3678,6 +3718,10 @@ video {
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
   color: rgb(29 161 242 / var(--tw-text-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .focus\:outline-none:focus {
@@ -3740,6 +3784,10 @@ video {
   .md\:my-12 {
     margin-top: 3rem;
     margin-bottom: 3rem;
+  }
+
+  .md\:mt-24 {
+    margin-top: 6rem;
   }
 
   .md\:flex {
@@ -3813,6 +3861,11 @@ video {
   .md\:py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 
   .md\:text-6xl {

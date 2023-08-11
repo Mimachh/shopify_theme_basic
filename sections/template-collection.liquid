@@ -1,5 +1,7 @@
 <div
   class="">
+
+
   {% paginate collection.products by section.settings.number_of_products_per_page %}
     {% comment %} <h1
     class="pageTitle">{{ collection.title }}</h1> {% endcomment %}
@@ -16,7 +18,14 @@
         class="pageTitle text-light relative z-5">{{ collection.title }}</h1>
     </div>
     <div
+      class="max-w-6xl mx-auto">
+      <a
+        href="{{ routes.collections_url }}"
+        class="text-base text-primary hover:underline">Go back to collections</a>
+    </div>
+    <div
       class="max-w-6xl mx-auto px-4 py-8">
+
       <div
         class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {% for product in collection.products %}

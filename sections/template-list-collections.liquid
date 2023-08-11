@@ -1,1 +1,63 @@
-Hello
+<div
+  class="flex flex-col items-center justify-center my-8 min-h-[90vh]">
+  <h1
+    class="text-2xl md:text-5xl font-bold">{{ section.settings.title }}</h1>
+
+  <div
+    class="max-w-6xl mx-auto md:mt-24">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {% for collection in collections %}
+        {% if collection.all_products_count > 0 %}
+          <div
+            class="w-full py-6 px-3">
+            <div
+              class="bg-dark rounded-2xl group">
+              <div
+                class="border bg-light overflow-hidden rounded-2xl border-dark hoverTranslate transitionAll">
+                <a
+                  href="{{ collection.url }}">
+                  <div
+                    class="h-72 overflow-hidden border-b border-dark">
+                    {% if collection.featured_image != blank %}
+                      {% assign collection_image = collection.featured_image %}
+                    {% else %}
+                      {% assign collection_image = collection.products.first.image %}
+                    {% endif %}
+
+                    <img
+                      class="h-full w-full object-cover transition duration-300 ease-in-out hover:scale-105"
+                      src="{{ collection_image | img_url: 'large' }}"
+                      alt="{{ collection.title | escape }}">
+                  </div>
+                </a>
+
+                <div
+                  class="p-4 bg-bubble-gum">
+                  <h1
+                    class="text-xl text-dark">{{ collection.title }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Template List Collections",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Collections",
+        "label": "Title"
+      }
+    ]
+  }
+{% endschema %}
