@@ -3,9 +3,7 @@
     "template": {
       "type": "template-collection",
       "settings": {
-        "number_of_products_per_page": 6,
-        "display_vendor": true,
-        "custom_image": "shopify:\/\/shop_images\/cool-background.png"
+        "featured_collection": "all"
       }
     }
   },
