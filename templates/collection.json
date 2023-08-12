@@ -1,5 +1,12 @@
 {
   "sections": {
+    "de8c2a5f-22f8-4b86-929d-744da835d4b5": {
+      "type": "template-banner",
+      "settings": {
+        "title": "Banner",
+        "banner_image": "shopify:\/\/shop_images\/pexels-harsh-raj-gond-2244951.jpg"
+      }
+    },
     "template": {
       "type": "template-collection",
       "settings": {
@@ -10,6 +17,7 @@
     }
   },
   "order": [
+    "de8c2a5f-22f8-4b86-929d-744da835d4b5",
     "template"
   ]
 }
