@@ -1,7 +1,8 @@
 <div
-  class="flex flex-col items-center my-8">
-  <h1
-    class="text-center text-3xl">{{ section.settings.title }}</h1>
+  class="relative my-12 h-72 w-full flex justify-center items-center"
+  style="background-image: url('{{ section.settings.banner_image | img_url: 'original' }}'); background-size: cover; background-position: center;">
+  <div
+    class="bg-tahiti z-1 absolute inset-0 opacity-25 blur-md invert sepia"></div>
 </div>
 
 
