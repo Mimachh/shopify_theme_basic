@@ -1,11 +1,27 @@
 {
-    "sections": {
-        "template": {
-            "type": "template-page"
-        },
-        "contact-form": {
-            "type": "contact-form"
-        }
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "settings": {
+      }
     },
-    "order": ["template", "contact-form"]
+    "contact-form": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact"
+      }
+    },
+    "c6b598b4-2781-4e71-b403-3d052d82d867": {
+      "type": "template-banner",
+      "settings": {
+        "title": "Banner",
+        "banner_image": "shopify:\/\/shop_images\/pexels-harsh-raj-gond-2244951.jpg"
+      }
+    }
+  },
+  "order": [
+    "template",
+    "contact-form",
+    "c6b598b4-2781-4e71-b403-3d052d82d867"
+  ]
 }
