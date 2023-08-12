@@ -1,0 +1,50 @@
+<div
+  class="my-12">
+  <div
+    class="relative h-48 md:h-96 w-full flex justify-center items-center"
+    style="background-image: url('{{ section.settings.banner_image | img_url: 'original' }}'); background-size: cover; background-position: {{ section.settings.focal_x }}% {{ section.settings.focal_y }}%;">
+    <div
+      class="bg-midnight z-1 absolute inset-0 opacity-25  w-full h-full"></div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Banner",
+        "label": "Title"
+      }, {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Image"
+      }, {
+        "type": "range",
+        "id": "focal_x",
+        "label": "Focal X",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "focal_y",
+        "label": "Focal Y",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner"
+      }
+    ]
+  }
+{% endschema %}
