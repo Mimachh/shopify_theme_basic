@@ -1,0 +1,48 @@
+<div
+  class="">
+
+
+  {% paginate all_products.products by section.settings.number_of_products_per_page %}
+
+    <h1
+      class="pageTitle">Products</h1>
+
+    <div
+      class="max-w-6xl mx-auto px-4 py-8">
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% for product in all_products %}
+          {% render 'product-card', product: all_products %}
+        {% else %}
+          <p>They are no product inside of this collection</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% render 'pagination', pagination: paginate, vendor: section.settings.display_vendor %}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+  {
+    "name": "Template Collection",
+    "settings": [
+      {
+        "type": "number",
+        "id": "number_of_products_per_page",
+        "default": 6,
+        "label": "Number of profucts per page"
+      }, {
+        "type": "checkbox",
+        "id": "display_vendor",
+        "default": true,
+        "label": "Display Vendor"
+      }, {
+        "type": "image_picker",
+        "id": "custom_image",
+        "label": "Custom Image"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+    "sections": {
+      "template": {
+        "type": "template-products",
+        "settings": {
+          "number_of_products_per_page": 6,
+          "display_vendor": true
+        }
+      }
+    },
+    "order": [
+      "template"
+    ]
+  }
+  
