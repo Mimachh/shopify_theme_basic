@@ -726,6 +726,10 @@ video {
   height: 20rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-\[80vh\] {
   height: 80vh;
 }
