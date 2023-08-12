@@ -3,14 +3,15 @@
 
 
   {% paginate collection.products by section.settings.number_of_products_per_page %}
-    <h1
-      class="pageTitle">{{ collection.title }}</h1>
     <div
-      class="max-w-6xl mx-auto">
+      class="max-w-6xl mx-auto text-center">
       <a
         href="{{ routes.collections_url }}"
-        class="text-base text-primary hover:underline">Go back to collections</a>
+        class="text-base  text-primary hover:underline">Go back to collections</a>
     </div>
+    <h1
+      class="pageTitle">{{ collection.title }}</h1>
+
     <div
       class="max-w-6xl mx-auto px-4 py-8">
 
