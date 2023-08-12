@@ -5,8 +5,8 @@
       "settings": {
         "title": "Banner",
         "banner_image": "shopify:\/\/shop_images\/pexels-roman-odintsov-4553372.jpg",
-        "focal_x": 80,
-        "focal_y": 50
+        "focal_x": 57,
+        "focal_y": 95
       }
     },
     "template": {
