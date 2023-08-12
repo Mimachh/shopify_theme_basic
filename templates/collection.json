@@ -2,6 +2,7 @@
   "sections": {
     "de8c2a5f-22f8-4b86-929d-744da835d4b5": {
       "type": "template-banner",
+      "disabled": true,
       "settings": {
         "title": "Banner",
         "banner_image": "shopify:\/\/shop_images\/pexels-roman-odintsov-4553372.jpg",
@@ -16,10 +17,20 @@
         "display_vendor": true,
         "custom_image": "shopify:\/\/shop_images\/cool-background.png"
       }
+    },
+    "c33fceea-249a-4fc4-a987-ee287349db7b": {
+      "type": "template-banner",
+      "settings": {
+        "title": "Banner",
+        "banner_image": "shopify:\/\/shop_images\/pexels-harsh-raj-gond-2244951.jpg",
+        "focal_x": 50,
+        "focal_y": 50
+      }
     }
   },
   "order": [
     "de8c2a5f-22f8-4b86-929d-744da835d4b5",
-    "template"
+    "template",
+    "c33fceea-249a-4fc4-a987-ee287349db7b"
   ]
 }
