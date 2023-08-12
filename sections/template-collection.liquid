@@ -3,20 +3,8 @@
 
 
   {% paginate collection.products by section.settings.number_of_products_per_page %}
-    {% comment %} <h1
-    class="pageTitle">{{ collection.title }}</h1> {% endcomment %}
-    <div
-      class="relative my-12 h-72 w-full flex justify-center items-center"
-      style="background-image: url('{{ section.settings.custom_image | img_url: 'original' }}'); background-size: cover; background-position: center;">
-      <div
-        class="bg-tahiti z-1 absolute inset-0 opacity-25 blur-md invert sepia"></div>
-      {% comment %} <img
-      class="w-full h-72"
-      src="{{ section.settings.custom_image | img_url: 'medium' }}"
-      alt="Custom Image"> {% endcomment %}
-      <h1
-        class="pageTitle text-light relative z-5">{{ collection.title }}</h1>
-    </div>
+    <h1
+      class="pageTitle">{{ collection.title }}</h1>
     <div
       class="max-w-6xl mx-auto">
       <a
