@@ -3,7 +3,7 @@
   <img
     src="{{ media | img_url: 'large' }}"
     alt="{{ media.preview_image.alt }}"
-    class="w-full h-full object-cover">
+    class="w-full h-full object-cover rounded-xl">
   {% when 'external_video' %}
   {{ media | external_video_tag: class: 'w-full h-80 object-cover' }}
   {% when 'video' %}

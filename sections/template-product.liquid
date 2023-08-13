@@ -5,32 +5,67 @@
 <script
   src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+<style>
+  .swiper-pagination {
+    color: black;
+    bottom: 0 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: black !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: black;
+    top: auto !important;
+    height: 20px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px;
+  }
+  @media(min-width: 768px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: black;
+      top: auto !important;
+      height: 10px;
+    }
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+      font-size: 30px;
+    }
+  }
+  .product--information {
+    height: fit-content;
+  }
+</style>
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
 <div
   class="max-w-6xl mx-auto my-8">
   <div
     class="grid grid-cols-1 md:grid-cols-2 gap-3">
-    <div
-      class="product--medias">
+    <div class="product--medias">
+      {% comment %} <div
+      class="hidden md:block">
+      {% for media in product.media %}
       <div
-        class="hidden md:block">
-        {% for media in product.media %}
-          <div
-            class="h-100 overflow-hidden p-2">
-            {% render 'product-media', media: media %}
-          </div>
-        {% endfor %}
+      class="h-100 overflow-hidden p-2">
+      {% render 'product-media', media: media %}
       </div>
+      {% endfor %}
+      </div> {% endcomment %}
       <div
-        class="md:hidden">
+        class="">
         <div
-          class="swiper h-94">
+          class="swiper h-94 md:h-120">
           <div
-            class="swiper-wrapper">
+            class="swiper-wrapper ">
             {% for media in product.media %}
               <div
                 class="swiper-slide">
                 <div
-                  class="h-80 overflow-hidden p-2">
+                  class="h-80 md:h-110 overflow-hidden p-2 ">
                   {% render 'product-media', media: media %}
                 </div>
               </div>
@@ -46,7 +81,104 @@
       </div>
     </div>
     <div
-      class="product--information"></div>
+      class="product--information sticky top-5 p-2">
+      {% form 'product', product %}
+        <input
+          type="hidden"
+          name="id"
+          value="{{ selected_variant.id }}">
+        <div
+          class="my-3">
+          <span
+            class="text-xs text-metal">{{ product.vendor }}</span>
+        </div>
+        <div
+          class="my-3">
+          <span
+            class="text-3xl text-dark">{{ product.title }}</span>
+        </div>
+        <div
+          class="my-3">
+          {% assign product_price = selected_variant %}
+          <span
+            class="text-base text-metal line-through">{{ product_price.compare_at_price | money_with_currency }}</span>
+          <span
+            class="text-lg text-black">{{ product_price.price | money_with_currency }}</span>
+          {% if product_price.price < product_price.compare_at_price %}
+            <span
+              class="px-5 py-1 text-sm font-bold bg-danger rounded-full text-light mx-4">Sale</span>
+          {% endif %}
+        </div>
+
+        <div
+          class="my-3">
+          {% unless product.has_only_default_variant %}
+            <div
+              data-url="{{ product.url }}"
+              data-section="{{ section.id }}">
+              {% for option in product.options_with_values %}
+                <label
+                  for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+
+                <div
+                  class="my-2">
+                  <select
+                    name="options[{{ option.name | escape }}]"
+                    id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                    class="w-full border border-black py-3 px-3 rounded-md">
+                    {% for value in option.values %}
+                      <option
+                        {% if option.selected_value == value %}selected="selected"{% endif %}value="{{ value | escape }}">{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+        </div>
+
+        <div
+          class="my-3">
+          <label
+            for="Quantity-{{ section.id }}">Quantity</label>
+          <div
+            class="my-2">
+            <input
+              type="number"
+              name="quantity"
+              id="Quantity-{{ section.id }}"
+              value="1"
+              min="1"
+              class="w-full border border-black py-3 px-3 rounded-md">
+          </div>
+        </div>
+
+        <div
+          class="my-3">
+          <p
+            class="text-metal">{{ product.description }}</p>
+        </div>
+
+        <div
+          class="my-3">
+          <div
+            class="w-full h-fit rounded-2xl bg-dark group">
+            <button
+              type="submit"
+              name="add"
+              class="w-full px-6 py-4 bg-primary text-light rounded-2xl hoverTranslate transitionAll"
+              {% if selected_variant.available == false %}disabled{% endif %}>
+
+              {% if selected_variant.available == false %}
+                Sold out
+              {% else %}
+                Add to cart
+              {% endif %}
+            </button>
+          </div>
+        </div>
+      {% endform %}
+    </div>
   </div>
 </div>
 
@@ -63,3 +195,44 @@
     }
   })
 </script>
+
+
+{% schema %}
+  {
+    "name": "Product",
+    "blocks": [
+      {
+        "type": "vendor",
+        "name": "Vendor",
+        "limit": 1
+      },
+      {
+        "type": "title",
+        "name": "Title",
+        "limit": 1
+      },
+      {
+        "type": "price",
+        "name": "Price",
+        "limit": 1
+      },
+      {
+        "type": "variant_selector",
+        "name": "Variant Selector",
+        "limit": 1
+      }, {
+        "type": "quantity",
+        "name": "Quantity",
+        "limit": 1
+      }, {
+        "type": "description",
+        "name": "Description",
+        "limit": 1
+      }, {
+        "type": "checkout_buttons",
+        "name": "Checkout Buttons",
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}

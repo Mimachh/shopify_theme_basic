@@ -27,7 +27,9 @@ module.exports = {
         danger: "rgb(220 38 38)"
       },
       height: {
-        '94': '2rem'
+        '94': '22rem',
+        '110': '37rem',
+        '120': '40rem'
       }
     },
   },
@@ -37,7 +39,9 @@ module.exports = {
       pattern:
         /(bg|text|border)-(transparent|current|white|purple|midnight|metal|tahiti|silver|bermuda|dark|light|primary|primaryDark)/,
     },
-    'h-94'
+    'h-94',
+    'h-110',
+    'h-120'
   ],
 }
 
