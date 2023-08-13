@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const openSearchBar = document.querySelectorAll('.button-search');
-    console.log(openSearchBar);
+    // console.log(openSearchBar);
     const closeSearchBar = document.getElementById('close-search');
     const searchBar = document.getElementById('search-bar');
 

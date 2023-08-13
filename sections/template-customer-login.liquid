@@ -1,7 +1,8 @@
-<div
-  class="min-h-screen bg-light py-6 flex flex-col justify-center sm:py-12">
+<div class="min-h-screen bg-light py-6 flex flex-col justify-center sm:py-12">
+  {% comment %} Login {% endcomment %}
   <div
-    class="relative sm:max-w-xl sm:mx-auto">
+    class="relative sm:max-w-xl sm:mx-auto"
+    id="login_form">
     <div
       class="absolute inset-0 translate-x-[6px] translate-y-[6px]  shadow-lg transform bg-dark rounded-2xl"></div>
     <div
@@ -37,7 +38,7 @@
                   autocomplete="email"
                   class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" />
                 <label
-                  for="email"
+                  for="email_address"
                   class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
               </div>
               {% if form.password_needed %}
@@ -51,10 +52,16 @@
                     autocomplete="current-password"
                     class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600">
                   <label
-                    for="password"
+                    for="email_address"
                     class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                 </div>
               {% endif %}
+              <div
+                class="my-2 text-sm">
+                <span
+                  class="cursor-pointer underline text-metal hover:text-primary transitionAll"
+                  id="go_to_recovery">Forgot your password ?</span>
+              </div>
               <div
                 class="">
                 <button
@@ -67,9 +74,10 @@
       </div>
     </div>
   </div>
-
+  {% comment %} Recovery {% endcomment %}
   <div
-    class="relative sm:max-w-xl sm:mx-auto">
+    class="hidden relative sm:max-w-xl sm:mx-auto"
+    id="recovery_form">
     <div
       class="absolute inset-0 translate-x-[6px] translate-y-[6px]  shadow-lg transform bg-dark rounded-2xl"></div>
     <div
@@ -80,7 +88,7 @@
           <h1
             class="text-2xl font-semibold">Recover password</h1>
         </div>
-        {% form 'customer_login' %}
+        {% form 'recover_customer_password' %}
           {% if form.errors %}
             <div
               class="relative border border-danger bg-red-200 px-4 py-3"
@@ -99,35 +107,27 @@
                 class="relative">
                 <input
                   type="email"
-                  name="customer[email]"
+                  name="email"
                   placeholder="Email address"
-                  id="email_address"
+                  id="email"
                   autocomplete="email"
-                  class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" />
+                  class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600">
                 <label
                   for="email"
                   class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
               </div>
-              {% if form.password_needed %}
-                <div
-                  class="relative">
-                  <input
-                    type="password"
-                    name="customer[password]"
-                    placeholder="Password"
-                    id="email_address"
-                    autocomplete="current-password"
-                    class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600">
-                  <label
-                    for="password"
-                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
-                </div>
-              {% endif %}
+
               <div
                 class="">
                 <button
                   type="submit"
-                  class="relative rounded-md w-full py-2 px-4 transitionAll text-sm font-medium text-light hover:bg-primary bg-midnight">Sign in</button>
+                  class="relative rounded-md w-full py-2 px-4 transitionAll text-sm font-medium text-light hover:bg-primary bg-midnight">Recover password</button>
+              </div>
+              <div
+                class="mt-8 text-sm">
+                <span
+                  class="cursor-pointer underline text-metal hover:text-primary transitionAll"
+                  id="back_to_login">Back to login</span>
               </div>
             </div>
           </div>
