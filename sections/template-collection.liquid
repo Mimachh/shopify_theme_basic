@@ -1,6 +1,6 @@
 <div
   class="">
-  {% if condition %}
+  {% if collection.featured_image %}
     {% render 'collection-banner', image: collection.featured_image %}
   {% endif %}
 
@@ -40,20 +40,39 @@
         "id": "number_of_products_per_page",
         "default": 6,
         "label": "Number of profucts per page"
-      }, {
+      },
+      {
         "type": "checkbox",
         "id": "display_vendor",
         "default": true,
         "label": "Display Vendor"
-      }, {
+      },
+      {
         "type": "image_picker",
         "id": "custom_image",
         "label": "Custom Image"
-      }, {
+      },
+      {
         "type": "checkbox",
         "id": "show_banner",
         "default": true,
         "label": "Show Banner"
+      }, {
+        "type": "range",
+        "id": "focal_x",
+        "label": "Focal X Banner",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "focal_y",
+        "label": "Focal Y Banner",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1
       }
     ]
   }
