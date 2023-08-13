@@ -1,26 +1,58 @@
 {
   "sections": {
-      "template": {
-          "type": "template-product",
-          "blocks": {
-              "vendor": { "type": "vendor" },
-              "title": { "type": "title" },
-              "price": { "type": "price" },
-              "variant_selector": { "type": "variant_selector" },
-              "quantity": { "type": "quantity" },
-              "description": { "type": "description" },
-              "checkout_buttons": { "type": "checkout_buttons" }
-          },
-          "block_order": [
-              "vendor",
-              "title",
-              "price",
-              "variant_selector",
-              "quantity",
-              "description",
-              "checkout_buttons"
-          ]
+    "template": {
+      "type": "template-product",
+      "blocks": {
+        "28e16f32-27d0-47e9-9a2f-1952cd8da29c": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "bae0b7c9-7809-4e8d-9f88-547c9fac3b18": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "11ec62b7-9bd3-412d-8c51-60aa0c2b9e6f": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "9521092f-bd36-4b66-8205-5a9d30b39226": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "fe86fc3b-3785-4577-bc85-dd58593d1bec": {
+          "type": "quantity",
+          "settings": {
+          }
+        },
+        "a56eda52-0d8a-4c22-af75-2771acfd8270": {
+          "type": "variant_selector",
+          "settings": {
+          }
+        },
+        "0d82f512-5e50-4c8f-b640-c42caf829da3": {
+          "type": "checkout_buttons",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "28e16f32-27d0-47e9-9a2f-1952cd8da29c",
+        "bae0b7c9-7809-4e8d-9f88-547c9fac3b18",
+        "11ec62b7-9bd3-412d-8c51-60aa0c2b9e6f",
+        "9521092f-bd36-4b66-8205-5a9d30b39226",
+        "fe86fc3b-3785-4577-bc85-dd58593d1bec",
+        "a56eda52-0d8a-4c22-af75-2771acfd8270",
+        "0d82f512-5e50-4c8f-b640-c42caf829da3"
+      ],
+      "settings": {
       }
+    }
   },
-  "order": ["template"]
+  "order": [
+    "template"
+  ]
 }
