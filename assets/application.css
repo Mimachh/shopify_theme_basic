@@ -2485,9 +2485,9 @@ video {
   background-color: rgb(63 60 187 / 0.95);
 }
 
-.bg-red-700 {
+.bg-red-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
 
 .bg-silver {

@@ -15,7 +15,75 @@
         {% form 'customer_login' %}
           {% if form.errors %}
             <div
-              class="relative border border-danger bg-red-100 px-4 py-3"
+              class="relative border border-danger bg-red-200 px-4 py-3"
+              role="alert">
+              <strong
+                class="font-bold">Error !</strong>
+              <p
+                class="block sm:inline">{{ form.errors | default_errors }}</p>
+            </div>
+          {% endif %}
+          <div
+            class="divide-y divide-gray-200">
+            <div
+              class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+              <div
+                class="relative">
+                <input
+                  type="email"
+                  name="customer[email]"
+                  placeholder="Email address"
+                  id="email_address"
+                  autocomplete="email"
+                  class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" />
+                <label
+                  for="email"
+                  class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
+              </div>
+              {% if form.password_needed %}
+                <div
+                  class="relative">
+                  <input
+                    type="password"
+                    name="customer[password]"
+                    placeholder="Password"
+                    id="email_address"
+                    autocomplete="current-password"
+                    class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600">
+                  <label
+                    for="password"
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
+                </div>
+              {% endif %}
+              <div
+                class="">
+                <button
+                  type="submit"
+                  class="relative rounded-md w-full py-2 px-4 transitionAll text-sm font-medium text-light hover:bg-primary bg-midnight">Sign in</button>
+              </div>
+            </div>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="relative sm:max-w-xl sm:mx-auto">
+    <div
+      class="absolute inset-0 translate-x-[6px] translate-y-[6px]  shadow-lg transform bg-dark rounded-2xl"></div>
+    <div
+      class="relative px-4 py-10 bg-white shadow-lg rounded-2xl sm:p-20  border border-dark">
+      <div
+        class="max-w-md mx-auto">
+        <div>
+          <h1
+            class="text-2xl font-semibold">Recover password</h1>
+        </div>
+        {% form 'customer_login' %}
+          {% if form.errors %}
+            <div
+              class="relative border border-danger bg-red-200 px-4 py-3"
               role="alert">
               <strong
                 class="font-bold">Error !</strong>
