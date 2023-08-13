@@ -1,5 +1,5 @@
 <div
-  class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+  class="min-h-screen bg-light py-6 flex flex-col justify-center sm:py-12">
   <div
     class="relative sm:max-w-xl sm:mx-auto">
     <div
@@ -13,6 +13,16 @@
             class="text-2xl font-semibold">Sign in to your account</h1>
         </div>
         {% form 'customer_login' %}
+          {% if condition %}
+            <div
+              class="relative border border-danger bg-danger px-4 py-3"
+              role="alert">
+              <strong
+                class="font-bold">Error !</strong>
+              <p
+                class="block sm:inline">{{ form.errors | default_errors }}</p>
+            </div>
+          {% endif %}
           <div
             class="divide-y divide-gray-200">
             <div
