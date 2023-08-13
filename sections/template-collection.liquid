@@ -1,8 +1,7 @@
 <div
   class="">
-  {% assign show_banner = section.settings.show_banner %}
-  {% if show_banner %}
-    {% render 'custom-banner' %}
+  {% if condition %}
+    {% render 'collection-banner', image: collection.featured_image %}
   {% endif %}
 
   {% paginate collection.products by section.settings.number_of_products_per_page %}

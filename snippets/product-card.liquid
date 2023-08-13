@@ -5,8 +5,23 @@
     <div
       class="bg-dark w-full h-fit rounded-2xl group">
       <div
-        class="bg-white border border-dark rounded-2xl overflow-hidden p-2  cursor-pointer hoverTranslate transitionAll">
+        class="bg-white border border-dark rounded-2xl overflow-hidden p-2  cursor-pointer relative
+        {% if product.compare_at_price > product.price %}
+          translate-x-[-6px] translate-y-[-6px]
+        {% else %}
+          hoverTranslate transitionAll
+        {% endif %}">
         {% if product.featured_image %}
+          {% if product.compare_at_price > product.price %}
+            <div
+              class="w-36 h-36 overflow-hidden absolute top-[-10px] right-[-10px] bg-light">
+              <div
+                class="z-50 absolute transform rotate-45 left-[-25px] top-[30px] w-[225px] py-2 bg-danger shadow text-white text-shadow uppercase text-center border-dotted border-white outline-[5px] border-yellow-300">
+                Promo
+              </div>
+            </div>
+          {% endif %}
+
           <div
             class="h-72 w-full overflow-hidden rounded-xl border border-dark">
             <img
@@ -14,6 +29,7 @@
               src="{{ product.featured_image | img_url: 'original' }}"
               alt="{{ product.featured_image.alt }}">
           </div>
+
         {% else %}
           {{ 'product-1' | placeholder_svg_tag: "w-full h-72 rounded-2xl border border-dark object-cover bg-silver" }}
         {% endif %}
@@ -28,8 +44,19 @@
             class="text-dark uppercase font-medium text-md md:text-lg">{{ product.title }}</p>
 
 
-          <p
-            class="text-metal text-lg md:text-xl font-bold">{{ product.price | money_with_currency }}</p>
+
+          <div
+            class="product-price">
+            {% if product.compare_at_price > product.price %}
+              <span
+                class="line-through text-danger">{{ product.compare_at_price | money_with_currency }}</span>
+              <span
+                class="text-metal text-lg md:text-xl font-bold">{{ product.price | money_with_currency }}</span>
+            {% else %}
+              <p
+                class="text-metal text-lg md:text-xl font-bold">{{ product.price | money_with_currency }}</p>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
