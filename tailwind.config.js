@@ -26,6 +26,9 @@ module.exports = {
         primaryDark: "#58E6D9", // 80,230,217
         danger: "rgb(220 38 38)"
       },
+      height: {
+        '94': '2rem'
+      }
     },
   },
   plugins: [],
@@ -34,6 +37,7 @@ module.exports = {
       pattern:
         /(bg|text|border)-(transparent|current|white|purple|midnight|metal|tahiti|silver|bermuda|dark|light|primary|primaryDark)/,
     },
+    'h-94'
   ],
 }
 
