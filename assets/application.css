@@ -1991,6 +1991,11 @@ video {
   background-color: rgb(120 220 202 / 0.95);
 }
 
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
 .bg-bubble-gum {
   --tw-bg-opacity: 1;
   background-color: rgb(255 119 233 / var(--tw-bg-opacity));
