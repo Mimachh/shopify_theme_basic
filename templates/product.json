@@ -11,8 +11,6 @@
         "description": { "type": "description"},
         "checkout_buttons": { "type": "checkout_buttons"}
       },
-
-      "settings": {},
       "block_order": [
         "vendor",
         "title",
