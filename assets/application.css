@@ -678,6 +678,10 @@ video {
   margin-left: 1.75rem;
 }
 
+.mt-12 {
+  margin-top: 3rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -769,10 +773,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.min-h-\[90vh\] {
-  min-height: 90vh;
 }
 
 .w-20 {
@@ -3972,6 +3972,10 @@ video {
 
   .lg\:ml-0 {
     margin-left: 0px;
+  }
+
+  .lg\:h-\[500px\] {
+    height: 500px;
   }
 
   .lg\:flex-1 {

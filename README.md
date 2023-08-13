@@ -44,3 +44,4 @@ If you're not a student, you can still use this repository to start a new Shopif
 <!--  -->
 
 Ajouter la bannière photo comme étant optionnelle, en snippet sur chaque page, et text personnalisable. En preset comme les collection peut être
+Pareil pour une liste des collections
