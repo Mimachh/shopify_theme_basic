@@ -1,7 +1,9 @@
 <div
   class="">
-  {% if collection.featured_image %}
-    {% render 'collection-banner', image: collection.featured_image %}
+  {% if section.settings.show_banner %}
+    {% if collection.featured_image %}
+      {% render 'collection-banner', image: collection.featured_image %}
+    {% endif %}
   {% endif %}
 
   {% paginate collection.products by section.settings.number_of_products_per_page %}
@@ -48,16 +50,12 @@
         "label": "Display Vendor"
       },
       {
-        "type": "image_picker",
-        "id": "custom_image",
-        "label": "Custom Image"
-      },
-      {
         "type": "checkbox",
         "id": "show_banner",
         "default": true,
         "label": "Show Banner"
-      }, {
+      },
+      {
         "type": "range",
         "id": "focal_x",
         "label": "Focal X Banner",
