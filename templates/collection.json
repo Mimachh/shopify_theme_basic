@@ -5,8 +5,8 @@
       "settings": {
         "number_of_products_per_page": 6,
         "display_vendor": true,
-        "show_banner": false,
-        "focal_y": 22
+        "show_banner": true,
+        "focal_y": 26
       }
     }
   },
