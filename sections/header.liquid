@@ -263,7 +263,26 @@
       class="absolute top-0 right-0 mr-5 mt-5 text-metal">
       {% render 'icon-close' %}</button>
     <div
-      class="h-40 flex justify-center items-center"></div>
+      class="h-40 flex justify-center items-center">
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        class="flex-auto">
+        <div
+          class="relative text-metal px-10">
+          <input
+            type="search"
+            name="q"
+            placeholder="Search"
+            class="w-full bg-white h-10 px-8  md:pl-20  border border-dark rounded-full text-sm focus:outline-none">
+          <button
+            type="submit"
+            class="absolute left-0 top-0 mt-2  ml-12 md:ml-20">
+            {% render 'icon-search' %}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 {% schema %}
