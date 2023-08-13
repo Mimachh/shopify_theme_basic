@@ -6,7 +6,7 @@
         "vendor": { "type": "vendor"},
         "title": { "type": "title"},
         "price": { "type": "price"},
-        "varian_selector": { "type": "varian_selector"},
+        "variant_selector": { "type": "varian_selector"},
         "quantity": { "type": "quantity"},
         "description": { "type": "description"},
         "checkout_buttons": { "type": "checkout_buttons"}
