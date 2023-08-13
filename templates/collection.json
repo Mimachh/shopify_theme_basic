@@ -1,39 +1,16 @@
 {
   "sections": {
-    "de8c2a5f-22f8-4b86-929d-744da835d4b5": {
-      "type": "template-banner",
-      "disabled": true,
-      "settings": {
-        "title": "Banner",
-        "banner_image": "shopify:\/\/shop_images\/pexels-roman-odintsov-4553372.jpg",
-        "focal_x": 57,
-        "focal_y": 95
-      }
-    },
     "template": {
       "type": "template-collection",
       "settings": {
         "number_of_products_per_page": 6,
         "display_vendor": true,
-        "custom_image": "shopify:\/\/shop_images\/cool-background.png",
-        "show_banner": false,
-        "focal_x": 58,
-        "focal_y": 22
-      }
-    },
-    "c33fceea-249a-4fc4-a987-ee287349db7b": {
-      "type": "template-banner",
-      "settings": {
-        "title": "Banner",
-        "banner_image": "shopify:\/\/shop_images\/pexels-harsh-raj-gond-2244951.jpg",
-        "focal_x": 50,
-        "focal_y": 50
+        "show_banner": true,
+        "focal_y": 26
       }
     }
   },
   "order": [
-    "de8c2a5f-22f8-4b86-929d-744da835d4b5",
-    "template",
-    "c33fceea-249a-4fc4-a987-ee287349db7b"
+    "template"
   ]
 }
