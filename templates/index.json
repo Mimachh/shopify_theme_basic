@@ -3,7 +3,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured Collection",
+        "title": "Summer Collection",
         "featured_collection": "shorts-collection",
         "number_of_products_to_show": 4
       }
@@ -11,6 +11,7 @@
     "94ede193-28a9-4257-bdf4-0b1ee50c5311": {
       "type": "contact-form",
       "settings": {
+        "title": "Contact"
       }
     }
   },
