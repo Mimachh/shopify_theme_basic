@@ -235,7 +235,8 @@
                     class='-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500
                     {% if template contains 'account' %}
                       activeLink
-                    {% endif %}'href="{{ routes.account_url }}'>Account</a>
+                    {% endif %}'
+                    href="{{ routes.account_url }}">Account</a>
                   {{ 'Log out' | customer_logout_link | replace: '<a', '<a class="-m-3 p-3 flex items-center rounded-md hoverLink text-gray-500"' }}
                 {% else %}
                   <a
