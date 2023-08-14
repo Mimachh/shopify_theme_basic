@@ -74,10 +74,27 @@
       </div>
     </div>
   </div>
+  <hr
+    class="my-12">
+  <div
+    class="max-w-md mx-auto">
+    {% if shop.checkout.guest_login %}
 
-  {% if shop.checkout.guest_login %}
-    guest
-  {% endif %}
+      <div>
+        <h1
+          class="mt-6 text-center text-2xl font-semibold">Continue as a guest</h1>
+      </div>
+
+      {% form 'guest_login' %}
+        <div
+          class="mt-8">
+          <button
+            type="submit"
+            class="relative rounded-md w-full py-2 px-4 transitionAll text-sm font-medium text-light hover:bg-primary bg-midnight">Continue</button>
+        </div>
+      {% endform %}
+    {% endif %}
+  </div>
   {% comment %} Recovery {% endcomment %}
   <div
     class="hidden relative sm:max-w-xl sm:mx-auto"

@@ -1,0 +1,82 @@
+<div
+  class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+  <h1
+    class="text-2xl font-bold text-metal">Account</h1>
+
+  <div
+    class="block md:flex gap-4">
+    {% assign number_of_orders = customer.orders | size %}
+    {% if number_of_orders > 0 %}
+      <div
+        class="w-full my-6 md:my-12">
+        <h2
+          class="text-xl font-bold-text-metal">Order history</h2>
+        <div
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {% paginate customer.orders by section.settings.number_of_orders_per_page %}
+            {% for order in customer.orders %}
+              <div
+                class="relative">
+                <div
+                  class="w-full min-80 bg-metal rounded-md overflow-hidden lg:h-80">
+                  {% if order.line_items.first.image %}
+                    <img
+                      class="w-full h-full object-center object-cover"
+                      src="{{ order.line_items.first.image | img_url: 'medium' }}"
+                      alt="{{ order.line_items.first.image.alt }}">
+                  {% else %}
+                    {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-center object-cover' }}
+                  {% endif %}
+                </div>
+
+                <div
+                  class="mt-4 flex items-start justify-between">
+                  <div>
+                    <h3
+                      class="text-sm text-metal">
+                      {{ order.name | link_to: order.customer_url }}
+                    </h3>
+                    <p
+                      class="mt-1 text-sm text-metal">{{ order.financial_status_label }}</p>
+                  </div>
+                  <div
+                    class="text-right">
+                    <p
+                      class="text-sm font-medium text-light bg-metal rounded-full px-3 py-1">{{ order.fulfillment_status_label }}</p>
+                    <p
+                      class="text-sm">{{ order.total_price | money_with_currency }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            <div
+              class="max-w-6xl mx-auto">
+              {% render 'pagination', pagination: paginate %}
+            </div>
+          {% endpaginate %}
+        </div>
+      </div>
+    {% else %}
+      <div
+        class="w-full h-80 flex items-center justify-center">
+        <h2
+          class="text-base md:text-2xl font-medium">You currently don't have any orders.</h2>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Template Order",
+    "settings": [
+      {
+        "type": "number",
+        "id": "number_of_orders_per_page",
+        "default": 10,
+        "label": "Number of orders per page"
+      }
+    ]
+  }
+{% endschema %}
