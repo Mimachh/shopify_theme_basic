@@ -11,9 +11,9 @@
         class="w-full my-6 md:my-12">
         <h2
           class="text-xl font-bold-text-metal">Order history</h2>
-        {% paginate customer.orders by section.settings.number_of_orders_per_page %}
-          <div
-            class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {% paginate customer.orders by section.settings.number_of_orders_per_page %}
             {% for order in customer.orders %}
               <div
                 class="relative">
@@ -53,8 +53,8 @@
               class="max-w-6xl mx-auto">
               {% render 'pagination', pagination: paginate %}
             </div>
-          </div>
-        {% endpaginate %}
+          {% endpaginate %}
+        </div>
       </div>
     {% else %}
       <div
@@ -72,7 +72,7 @@
     "name": "Template Order",
     "settings": [
       {
-        "type": "range",
+        "type": "number",
         "id": "number_of_orders_per_page",
         "min": 1,
         "max": 12,

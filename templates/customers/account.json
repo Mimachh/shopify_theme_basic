@@ -1,8 +1,13 @@
 {
-    "sections": {
-        "template": {
-            "type": "template-customer-account"
-        }
-    },
-    "order": ["template"]
+  "sections": {
+    "template": {
+      "type": "template-customer-account",
+      "settings": {
+        "number_of_orders_per_page": 1
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
 }
