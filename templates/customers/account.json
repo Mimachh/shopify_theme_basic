@@ -3,7 +3,7 @@
     "template": {
       "type": "template-customer-account",
       "settings": {
-        "number_of_orders_per_page": 1
+        "number_of_orders_per_page": 10
       }
     }
   },
