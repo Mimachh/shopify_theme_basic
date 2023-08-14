@@ -8,12 +8,12 @@
     {% assign number_of_orders = customer.orders | size %}
     {% if number_of_orders > 0 %}
       <div
-        class="w-full my-6 md:my-12">
+        class="w-full my-6 md:my-12 ">
         <h2
           class="text-xl font-bold-text-metal">Order history</h2>
         {% paginate customer.orders by section.settings.number_of_orders_per_page %}
           <div
-            class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 ">
 
             {% for order in customer.orders %}
               <div
@@ -50,8 +50,8 @@
                 </div>
               </div>
             {% endfor %}
-
           </div>
+
           <div
             class="max-w-6xl mx-auto">
             {% render 'pagination', pagination: paginate %}
@@ -65,6 +65,20 @@
           class="text-base md:text-2xl font-medium">You currently don't have any orders.</h2>
       </div>
     {% endif %}
+
+    <div
+      class="w-full md:w-1/4">
+      <h2
+        class="text-xl font-bold text-metal mb-12">
+        Account details
+      </h2>
+
+      {{ customer.default_address | format_address }}
+
+      <a
+        href="{{ routes.account_addresses_url }}"
+        class="text-sm text-primary hover:text-midnight transitionAll underline">View addresses</a>
+    </div>
   </div>
 </div>
 

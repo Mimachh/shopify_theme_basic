@@ -722,6 +722,10 @@ video {
   margin-right: -0.5rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -4034,6 +4038,11 @@ video {
   color: rgb(245 245 245 / var(--tw-text-opacity));
 }
 
+.hover\:text-midnight:hover {
+  --tw-text-opacity: 1;
+  color: rgb(18 16 99 / var(--tw-text-opacity));
+}
+
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
   color: rgb(29 161 242 / var(--tw-text-opacity));
@@ -4211,6 +4220,10 @@ video {
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:w-1\/4 {
+    width: 25%;
   }
 
   .md\:w-80 {
