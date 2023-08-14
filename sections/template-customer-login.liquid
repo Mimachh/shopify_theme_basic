@@ -74,6 +74,10 @@
       </div>
     </div>
   </div>
+
+  {% if shop.checkout.guest_login %}
+    guest
+  {% endif %}
   {% comment %} Recovery {% endcomment %}
   <div
     class="hidden relative sm:max-w-xl sm:mx-auto"
