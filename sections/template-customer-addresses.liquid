@@ -109,11 +109,11 @@
         <div
           class="mb-4">
           <label
-            data-country-selector
-            data-id="{{ form.id}}"
             for="address_country_{{ form.id }}"
             class="uppercase text-metal text-xs font-medium mb-2">Country</label>
           <select
+            data-country-selector
+            data-id="{{ form.id }}"
             class="w-full text-metal border px-4 py-3 focus:outline-none"
             name="address[country]"
             id="address_country_{{ form.id }}"
@@ -219,13 +219,13 @@
         return;
       
 
-
       console.log(allAddressesSelector);
       allAddressesSelector.forEach(select => {
         var selectedCountry = this.getSelectedCountry(select);
         if (! selectedCountry) 
           return;
         
+
 
         var provinces = selectedCountry.dataset.provinces;
         var arrayOfProvince = JSON.parse(provinces);
@@ -275,6 +275,7 @@
       if (addressesSelector.length < 1) 
         return;
       
+
 
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
