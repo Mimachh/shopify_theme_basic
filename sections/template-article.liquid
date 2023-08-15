@@ -40,7 +40,7 @@
           <img
             width="568"
             height="320"
-            src="{{ article.image | img_url: 'medium' }}"
+            src="{{ article.image | img_url: 'original' }}"
             alt="{{ article.image.alt }}"
             class="w-full h-80 md:h-96 object-cover object-center">
         {% else %}
@@ -177,8 +177,8 @@
 <script type="application/ld+json">
   {
   "@context": "http://schema.org",
-                                                                                                  "@type": "BlogPosting",
-                                                                                                  "headling": {{ article.title | json }},
+                                                                                                    "@type": "BlogPosting",
+                                                                                                    "headling": {{ article.title | json }},
   "articleBody": {{ article.content | strip_html | json }},
   {% if article.excerpt != blank %}
     "description": {{ article.excerpt | strip_html | json }},
@@ -191,12 +191,12 @@
   "datePublished": {{ article.published_at | date: format: "default" | json }},
   "dateCreated": {{ article.created_at | date: format: "default" | json }},
   "author": {
-                                                                                                      "@type": "Person",
-                                                                                                      "name": {{ article.author | json }}
+                                                                                                        "@type": "Person",
+                                                                                                        "name": {{ article.author | json }}
   },
   "publisher": {
-                                                                                                      "@type": "Organization",
-                                                                                                      "name": {{ shop.name | json }}
+                                                                                                        "@type": "Organization",
+                                                                                                        "name": {{ shop.name | json }}
   }
   }
 </script>
