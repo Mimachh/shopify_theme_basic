@@ -204,8 +204,8 @@
 
             <div
               class="h-full fixed w-full inset-0 bg-metal bg-opacity-50 overflow-y-auto z-50"
-              x-transition
               x-show="address_{{ address.id }}"
+              x-on:click.away="address_{{ address.id }} = false"
               id="editAddressModal">
               <div
                 class="relative max-w-md mx-auto bg-light border top-20 p-4">
