@@ -227,6 +227,8 @@
           return;
         
 
+
+
         var provinces = selectedCountry.dataset.provinces;
         var arrayOfProvince = JSON.parse(provinces);
         var provinceSelector = document.querySelector(`#address_province_${
@@ -257,6 +259,7 @@
         provinceSelector.innerHTML = options;
       })
     }
+
     getSelectedCountry(select) {
       var option,
         selectedOption;
@@ -276,13 +279,9 @@
       if (addressesSelector.length < 1) 
         return;
       
-
-
-
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
           var provinces = this.options[this.selectedIndex].dataset.provinces;
-          console.log(provinces)
           var arrayOfProvince = JSON.parse(provinces);
           var provinceSelector = document.querySelector(`#address_province_${
             this.dataset.id
