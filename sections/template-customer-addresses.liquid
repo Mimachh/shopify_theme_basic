@@ -206,8 +206,18 @@
 
                 <button
                   data-delete-address
+                  data-url="{{ address.url }}"
                   class="border border-dark w-full text-xs text-white bg-danger hover:bg-red-800 transitionAll font-medium py-2 ">Delete</button>
               </div>
+
+              <form
+                action="{{ address.url }}"
+                method="post">
+                <input
+                  type="hidden"
+                  name="_method"
+                  value="delete">
+              </form>
             </div>
 
             <div
@@ -392,10 +402,28 @@
     constructor() {
       this.initCustomerAddress();
       this.customerAddressesSelector();
+      this.initDeleteAddressButtons();
     }
     initDeleteAddressButtons() {
       const deleteButtons = document.querySelectorAll("button[data-delete-address]");
-      console.log('delete')
+
+      if (deleteButtons.length < 1) 
+        return;
+      
+
+
+
+      deleteButtons.forEach(button => {
+        button.addEventListener("click", function(e) {
+          var url = this.dataset.url;
+          var confirmation = window.confirm('Do you really wish to delete this address ?');
+
+          if (confirmation) {
+            document.querySelector(`form[action="${url}"]`).submit();
+          }
+
+        })
+      })
     }
 
     initCustomerAddress() {
@@ -465,6 +493,8 @@
       if (addressesSelector.length < 1) 
         return;
       
+
+
 
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
