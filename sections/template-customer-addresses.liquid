@@ -1,0 +1,64 @@
+<div
+  class="max-w-6xl mx-auto px-4 py-1">
+  <div
+    class="flex flex-col md:flex-row items-center justify-between my-5 gap-4">
+    <h1
+      class="text-2xl font-bold text-metal">Addresses</h1>
+    <button
+      type="button"
+      class="text-light font-medium bg-primary hover:bg-midnight border border-dark transitionAll px-6 py-2"
+      id="openAddressModal">Create new address</button>
+    <a
+      href="{{ routes.account_url }}"
+      class="text-primary hover:text-midnight font-medium underline transitionAll">Back to account</a>
+  </div>
+
+  <div
+    class="hidden h-full w-full fixed inset-0 bg-metal bg-opacity-50 overflow-y-auto z-50"
+    id="addressModal">
+    <div
+      class="relative max-w-md mx-auto bg-light border top-20 p-4">
+      <div
+        class="flex items-center justify-between mb-4">
+        <h2
+          class="text-lg font-medium">New address</h2>
+        <button
+          class="text-metal"
+          id="closeAddressModal">{% render 'icon-close' %}</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    {% paginate customer.addresses by 10 %}
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-12 p-4 md:p-12">
+        {% for address in customer.addresses %}
+          <div>
+            <div
+              class="relative flex flex-col text-center border p-2 border-metal">
+              {% if address == customer.default_address %}
+                <span
+                  class="text-xs font-medium text-dark bg-primaryDark px-4 py-2">Default</span>
+              {% endif %}
+
+              <div
+                class="my-8 h-full">
+                {{ address | format_address }}
+              </div>
+
+              <div
+                class="flex flex-row gap-2">
+                <button
+                  class="border border-dark w-full text-xs text-white bg-primary hover:bg-midnight transitionAll font-medium py-2 ">Edit</button>
+
+                <button
+                  class="border border-dark w-full text-xs text-white bg-danger hover:bg-red-800 transitionAll font-medium py-2 ">Delete</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endpaginate %}
+  </div>
+  {{ 'addressModal.js' | asset_url | script_tag }}
+</div>

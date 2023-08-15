@@ -178,11 +178,11 @@
             <div
               class="my-3">
               <div
-                class="w-full h-fit rounded-2xl bg-dark group">
+                class="w-full h-fit rounded-2xl bg-primary border border-dark group">
                 <button
                   type="submit"
                   name="add"
-                  class="w-full px-6 py-4 bg-primary text-light rounded-2xl hoverTranslate transitionAll"
+                  class="w-full px-6 py-4 bg-dark text-light rounded-2xl hoverTranslate transitionAll"
                   {% if selected_variant.available == false %}disabled{% endif %}>
 
                   {% if selected_variant.available == false %}
@@ -284,6 +284,7 @@
         if (oldPrice && newPrice) 
           oldPrice.innerHTML = newPrice.innerHTML;
         
+
 
 
       })
