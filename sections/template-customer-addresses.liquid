@@ -219,12 +219,14 @@
         return;
       
 
-// console.log(allAddressesSelector);
+
+      console.log(allAddressesSelector);
       allAddressesSelector.forEach(select => {
         var selectedCountry = this.getSelectedCountry(select);
         if (! selectedCountry) 
           return;
         
+
         var provinces = selectedCountry.dataset.provinces;
         var arrayOfProvince = JSON.parse(provinces);
         var provinceSelector = document.querySelector(`#address_province_${
@@ -273,6 +275,7 @@
       if (addressesSelector.length < 1) 
         return;
       
+
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
           console.log('coucou')
