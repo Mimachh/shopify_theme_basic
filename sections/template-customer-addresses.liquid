@@ -161,6 +161,13 @@
         </div>
 
         <div
+          class="mb-4">
+          {{ form.set_as_default_checkbox }}
+          <label
+            for="address_default_address_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Set as default address</label>
+        </div>
+        <div
           class="flex flex-row gap-2">
           <button
             type="submit"
@@ -198,6 +205,7 @@
                   class="border border-dark w-full text-xs text-white bg-primary hover:bg-midnight transitionAll font-medium py-2">Edit</button>
 
                 <button
+                  data-delete-address
                   class="border border-dark w-full text-xs text-white bg-danger hover:bg-red-800 transitionAll font-medium py-2 ">Delete</button>
               </div>
             </div>
@@ -385,6 +393,11 @@
       this.initCustomerAddress();
       this.customerAddressesSelector();
     }
+    initDeleteAddressButtons() {
+      const deleteButtons = document.querySelectorAll("button[data-delete-address]");
+      console.log('delete')
+    }
+
     initCustomerAddress() {
       const allAddressesSelector = document.querySelectorAll("select[data-country-selector]");
       if (allAddressesSelector.length < 1) 
@@ -427,7 +440,8 @@
             }</option>`;
           }
         }
-        console.log("options", options)
+
+// console.log("options", options)
         provinceSelector.innerHTML = options;
       })
     }
@@ -451,8 +465,6 @@
       if (addressesSelector.length < 1) 
         return;
       
-
-
 
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
@@ -478,6 +490,7 @@
         });
       });
     }
+
   }
   const customerAddress = new CustomerAddress();
 </script>
