@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', (event) => {
         if (event.target === modalContent) {
             addressModal.classList.add('hidden');
+            console.log('okc')
         }
     });
     // fermeture après submit
