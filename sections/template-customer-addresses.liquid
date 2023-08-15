@@ -353,10 +353,17 @@
                   </div>
 
                   <div
+                    class="mb-4">
+                    {{ form.set_as_default_checkbox }}
+                    <label
+                      for="address_default_address_{{ form.id }}"
+                      class="uppercase text-gray-700 text-xs font-medium mb-2">Set as default address</label>
+                  </div>
+                  <div
                     class="flex flex-row gap-2">
                     <button
                       type="submit"
-                      class="border border-dark w-full font-medium text-light bg-primary hover:bg-midnight transitionAll px-4 py-2">Create address</button>
+                      class="border border-dark w-full font-medium text-light bg-primary hover:bg-midnight transitionAll px-4 py-2">Edit address</button>
                     <button
                       type="reset"
                       class="border border-dark w-full font-medium text-light bg-danger hover:bg-red-800 transitionAll px-4 py-2">Cancel</button>
