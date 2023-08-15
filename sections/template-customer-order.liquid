@@ -1,33 +1,24 @@
-<div
-  class="max-w-6xl mx-auto px-4 py-12">
-  <div
-    class="flex items-start md:items-end justify-between my-5">
-    <div
-      class="w-1/2">
-      <h1
-        class="text-2xl font-bold text-metal">
+<div class="max-w-6xl mx-auto px-4 py-12">
+  <div class="flex items-start md:items-end justify-between my-5">
+    <div class="w-1/2">
+      <h1 class="text-2xl font-bold text-metal">
         Order {{ order.name }}</h1>
-      <p
-        class="text-metal my-2">Placed {{ order.created_at | date: format: 'on_date' }}</p>
-      <span
-        class="text-sm text-light bg-tahiti rounded-full my-2 px-4 py-1">{{ order.financial_status_label }}</span>
+      <p class="text-metal my-2">Placed {{ order.created_at | date: format: 'on_date' }}</p>
+      <span class="text-sm text-light bg-tahiti rounded-full my-2 px-4 py-1">{{ order.financial_status_label }}</span>
     </div>
 
-    <a
-      href="{{ routes.account_url }}"
-      class="text-primary hover:text-midnight transitionAll underline font-medium">Back to account</a>
+    <a href="{{ routes.account_url }}" class="text-primary hover:text-midnight transitionAll underline font-medium">Back to account</a>
   </div>
 
   <div>
     {% for line_item in order.line_items %}
-      <div
-        class="w-full border border-dark divide-y rounded-md mb-4">
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 p-4 md:p-12">
-          <div
-            class="w-full min-h-80 h-80  rounded-md overflow-hidden border">
+      <div class="w-full border border-dark divide-y rounded-md mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 p-4 md:p-12">
+          <div class="w-full min-h-80 h-80  rounded-md overflow-hidden border">
             {% if line_item.image %}
               <img
+                height="320"
+                width="568"
                 class="w-full h-full object-center object-cover rounded-md"
                 src="{{ line_item.image | img_url: 'medium' }}"
                 alt="{{ line_item.image.alt }}">
@@ -37,45 +28,34 @@
           </div>
 
           <div>
-            <h1
-              class="text-xl font-medium mb-4">{{ line_item.title | link_to: line_item.product.url }}</h1>
+            <h1 class="text-xl font-medium mb-4">{{ line_item.title | link_to: line_item.product.url }}</h1>
 
-            <table
-              class="table-auto w-full mb-4">
+            <table class="table-auto w-full mb-4">
               <tbody>
                 <tr>
-                  <td
-                    class="border border-metal px-4 py-2">Price</td>
-                  <td
-                    class="border border-metal px-4 py-2">{{ line_item.original_price | money_with_currency }}</td>
+                  <td class="border border-metal px-4 py-2">Price</td>
+                  <td class="border border-metal px-4 py-2">{{ line_item.original_price | money_with_currency }}</td>
                 </tr>
                 <tr>
-                  <td
-                    class="border border-metal px-4 py-2">Quantity</td>
-                  <td
-                    class="border border-metal px-4 py-2">{{ line_item.quantity }}</td>
+                  <td class="border border-metal px-4 py-2">Quantity</td>
+                  <td class="border border-metal px-4 py-2">{{ line_item.quantity }}</td>
                 </tr>
                 <tr>
-                  <td
-                    class="border border-metal px-4 py-2">Final price</td>
-                  <td
-                    class="border border-metal px-4 py-2">{{ line_item.final_line_price | money_with_currency }}</td>
+                  <td class="border border-metal px-4 py-2">Final price</td>
+                  <td class="border border-metal px-4 py-2">{{ line_item.final_line_price | money_with_currency }}</td>
                 </tr>
               </tbody>
             </table>
 
-            <div
-              class="text-metal mb-4">
+            <div class="text-metal mb-4">
               {{ line_item.product.description | truncatewords: 15 }}
             </div>
           </div>
 
           <div>
-            <h1
-              class="font-medium mb-4">Delivery address</h1>
+            <h1 class="font-medium mb-4">Delivery address</h1>
 
-            <div
-              class="text-metal mb-4">
+            <div class="text-metal mb-4">
               <div>
                 <p>Address 1: {{ order.shipping_address.address1 }}</p>
                 <p>Address 2: {{ order.shipping_address.address2 }}</p>
@@ -89,51 +69,40 @@
           </div>
         </div>
 
-        <div
-          class="p-4 md:p-12">
-          <h1
-            class="text-lg font-medium mb-4">Fulfillment</h1>
+        <div class="p-4 md:p-12">
+          <h1 class="text-lg font-medium mb-4">Fulfillment</h1>
 
           {% if line_item.successfully_fulfilled_quantity > 0 %}
-            <p
-              class="mb-2">We have fulfilled {{ line_item.successfully_fulfilled_quantity }} items of your recent order.</p>
-            <p
-              class="mb-2">Tracking company: {{ line_item.fulfillment.tracking_company }}</p>
-            <p
-              class="mb-2">Tracking number: {{ line_item.fulfillment.tracking_number }}</p>
+            <p class="mb-2">We have fulfilled {{ line_item.successfully_fulfilled_quantity }} items of your recent order.</p>
+            <p class="mb-2">Tracking company: {{ line_item.fulfillment.tracking_company }}</p>
+            <p class="mb-2">Tracking number: {{ line_item.fulfillment.tracking_number }}</p>
 
             <a
               href="{{ line_item.fulfillment.tracking_url }}"
               target="_blank"
               class="flex w-max text-sm text-light font-medium bg-dark hover:bg-midnight transitionAll px-4 py-1 rounded-md">
               Track order
-              <span
-                class="ml-1 text-sm">{% render 'icon-link' %}</span>
+              <span class="ml-1 text-sm">{% render 'icon-link' %}</span>
             </a>
           {% else %}
-            <p
-              class="text-metal">This item is not yet fulfilled</p>
+            <p class="text-metal">This item is not yet fulfilled</p>
           {% endif %}
         </div>
       </div>
     {% endfor %}
   </div>
 
-  <div
-    class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 border border-metal rounded-sm p-4 md:p-12 my-6 bg-gray-200">
+  <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 border border-metal rounded-sm p-4 md:p-12 my-6 bg-gray-200">
     <div>
-      <h1
-        class="font-medium mb-4">Billing address</h1>
+      <h1 class="font-medium mb-4">Billing address</h1>
 
       {{ order.billing_address | format_address }}
     </div>
     <div>
-      <h1
-        class="font-medium mb-4">Payment information</h1>
+      <h1 class="font-medium mb-4">Payment information</h1>
 
       {% for transaction in order.transactions %}
-        <div
-          class="mb-4">
+        <div class="mb-4">
           {% assign credit_card_company = transaction.payment_details.credit_card_company %}
           {% assign credit_card_last_four_digits = transaction.payment_details.credit_card_number %}
           {% if credit_card_company %}
@@ -146,36 +115,27 @@
             {% else %}
               {% assign background = 'tahiti' %}
             {% endcase %}
-            <span
-              class="bg-{{ background }} rounded-full text-sm px-4 py-1 text-light">{{ transaction.status_label }}</span>
+            <span class="bg-{{ background }} rounded-full text-sm px-4 py-1 text-light">{{ transaction.status_label }}</span>
           {% else %}
-            <p
-              class="text-sm mb-4">This order is manually placed {{ shop.name }}</p>
+            <p class="text-sm mb-4">This order is manually placed {{ shop.name }}</p>
           {% endif %}
         </div>
       {% endfor %}
     </div>
     <div>
-      <table
-        class="table-auto w-full mb-4">
+      <table class="table-auto w-full mb-4">
         <tbody>
           <tr>
-            <td
-              class="border border-metal px-4 py-2">Subtotal</td>
-            <td
-              class="border border-metal px-4 py-2">{{ order.subtotal_price | money_with_currency }}</td>
+            <td class="border border-metal px-4 py-2">Subtotal</td>
+            <td class="border border-metal px-4 py-2">{{ order.subtotal_price | money_with_currency }}</td>
           </tr>
           <tr>
-            <td
-              class="border border-metal px-4 py-2">Shipping</td>
-            <td
-              class="border border-metal px-4 py-2">{{ order.shipping_price | money_with_currency }}</td>
+            <td class="border border-metal px-4 py-2">Shipping</td>
+            <td class="border border-metal px-4 py-2">{{ order.shipping_price | money_with_currency }}</td>
           </tr>
           <tr>
-            <td
-              class="border border-metal px-4 py-2">Total</td>
-            <td
-              class="border border-metal px-4 py-2">{{ order.total_price | money_with_currency }}</td>
+            <td class="border border-metal px-4 py-2">Total</td>
+            <td class="border border-metal px-4 py-2">{{ order.total_price | money_with_currency }}</td>
           </tr>
         </tbody>
       </table>

@@ -1,6 +1,8 @@
 {% case media.media_type %}
   {% when 'image' %}
   <img
+    height="320"
+    width="568"
     src="{{ media | img_url: 'large' }}"
     alt="{{ media.preview_image.alt }}"
     class="w-full h-full object-cover rounded-xl">
