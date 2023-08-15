@@ -213,6 +213,7 @@
                   <h2
                     class="text-lg font-medium">Edit address</h2>
                   <button
+                    x-on:click="address_{{ address.id }} = false"
                     class="text-metal"
                     id="closeEditAddressModal">{% render 'icon-close' %}</button>
                 </div>
