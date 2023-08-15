@@ -1,6 +1,4 @@
 // Put your application javascript here
-
-
 document.addEventListener('DOMContentLoaded', function() {
     // Menu Nav Dropdown
     const dropdownButtons = document.querySelectorAll('.dropdown-button');
@@ -78,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const dropdownId = button.getAttribute('data-dropdown-mobile-button-id');
         const dropdownContentMobile = document.querySelector(`[data-dropdown-mobile-id="${dropdownId}"]`);
         dropdownContentsMobile.forEach((content) => {
-          console.log(dropdownId)
+          // console.log(dropdownId)
           if (content !== dropdownContentMobile) {
             console.log(dropdownContentMobile)
             content.classList.add('hidden');

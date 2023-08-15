@@ -1,63 +1,75 @@
-<div
-  class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-light py-6 flex flex-col justify-center sm:py-12 px-4 md:px-0">
+  {% comment %} Login {% endcomment %}
   <div
-    class="max-w-md w-full space-y-8">
-    <div>
-      <h1
-        class="mt-6 text-center text-3xl font-bold text-gray-700">Activate account</h1>
-      <p
-        class="mt-4 text-center">Create your password to activate your account</p>
-    </div>
+    class="relative sm:max-w-xl sm:mx-auto">
+    <div
+      class="absolute inset-0 translate-x-[6px] translate-y-[6px]  shadow-lg transform bg-dark rounded-2xl"></div>
+    <div
+      class="relative px-4 py-10 bg-white shadow-lg rounded-2xl sm:p-20  border border-dark">
+      <div
+        class="max-w-md mx-auto">
+        <div>
+          <h1
+            class="text-2xl font-semibold">Activate your account</h1>
 
-    <div>
-      {% form 'activate_customer_password', class: 'space-y-4', id: 'activate_account_form' %}
-        {% if form.errors %}
+          <p
+            class="mt-4">Create your password to activate your account.</p>
+        </div>
+        {% form 'activate_customer_password' %}
+          {% if form.errors %}
+            <div
+              class="relative border border-danger bg-red-200 px-4 py-3"
+              role="alert">
+              <strong
+                class="font-bold">Error !</strong>
+              <p
+                class="block sm:inline">{{ form.errors | default_errors }}</p>
+            </div>
+          {% endif %}
           <div
-            class="relative border border-red-700 bg-red-100 text-red-700 px-4 py-3"
-            role="alert">
-            <strong
-              class="font-bold">Error!</strong>
-            <span
-              class="block sm:inline">
-              {{ form.errors | default_errors }}
-            </span>
+            class="divide-y divide-gray-200">
+            <div
+              class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+              <div
+                class="relative">
+                <input
+                  type="password"
+                  name="customer[password]"
+                  placeholder="Password"
+                  id="password"
+                  autocomplete="new-password"
+                  class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" />
+                <label
+                  for="password"
+                  class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
+              </div>
+              <div
+                class="relative">
+                <input
+                  type="password"
+                  name="customer[password_confirmation]"
+                  placeholder="Confirm your password"
+                  id="confirm_password"
+                  autocomplete="new-password"
+                  class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none" />
+                <label
+                  for="confirm_password"
+                  class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Confirm password</label>
+              </div>
+
+              <div
+                class="">
+                <button
+                  type="submit"
+                  class="relative rounded-md w-full py-2 px-4 transitionAll text-sm font-medium text-light hover:bg-primary bg-midnight">Create account</button>
+                <button
+                  type="submit"
+                  class="relative rounded-md w-full py-2 px-4 transitionAll text-sm font-medium text-light hover:bg-red-800 bg-danger">Decline invitation</button>
+              </div>
+            </div>
           </div>
-        {% endif %}
-        <div>
-          <label
-            for="password">Password</label>
-          <input
-            type="password"
-            name="customer[password]"
-            id="password"
-            placeholder="New password"
-            class="relative block w-full px-3 py-2 border placeholder-gray-300 text-gray-700"
-            autocomplete="new-password">
-        </div>
-
-        <div>
-          <label
-            for="confirm_password">Confirm password</label>
-          <input
-            type="password"
-            name="customer[password_confirmation]"
-            id="confirm_password"
-            placeholder="Confirm your password"
-            class="relative block w-full px-3 py-2 border placeholder-gray-300 text-gray-700"
-            autocomplete="new-password">
-        </div>
-
-        <div
-          class="block md:flex">
-          <button
-            type="submit"
-            class="w-full border py-2 px-4 text-sm font-medium text-white bg-gray-700 hover:bg-gray-900">Activate account</button>
-          <button
-            type="submit"
-            name="decline"
-            class="w-full border py-2 px-4 text-sm font-medium text-gray-700 bg-white hover:bg-gray-700 hover:text-white">Decline invitation</button>
-        </div>
-      {% endform %}
+        {% endform %}
+      </div>
     </div>
   </div>
 </div>
