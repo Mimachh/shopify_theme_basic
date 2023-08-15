@@ -38,7 +38,7 @@
                     href="{{ item.url }}">
                     {% if item.image %}
                       <img
-                        src="{{ item.image | image_url: 'small' }}"
+                        src="{{ item.image | img_url: 'small' }}"
                         alt="{{ item.title | escape }}"
                         class="w-20 h-20 object-cover border">
                     {% else %}
