@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeAddressModal = document.getElementById('closeAddressModal');
     const addressModal = document.getElementById('addressModal');
     const modalContent = document.getElementById('modalContent');
+
     // ouverture sur le click
     openAddressModal.addEventListener('click', () => {
         addressModal.classList.remove('hidden');
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     // fermeture click en dehors
     document.addEventListener('click', (event) => {
-        if (event.target !== modalContent) {
+        if (event.target !== modalContent && event.target !== openAddressModal) {
             addressModal.classList.add('hidden');
             console.log('okc')
         }
