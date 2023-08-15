@@ -5,13 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const recoveryForm = document.getElementById('recovery_form');
     const backToLogin = document.getElementById('back_to_login');
 
-    goToRecovery.addEventListener('click', () => {
-        loginForm.classList.add('hidden');
-        recoveryForm.classList.remove('hidden');
-    })
+    if (goToRecovery) {
+        goToRecovery.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            recoveryForm.classList.remove('hidden');
+        })
+    }
 
-    backToLogin.addEventListener('click', () => {
-        loginForm.classList.remove('hidden');
-        recoveryForm.classList.add('hidden');
-    })
+    if (backToLogin) {
+        backToLogin.addEventListener('click', () => {
+            loginForm.classList.remove('hidden');
+            recoveryForm.classList.add('hidden');
+        })
+    }
 })
