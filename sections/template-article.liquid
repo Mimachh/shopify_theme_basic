@@ -40,7 +40,7 @@
             <time
               datetime="{{ published_date }}"
               itemprop="datePublished dateCreated">
-              {{ published_date | date: format: "on_date" }}
+              {{ article.published_at | date: format: "on_date" }}
             </time>
           {% endif %}
         </div>
@@ -227,8 +227,8 @@
   type="application/ld+json">
   {
   "@context": "http://schema.org",
-                                                                                              "@type": "BlogPosting",
-                                                                                              "headling": {{ article.title | json }},
+                                                                                            "@type": "BlogPosting",
+                                                                                            "headling": {{ article.title | json }},
   "articleBody": {{ article.content | strip_html | json }},
   {% if article.excerpt != blank %}
     "description": {{ article.excerpt | strip_html | json }},
@@ -241,12 +241,12 @@
   "datePublished": {{ article.published_at | date: format: "default" | json }},
   "dateCreated": {{ article.created_at | date: format: "default" | json }},
   "author": {
-                                                                                                  "@type": "Person",
-                                                                                                  "name": {{ article.author | json }}
+                                                                                                "@type": "Person",
+                                                                                                "name": {{ article.author | json }}
   },
   "publisher": {
-                                                                                                  "@type": "Organization",
-                                                                                                  "name": {{ shop.name | json }}
+                                                                                                "@type": "Organization",
+                                                                                                "name": {{ shop.name | json }}
   }
   }
 </script>
