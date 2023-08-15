@@ -193,7 +193,7 @@
               <div
                 class="flex flex-row gap-2">
                 <button
-                  class="border border-dark w-full text-xs text-white bg-primary hover:bg-midnight transitionAll font-medium py-2 ">Edit</button>
+                  class="border border-dark w-full text-xs text-white bg-primary hover:bg-midnight transitionAll font-medium py-2">Edit</button>
 
                 <button
                   class="border border-dark w-full text-xs text-white bg-danger hover:bg-red-800 transitionAll font-medium py-2 ">Delete</button>
@@ -201,7 +201,8 @@
             </div>
 
             <div
-              class="h-full fixed w-full inset-0 bg-metal bg-opacity-50 overflow-y-auto z-50">
+              class="h-full fixed w-full inset-0 bg-metal bg-opacity-50 overflow-y-auto z-50"
+              id="editAddressModal">
               <div
                 class="relative max-w-md mx-auto bg-light border top-20 p-4">
                 <div
@@ -210,7 +211,7 @@
                     class="text-lg font-medium">Edit address</h2>
                   <button
                     class="text-metal"
-                    id="closeAddressModal">{% render 'icon-close' %}</button>
+                    id="closeEditAddressModal">{% render 'icon-close' %}</button>
                 </div>
               </div>
             </div>

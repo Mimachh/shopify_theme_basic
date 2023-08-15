@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // NEW
     const openAddressModal = document.getElementById('openAddressModal');
     const closeAddressModal = document.getElementById('closeAddressModal');
     const addressModal = document.getElementById('addressModal');
@@ -17,5 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
             addressModal.classList.add('hidden');
         }
     });
-    // fermeture après submit
+
+
 })
