@@ -253,6 +253,7 @@
             }</option>`;
           }
         }
+        console.log("options", options)
         provinceSelector.innerHTML = options;
       })
     }
@@ -275,7 +276,9 @@
       if (addressesSelector.length < 1) 
         return;
       
-      console.log(addressesSelector)
+
+
+
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
           var provinces = this.options[this.selectedIndex].dataset.provinces;
