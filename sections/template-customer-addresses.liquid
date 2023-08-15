@@ -199,6 +199,21 @@
                   class="border border-dark w-full text-xs text-white bg-danger hover:bg-red-800 transitionAll font-medium py-2 ">Delete</button>
               </div>
             </div>
+
+            <div
+              class="hidden h-full fixed w-full inset-0 bg-metal bg-opacity-50 overflow-y-auto z-50">
+              <div
+                class="relative max-w-md mx-auto bg-light border top-20 p-4">
+                <div
+                  class="flex items-center justify-between mb-4">
+                  <h2
+                    class="text-lg font-medium">Edit address</h2>
+                  <button
+                    class="text-metal"
+                    id="closeAddressModal">{% render 'icon-close' %}</button>
+                </div>
+              </div>
+            </div>
           </div>
         {% endfor %}
       </div>
@@ -279,6 +294,9 @@
       if (addressesSelector.length < 1) 
         return;
       
+
+
+
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e) {
           var provinces = this.options[this.selectedIndex].dataset.provinces;
