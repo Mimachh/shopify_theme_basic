@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         addressModal.classList.remove('hidden');
     })
     // fermeture sur le click
+    closeAddressModal.addEventListener('click', () => {
+        addressModal.classList.add('hidden');
+    })
     // fermeture click en dehors
     // fermeture après submit
 })
