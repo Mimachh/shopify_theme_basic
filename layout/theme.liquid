@@ -22,9 +22,18 @@
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"
       defer></script>
     {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'application.js' | asset_url | script_tag }}
-    {{ 'search-bar.js' | asset_url | script_tag }}
-    {{ 'login-recovery.js' | asset_url | script_tag }}
+
+
+
+    <script
+      src="{{ 'login-recovery.js' | asset_url }}"
+      defer></script>
+    <script
+      src="{{ 'search-bar.js' | asset_url }}"
+      defer></script>
+    <script
+      src="{{ 'application.js' | asset_url }}"
+      defer></script>
     <style>
       [x-cloak] {
         display: none !important;

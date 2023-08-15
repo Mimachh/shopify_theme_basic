@@ -395,7 +395,10 @@
       </div>
     {% endpaginate %}
   </div>
-  {{ 'addressModal.js' | asset_url | script_tag }}
+
+  <script
+    src="{{ 'addressModal.js' | asset_url }}"
+    defer></script>
 </div>
 
 <script>
