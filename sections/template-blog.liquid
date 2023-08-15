@@ -22,7 +22,7 @@
                   {% if article.image %}
                     <img
                       class="w-full h-32 object-cover  rounded-2xl border border-dark"
-                      src="{{ article.image | image_url: "medium" }}"
+                      src="{{ article.image | img_url: "medium" }}"
                       alt="{{ article.image.alt }}">
                   {% else %}
                     {{ 'image' | placeholder_svg_tag: 'w-full h-32 object-cover bg-gray-100 rounded-2xl border border-dark' }}
