@@ -17,8 +17,7 @@
     class="hidden h-full w-full fixed inset-0 bg-metal bg-opacity-50 overflow-y-auto z-50"
     id="addressModal">
     <div
-      class="relative max-w-md mx-auto bg-light border top-20 p-4"
-      id="modalContent">
+      class="relative max-w-md mx-auto bg-light border top-20 p-4">
       <div
         class="flex items-center justify-between mb-4">
         <h2
@@ -27,6 +26,148 @@
           class="text-metal"
           id="closeAddressModal">{% render 'icon-close' %}</button>
       </div>
+
+      {% form 'customer_address', customer.new_address %}
+        <div
+          class="mb-4">
+          <label
+            for="address_fname_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">First name</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[first_name]"
+            id="address_fname_{{ form.id }}"
+            value="{{ form.first_name }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_lname_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Last name</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[last_name]"
+            id="address_lname_{{ form.id }}"
+            value="{{ form.last_name }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_company_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Company</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[company]"
+            id="address_company_{{ form.id }}"
+            value="{{ form.company }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_address1_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Address 1</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[address1]"
+            id="address_address1_{{ form.id }}"
+            value="{{ form.address1 }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_address2_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Address 2</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[address2]"
+            id="address_address2_{{ form.id }}"
+            value="{{ form.address2 }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_city_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">City</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[city]"
+            id="address_city_{{ form.id }}"
+            value="{{ form.city }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_country_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Country</label>
+          <select
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            name="address[country]"
+            id="address_country_{{ form.id }}"
+            value="{{ form.country }}">
+            {{ all_country_option_tags }}
+          </select>
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_province_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Province</label>
+          <select
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            name="address[province]"
+            id="address_province_{{ form.id }}"
+            value="{{ form.province }}"></select>
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_zip_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Postal / ZIP code</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="text"
+            name="address[zip]"
+            id="address_zip_{{ form.id }}"
+            value="{{ form.zip }}">
+        </div>
+
+        <div
+          class="mb-4">
+          <label
+            for="address_phone_{{ form.id }}"
+            class="uppercase text-metal text-xs font-medium mb-2">Phone number</label>
+          <input
+            class="w-full text-metal border px-4 py-3 focus:outline-none"
+            type="tel"
+            name="address[phone]"
+            id="address_phone_{{ form.id }}"
+            value="{{ form.phone }}">
+        </div>
+
+        <div
+          class="flex flex-row gap-2">
+          <button
+            type="submit"
+            class="border border-dark w-full font-medium text-light bg-primary hover:bg-midnight transitionAll px-4 py-2">Create address</button>
+          <button
+            type="reset"
+            class="border border-dark w-full font-medium text-light bg-danger hover:bg-red-800 transitionAll px-4 py-2">Cancel</button>
+        </div>
+      {% endform %}
     </div>
   </div>
   <div>
@@ -63,3 +204,17 @@
   </div>
   {{ 'addressModal.js' | asset_url | script_tag }}
 </div>
+
+<script>
+  class CustomerAddress {
+    constructor() {
+      this.initCustomerAddress();
+    }
+
+    initCustomerAddress() {
+      console.log('coucou')
+    }
+  }
+
+  const customerAddress = new CustomerAddress();
+</script>

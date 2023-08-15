@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const openAddressModal = document.getElementById('openAddressModal');
     const closeAddressModal = document.getElementById('closeAddressModal');
     const addressModal = document.getElementById('addressModal');
-    const modalBackdrop = document.getElementById('modalBackdrop');
 
     // ouverture sur le click
     openAddressModal.addEventListener('click', () => {
