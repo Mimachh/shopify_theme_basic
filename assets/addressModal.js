@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     // fermeture click en dehors
     document.addEventListener('click', (event) => {
-        if (event.target === modalContent) {
+        if (event.target !== modalContent) {
             addressModal.classList.add('hidden');
             console.log('okc')
         }
