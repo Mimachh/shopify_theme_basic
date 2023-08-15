@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const openAddressModal = document.getElementById('openAddressModal');
     const closeAddressModal = document.getElementById('closeAddressModal');
     const addressModal = document.getElementById('addressModal');
-    const modalContent = document.getElementById('modalContent');
+    const modalBackdrop = document.getElementById('modalBackdrop');
 
     // ouverture sur le click
     openAddressModal.addEventListener('click', () => {
@@ -14,9 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     // fermeture click en dehors
     document.addEventListener('click', (event) => {
-        if (event.target !== modalContent && event.target !== openAddressModal) {
+        if (event.target === addressModal && event.target !== openAddressModal) {
             addressModal.classList.add('hidden');
-            console.log('okc')
         }
     });
     // fermeture après submit
