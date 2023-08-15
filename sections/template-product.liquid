@@ -50,20 +50,10 @@
       </div>
       {% endfor %}
       </div> {% endcomment %}
-      <div class="h-80 md:h-110 overflow-hidden p-2 "></div>
-      {% for media in product.media %}
-        {% case media.media_type %}
-          {% when 'model' %}
-          {{ media | model_viewer_tag }}
-      {% else %}
-
-        {% endcase %}
-      {% endfor %}
       <div class="">
         <div class="swiper h-94 md:h-120">
           <div class="swiper-wrapper ">
             {% for media in product.media %}
-
 
               <div class="swiper-slide">
                 <div class="h-80 md:h-110 overflow-hidden p-2 ">
@@ -76,6 +66,16 @@
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
+      </div>
+      <div class="h-80 md:h-110 overflow-hidden p-2 ">
+        {% for media in product.media %}
+          {% case media.media_type %}
+            {% when 'model' %}
+            {{ media | model_viewer_tag }}
+        {% else %}
+
+          {% endcase %}
+        {% endfor %}
       </div>
     </div>
     <div class="product--information sticky top-5 p-2">
