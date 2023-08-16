@@ -11,7 +11,7 @@
   {% when 'video' %}
   {{ media | video_tag: controls: true, class: 'w-full h-80 object-cover' }}
   {% when 'model' %}
-  <produc-model data-media-id="{{ media.id }}">
+  <product-model data-media-id="{{ media.id }}">
     <div>
       <button
         id="productModelOpenButton_{{ media.id }}"
@@ -30,7 +30,7 @@
     <template>
       {{ media | model_viewer_tag: reveal: 'interaction' }}
     </template>
-  </produc-model>
+  </product-model>
 {% else %}
   {{ media | media_tag }}
 {% endcase %}
