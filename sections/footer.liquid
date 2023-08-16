@@ -1,5 +1,6 @@
 {% assign footer_menu_1_linklist = linklists[section.settings.footer_menu_1].links %}
-{% assign footer_menu_2_linklist = linklists[linklists.footer2.links] %}
+{% assign footer_menu_2_linklist = linklists[section.settings.footer_menu_2].links %}
+{% assign footer_menu_4_linklist = linklists[linklists.footer2.links] %}
 
 <div
   class="bg-dark">
@@ -28,7 +29,7 @@
       </div>
       <nav>
         <ul>
-          {% for link in linklists.footer2.links %}
+          {% for link in footer_menu_1_linklist %}
             {% if link.links == blank %}
               <li>
                 <a
