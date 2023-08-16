@@ -17,7 +17,8 @@ class ProductModel extends HTMLElement {
     openModelModal() {
         const mediaID = this.getMediaID();
         const modal = this.getModal();
-
+console.log(mediaID)
+console.log(modal)
         if(!mediaID) return;
 
         const openModalButton = this.querySelector(`button[id="productModelOpenButton_${mediaID}"]`);
@@ -26,6 +27,7 @@ class ProductModel extends HTMLElement {
             modal.querySelector("#body").innerHTML = "";
 
             const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
+            console.log(template)
             const clone = template.content.cloneNode(true);
             modal.querySelector("#body").appendChild(clone);
             modal.querySelector("#body > model-viewer").setAttribute("reveal", "auto");

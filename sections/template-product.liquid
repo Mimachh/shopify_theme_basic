@@ -2,7 +2,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
 
-<script src="{{ 'product-model.js' | asset_url}}" defer></script>
+
 
 <style>
   .swiper-pagination {
@@ -38,7 +38,7 @@
     height: fit-content;
   }
 </style>
-
+<script src="{{ 'product-model.js' | asset_url }}" defer></script>
 <div x-data="{ productModalOpen: false }">
 
   {% assign selected_variant = product.selected_or_first_available_variant %}
