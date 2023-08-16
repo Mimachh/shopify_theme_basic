@@ -25,3 +25,5 @@
 .pageTitle {
     @apply text-center text-4xl font-bold py-8 uppercase;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');

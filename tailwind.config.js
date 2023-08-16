@@ -30,6 +30,10 @@ module.exports = {
         '94': '22rem',
         '110': '37rem',
         '120': '40rem'
+      },
+      fontFamily: {
+        'figtree': ['Figtree', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
       }
     },
   },
@@ -41,7 +45,9 @@ module.exports = {
     },
     'h-94',
     'h-110',
-    'h-120'
+    'h-120',
+    'font-figtree',
+    'font-poppins'
   ],
 }
 
