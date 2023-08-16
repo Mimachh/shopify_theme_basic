@@ -3,19 +3,21 @@
 {% comment %} {% assign footer_menu_4_linklist = linklists[linklists.footer2.links] %} {% endcomment %}
 
 <div
-  class="bg-dark pt-32">
+  class="bg-dark">
   <div
-    class="max-w-6xl mx-auto  px-4 py-8">
+    class="max-w-6xl mx-auto px-4 py-16">
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-light">
-      <nav>
-        <ul>
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-light gap-6 md:gap-0">
+      <nav
+        class="flex justify-center items-center md:justify-start md:order-1 order-3">
+        <ul
+          class="text-left ">
           {% for link in footer_menu_1_linklist %}
             {% if link.links == blank %}
               <li>
                 <a
                   href="{{ link.url }}"
-                  class="text-base hover:underline transitionAll font-poppins">
+                  class="text-base text-primaryDark hover:text-primary transitionAll font-poppins">
                   {{ link.title }}
                 </a>
               </li>
@@ -24,17 +26,34 @@
 
         </ul>
       </nav>
-      <div>
-        RS
+      <div
+        class="md:order-2 order-2 flex flex-col items-center md:items-start justify-center">
+        <h2
+          class="md:text-start text-center font-medium text-lg pb-2">Follow us</h2>
+        <ul
+          class="flex justify-start gap-3 items-center">
+          <li
+            class="">
+            <a
+              href=""
+              class="block hover:-translate-y-1 transitionAll">{% render 'icon-instagram' %}</a>
+          </li>
+          <li>
+            <a
+              href=""
+              class="block hover:-translate-y-1 transitionAll">{% render 'icon-facebook' %}</a>
+          </li>
+        </ul>
       </div>
-      <nav>
+      <nav
+        class="flex justify-center items-center md:justify-start md:order-3 order-4">
         <ul>
           {% for link in footer_menu_2_linklist %}
             {% if link.links == blank %}
               <li>
                 <a
                   href="{{ link.url }}"
-                  class="text-base hover:underline transitionAll">
+                  class="text-base text-primaryDark hover:text-primary transitionAll">
                   {{ link.title }}
                 </a>
               </li>
@@ -43,10 +62,48 @@
 
         </ul>
       </nav>
-      <div>
-        newsletter
+      <div
+        class="w-full h-full md:order-4 order-1">
+        {% form 'customer' %}
+          <h2
+            class="md:text-start text-center font-medium text-lg pb-2">Subscribe to our Newsletter</h2>
+          <div
+            class="email pb-3 ">
+            <label
+              class="sr-only"
+              for="email">Email</label>
+            <input
+              class="w-full py-2 text-dark px-2 rounded-md focus:outline-none"
+              type="email"
+              placeholder="Your email"
+              name="contact[email]">
+          </div>
+
+          <div
+            class="submit ">
+            <div
+              class="bg-light w-full h-fit rounded-md group">
+              <input
+                class="border bg-dark py-2 w-full rounded-md cursor-pointer  hoverTranslate transitionAll block"
+                type="submit"
+                value="Sign up" />
+            </div>
+
+          </div>
+        {% endform %}
       </div>
     </div>
+
+  </div>
+  <hr
+    class="my-6">
+  <div
+    class="w-full pb-8">
+    <p
+      class="text-sm text-center text-light">&copy; {{ "now" | date: "%Y" }}
+      <a
+        href=""
+        class="underline">MimacH</a>. All rights reserved.</p>
   </div>
 </div>
 
