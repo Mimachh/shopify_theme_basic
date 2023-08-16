@@ -6,19 +6,20 @@ class ProductModel extends HTMLElement {
 
     getMediaID() {
         const id = this.getAttribute('data-media-id');
+        console.log(id)
         return id;
     }
 
     getModal() {
         const modal = document.getElementById("productModelModal");
+        console.log(modal)
         return modal;
     }
 
     openModelModal() {
         const mediaID = this.getMediaID();
         const modal = this.getModal();
-console.log(mediaID)
-console.log(modal)
+        
         if(!mediaID) return;
 
         const openModalButton = this.querySelector(`button[id="productModelOpenButton_${mediaID}"]`);
