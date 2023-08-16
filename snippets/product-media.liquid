@@ -10,7 +10,27 @@
   {{ media | external_video_tag: class: 'w-full h-80 object-cover' }}
   {% when 'video' %}
   {{ media | video_tag: controls: true, class: 'w-full h-80 object-cover' }}
+  {% when 'model' %}
+  <produc-model data-media-id="{{ media.id }}">
+    <div>
+      <button
+        id="productModelOpenButton_{{ media.id }}"
+        x-on:click="productModalOpen = true"
+        class="w-full h-full bg-gray-100 border relative rounded-xl">
+        <span class="border bg-gray-100 absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          {% render 'icon-model-viewer' %}
+        </span>
+        <img
+          class="w-full h-full object-cover rounded-xl"
+          src="{{ media | img_url: 'large' }}"
+          alt="{{ media.preview_image.alt }}">
+      </button>
+    </div>
 
+    <template>
+      {{ media | model_viewer_tag: reveal: 'interaction' }}
+    </template>
+  </produc-model>
 {% else %}
   {{ media | media_tag }}
 {% endcase %}
