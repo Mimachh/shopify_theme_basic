@@ -1,3 +1,5 @@
+{% assign footer_menu_1_linklist = linklists[section.settings.footer_menu_1].links %}
+{% assign footer_menu_2_linklist = linklists[section.settings.footer_menu_2].links %}
 <div
   class="bg-dark">
   <div
@@ -6,16 +8,15 @@
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-light">
       <nav>
         <ul>
-          {% for link in main_menu_linklist %}
-            {% if link.links != blank %}
-              {% else %}
-                <li>
-                  <a
-                    href="{{ link.url }}"
-                    class="text-base hover:underline transitionAll">
-                    {{ link.title }}
-                  </a>
-                </li>
+          {% for link in footer_menu_1_linklist %}
+            {% if link.links == blank %}
+              <li>
+                <a
+                  href="{{ link.url }}"
+                  class="text-base hover:underline transitionAll">
+                  {{ link.title }}
+                </a>
+              </li>
             {% endif %}
           {% endfor %}
 
@@ -24,12 +25,45 @@
       <div>
         RS
       </div>
-      <div>
-        customer service
-      </div>
+      <nav>
+        <ul>
+          {% for link in footer_menu_2_linklist %}
+            {% if link.links == blank %}
+              <li>
+                <a
+                  href="{{ link.url }}"
+                  class="text-base hover:underline transitionAll">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+
+        </ul>
+      </nav>
       <div>
         newsletter
       </div>
     </div>
   </div>
 </div>
+
+
+{% schema %}
+  {
+    "name": "Navbar",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_menu_1",
+        "label": "Footer menu 1",
+        "default": "footer"
+      }, {
+        "type": "link_list",
+        "id": "footer_menu_2",
+        "label": "Footer menu 2",
+        "default": "footer-menu-2"
+      }
+    ]
+  }
+{% endschema %}
