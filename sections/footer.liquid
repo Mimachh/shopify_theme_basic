@@ -1,4 +1,5 @@
 {% assign footer_menu_1_linklist = linklists[section.settings.footer_menu_1].links %}
+{% assign footer_menu_2_linklist = linklists[linklists.footer2.links] %}
 
 <div
   class="bg-dark">
@@ -27,7 +28,7 @@
       </div>
       <nav>
         <ul>
-          {% for link in footer_menu_2_linklist %}
+          {% for link in linklists.footer2.links %}
             {% if link.links == blank %}
               <li>
                 <a
@@ -51,18 +52,13 @@
 
 {% schema %}
   {
-    "name": "Navbar",
+    "name": "Footer",
     "settings": [
       {
         "type": "link_list",
         "id": "footer_menu_1",
         "label": "Footer menu 1",
         "default": "footer"
-      }, {
-        "type": "link_list",
-        "id": "footer_menu_2",
-        "label": "Footer Menu 2",
-        "default": "footer2"
       }
     ]
   }
