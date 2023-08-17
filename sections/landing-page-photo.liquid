@@ -1,0 +1,49 @@
+<div
+  class="mb-8">
+  <div
+    class="relative h-[80vh] w-full flex justify-center items-center"
+    style="background-image: url('{{ section.settings.banner_image | img_url: 'original' }}'); background-size: cover; background-position: 50% {{ section.settings.focal_y }}%;">
+    <div
+      class="bg-midnight z-1 absolute inset-0 opacity-25  w-full h-full"></div>
+
+    <h1>{{ section.settings.title }}</h1>
+    <p>{{ section.settings.slogan }}</p>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Landing page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Banner",
+        "label": "Title"
+      }, {
+        "type": "text",
+        "id": "slogan",
+        "default": "Slogan",
+        "label": "Slogan"
+      }, {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Image"
+      }, {
+        "type": "range",
+        "id": "focal_y",
+        "label": "Focal Y",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }
+    ],
+    "presets": [
+      {
+        "name": "Landing page"
+      }
+    ]
+  }
+{% endschema %}

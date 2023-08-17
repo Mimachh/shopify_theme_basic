@@ -1,6 +1,41 @@
-<div>
-  Newsletter
-</div>
+<section
+  class="bg-primaryDark my-8">
+  <div
+    class="max-w-md mx-auto py-8 px-4">
+    <div
+      class="w-full h-full py-16">
+      {% form 'customer' %}
+        <h2
+          class="text-center font-medium text-2xl pb-4 text-dark">{{ section.settings.title }}</h2>
+        <p
+          class="mb-8 text-center text-base text-gray-800">{{ section.settings.subtitle }}</p>
+        <div
+          class="email pb-3 ">
+          <label
+            class="sr-only"
+            for="email">Email</label>
+          <input
+            class="w-full py-2 text-dark px-2 rounded-md focus:outline-none"
+            type="email"
+            placeholder="Your email"
+            name="contact[email]">
+        </div>
+
+        <div
+          class="submit ">
+          <div
+            class="bg-light w-full h-fit rounded-md group">
+            <input
+              class="border bg-dark py-2 w-full rounded-md cursor-pointer border-none text-light  hoverTranslate transitionAll block"
+              type="submit"
+              value="Sign up" />
+          </div>
+
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
 
 {% schema %}
   {
@@ -11,6 +46,11 @@
         "id": "title",
         "label": "Title",
         "default": "Subscrite to our Newsletter"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Stay aware of our new product"
       }
     ],
     "presets": [
