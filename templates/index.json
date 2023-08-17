@@ -14,12 +14,10 @@
       "settings": {
       }
     },
-    "featured-collection": {
-      "type": "featured-collection",
+    "27c9200b-1bf5-4f98-9601-61e30a8b21ef": {
+      "type": "collections",
       "settings": {
-        "title": "Summer Collection",
-        "featured_collection": "shorts-collection",
-        "number_of_products_to_show": 4
+        "title": "Our collections"
       }
     },
     "997a5cd0-993c-41d2-be6e-7f780d14c558": {
@@ -28,12 +26,21 @@
         "title": "Subscrite to our Newsletter",
         "subtitle": "Stay aware of our new product"
       }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Summer Collection",
+        "featured_collection": "shorts-collection",
+        "number_of_products_to_show": 4
+      }
     }
   },
   "order": [
     "b61aaf84-3291-4cfd-bcb0-00f6b701add0",
     "template",
-    "featured-collection",
-    "997a5cd0-993c-41d2-be6e-7f780d14c558"
+    "27c9200b-1bf5-4f98-9601-61e30a8b21ef",
+    "997a5cd0-993c-41d2-be6e-7f780d14c558",
+    "featured-collection"
   ]
 }
