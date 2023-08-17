@@ -2,16 +2,16 @@
   class="relative bg-primaryDark my-8"
   style="background-image: url('{{ section.settings.newsletter_image | img_url: 'original' }}'); background-size: cover; background-position: center;">
   <div
-    class="bg-dark z-1 absolute inset-0 opacity-[0.60]  w-full h-full"></div>
+    class="bg-dark z-1 absolute inset-0 opacity-[0.55]  w-full h-full"></div>
   <div
-    class="max-w-md mx-auto py-8 px-4">
+    class="relative z-2 max-w-md mx-auto py-8 px-4">
     <div
       class="w-full h-full py-16">
       {% form 'customer' %}
         <h2
-          class="text-center text-xl md:text-3xl font-medium pb-4 text-dark">{{ section.settings.title }}</h2>
+          class="text-center text-xl md:text-3xl font-medium pb-4 text-light">{{ section.settings.title }}</h2>
         <p
-          class="mb-8 text-center text-base text-gray-800">{{ section.settings.subtitle }}</p>
+          class="mb-8 text-center text-base text-silver">{{ section.settings.subtitle }}</p>
         <div
           class="email pb-3 ">
           <label
@@ -27,9 +27,9 @@
         <div
           class="submit ">
           <div
-            class="bg-light w-full h-fit rounded-md group">
+            class="bg-tahiti w-full h-fit rounded-md group">
             <input
-              class="border bg-dark py-2 w-full rounded-md cursor-pointer border-none text-light  hoverTranslate transitionAll block"
+              class="border bg-primary py-2 w-full rounded-md cursor-pointer border-none text-dark font-medium  hoverTranslate transitionAll block"
               type="submit"
               value="Sign up" />
           </div>
