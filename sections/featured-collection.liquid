@@ -1,10 +1,14 @@
 <div
-  class="flex flex-col items-center my-8">
-  <h1
-    class="text-center text-3xl">{{ section.settings.title }}</h1>
+  class="flex flex-col items-start my-8">
+
 
   <div
     class="max-w-6xl mx-auto">
+    <div
+      class="mb-4">
+      <h1
+        class="text-xl text-center md:text-3xl font-medium">{{ section.settings.title }}</h1>
+    </div>
     <div
       class="grid grid-cols-1 md:grid-cols-4 gap-4">
       {% for product in section.settings.featured_collection.products limit: section.settings.number_of_products_to_show %}

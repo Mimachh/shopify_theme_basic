@@ -1,0 +1,36 @@
+<div
+  class="w-full py-3 px-3">
+  <a
+    href="{{ collection.url }}">
+    <div
+      class="bg-dark w-full h-fit rounded-2xl group">
+      <div
+        class="bg-white border border-dark rounded-2xl overflow-hidden p-2  cursor-pointer relative
+        {% if product.compare_at_price > product.price %}
+          translate-x-[-6px] translate-y-[-6px]
+        {% else %}
+          hoverTranslate transitionAll
+        {% endif %}">
+        {% if collection.featured_image != blank %}
+          {% assign collection_image = collection.featured_image %}
+        {% else %}
+          {% assign collection_image = collection.products.first.image %}
+        {% endif %}
+        <div
+          class="h-72 w-full overflow-hidden rounded-xl border border-dark">
+          <img
+            height="288"
+            width="512"
+            class="h-full w-full object-cover transition duration-300 ease-in-out hover:scale-105 "
+            src="{{ collection_image | img_url: 'large' }}"
+            alt="{{ collection.title | escape }}">
+        </div>
+        <div
+          class="px-2 pb-2 pt-1">
+          <p
+            class="text-dark uppercase font-medium text-md md:text-lg">{{ collection.title }}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
