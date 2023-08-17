@@ -40,7 +40,8 @@
       "type": "about",
       "settings": {
         "title": "About us",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "about_image": "shopify:\/\/shop_images\/pexels-rfstudio-3810792.jpg"
       }
     }
   },
