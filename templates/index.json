@@ -44,6 +44,12 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "about_image": "shopify:\/\/shop_images\/pexels-rfstudio-3810792.jpg"
       }
+    },
+    "61963f50-3cb0-40c2-bb0a-c3f6e0224ceb": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact"
+      }
     }
   },
   "order": [
@@ -52,6 +58,7 @@
     "27c9200b-1bf5-4f98-9601-61e30a8b21ef",
     "997a5cd0-993c-41d2-be6e-7f780d14c558",
     "featured-collection",
-    "fd4f9521-b0c1-4994-be6f-3d51512359f5"
+    "fd4f9521-b0c1-4994-be6f-3d51512359f5",
+    "61963f50-3cb0-40c2-bb0a-c3f6e0224ceb"
   ]
 }
