@@ -1,0 +1,27 @@
+<div>
+  About
+</div>
+
+{% schema %}
+  {
+    "name": "About",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "About us",
+        "label": "Title"
+      }, {
+        "type": "textarea",
+        "id": "description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "label": "Description"
+      }
+    ],
+    "presets": [
+      {
+        "name": "About"
+      }
+    ]
+  }
+{% endschema %}
