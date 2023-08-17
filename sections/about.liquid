@@ -1,6 +1,30 @@
-<div>
-  About
-</div>
+<section
+  class="bg-white my-8">
+  <div
+    class="max-w-6xl mx-auto py-8 px-4">
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="h-96 md:h-110  lg:w-3/4 w-full overflow-hidden rounded-xl border border-dark md:order-1 order-2">
+        {% comment %} <img
+        height="288"
+        width="512"
+        class="w-full h-96 md:h-110 object-cover  transition duration-150 group-hover:scale-105 transform ease-in"
+        src="{{ section.settings.banner_image | img_url: 'original' }}"
+        alt="{{ section.settings.banner_image.alt }}"> {% endcomment %}
+
+        {{ 'product-1' | placeholder_svg_tag: "w-full h-full rounded-2xl border border-dark object-cover bg-silver" }}
+      </div>
+      <div
+        class="order-1 md:order-2">
+        <h2
+          class="title mb-4 mt-2">{{ section.settings.title }}</h2>
+        <p
+          class="text-metal text-base">{{ section.settings.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% schema %}
   {
@@ -16,6 +40,10 @@
         "id": "description",
         "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "label": "Description"
+      }, {
+        "type": "image_picker",
+        "id": "about_image",
+        "label": "Image"
       }
     ],
     "presets": [

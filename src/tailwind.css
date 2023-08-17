@@ -28,3 +28,6 @@
     @apply text-center text-4xl font-bold py-8 uppercase;
 }
 
+.title {
+    @apply text-xl md:text-3xl font-medium;
+}
