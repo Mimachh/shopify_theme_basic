@@ -4226,6 +4226,11 @@ video {
   color: rgb(29 161 242 / var(--tw-text-opacity));
 }
 
+.hover\:text-primaryDark:hover {
+  --tw-text-opacity: 1;
+  color: rgb(88 230 217 / var(--tw-text-opacity));
+}
+
 .hover\:text-tahiti:hover {
   --tw-text-opacity: 1;
   color: rgb(58 183 191 / var(--tw-text-opacity));
