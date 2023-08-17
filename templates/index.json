@@ -1,7 +1,9 @@
 {
   "sections": {
     "template": {
-      "type": "template-index"
+      "type": "template-index",
+      "settings": {
+      }
     },
     "featured-collection": {
       "type": "featured-collection",
@@ -10,7 +12,17 @@
         "featured_collection": "shorts-collection",
         "number_of_products_to_show": 4
       }
+    },
+    "997a5cd0-993c-41d2-be6e-7f780d14c558": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Subscrite to our Newsletter"
+      }
     }
   },
-  "order": ["template", "featured-collection"]
+  "order": [
+    "template",
+    "featured-collection",
+    "997a5cd0-993c-41d2-be6e-7f780d14c558"
+  ]
 }
