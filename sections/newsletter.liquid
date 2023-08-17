@@ -1,6 +1,6 @@
 <section
   class="relative bg-primaryDark my-8"
-  style="background-image: url('{{ section.settings.bg_image | img_url: 'original' }}'); background-size: cover; background-position: center;">
+  style="background-image: url('{{ section.settings.newsletter_image | img_url: 'original' }}'); background-size: cover; background-position: center;">
   <div
     class="bg-dark z-1 absolute inset-0 opacity-[0.60]  w-full h-full"></div>
   <div
@@ -56,7 +56,7 @@
         "default": "Stay aware of our new product"
       }, {
         "type": "image_picker",
-        "id": "bg_image",
+        "id": "newsletter_image",
         "label": "Image"
       }
     ],
