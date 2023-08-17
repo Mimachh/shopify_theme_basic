@@ -17,7 +17,8 @@
     "27c9200b-1bf5-4f98-9601-61e30a8b21ef": {
       "type": "collections",
       "settings": {
-        "title": "Our collections"
+        "title": "Our collections",
+        "number_of_collection_list_to_show": 3
       }
     },
     "997a5cd0-993c-41d2-be6e-7f780d14c558": {
@@ -34,6 +35,13 @@
         "featured_collection": "shorts-collection",
         "number_of_products_to_show": 4
       }
+    },
+    "fd4f9521-b0c1-4994-be6f-3d51512359f5": {
+      "type": "about",
+      "settings": {
+        "title": "About us",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
     }
   },
   "order": [
@@ -41,6 +49,7 @@
     "template",
     "27c9200b-1bf5-4f98-9601-61e30a8b21ef",
     "997a5cd0-993c-41d2-be6e-7f780d14c558",
-    "featured-collection"
+    "featured-collection",
+    "fd4f9521-b0c1-4994-be6f-3d51512359f5"
   ]
 }
