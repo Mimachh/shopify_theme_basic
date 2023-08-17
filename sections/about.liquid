@@ -6,15 +6,17 @@
     <div
       class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div
-        class="h-96 md:h-110  lg:w-3/4 w-full overflow-hidden rounded-xl border border-dark md:order-1 order-2">
-        <img
-          height="288"
-          width="512"
-          class="w-full h-96 md:h-110 object-cover  transition duration-150 group-hover:scale-105 transform ease-in"
-          src="{{ section.settings.banner_image | img_url: 'original' }}"
-          alt="{{ section.settings.banner_image.alt }}">
+        class="h-96 md:h-110 mx-auto lg:w-3/4 w-full rounded-xl md:order-1 order-2">
+        <div
+          class="bg-dark rounded-xl">
+          <img
+            height="288"
+            width="512"
+            class="w-full h-96 md:h-110 object-cover -translate-y-1 -translate-x-1 rounded-xl border border-dark"
+            src="{{ section.settings.about_image | img_url: 'original' }}"
+            alt="{{ section.settings.about_image.alt }}">
+        </div>
 
-        {{ 'product-1' | placeholder_svg_tag: "w-full h-full rounded-2xl border border-dark object-cover bg-silver" }}
       </div>
       <div
         class="order-1 md:order-2">
@@ -22,6 +24,18 @@
           class="title mb-4 mt-2">{{ section.settings.title }}</h2>
         <p
           class="text-metal text-base">{{ section.settings.description }}</p>
+
+        <div
+          class="mt-4">
+          <a
+            href=""
+            class="text-primary text-md  hover:text-midnight hover:underline  flex items-center gap-1 group">
+            <span
+              class="group-hover:translate-x-5 transitionAll">En savoir plus</span>
+            <span
+              class="group-hover:-translate-x-[115px] transitionAll">{% render 'icon-arrow' %}</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

@@ -2,15 +2,18 @@
   class="flex flex-col items-center justify-center my-8">
 
   <div
-    class="max-w-6xl mx-auto md:mt-24">
+    class="max-w-6xl mx-auto md:mt-24 px-4">
     <div
       class="flex w-full justify-between items-end">
       <h1
         class="text-xl md:text-3xl font-medium">{{ section.settings.title }}</h1>
       <a
         href=""
-        class="text-primary hover:text-midnight hover:underline transitionAll">
-        See all the collection
+        class="text-primary text-sm md:text-md hover:text-midnight hover:underline  flex items-center gap-1 group">
+        <span
+          class="group-hover:translate-x-5 transitionAll">See all the collection</span>
+        <span
+          class="group-hover:-translate-x-[155px] transitionAll">{% render 'icon-arrow' %}</span>
       </a>
     </div>
     <div
