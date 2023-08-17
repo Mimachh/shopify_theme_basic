@@ -1,5 +1,14 @@
 {
   "sections": {
+    "b61aaf84-3291-4cfd-bcb0-00f6b701add0": {
+      "type": "landing-page-photo",
+      "settings": {
+        "title": "Banner",
+        "slogan": "Slogan",
+        "banner_image": "shopify:\/\/shop_images\/pexels-roman-odintsov-4553372.jpg",
+        "focal_y": 50
+      }
+    },
     "template": {
       "type": "template-index",
       "settings": {
@@ -16,11 +25,13 @@
     "997a5cd0-993c-41d2-be6e-7f780d14c558": {
       "type": "newsletter",
       "settings": {
-        "title": "Subscrite to our Newsletter"
+        "title": "Subscrite to our Newsletter",
+        "subtitle": "Stay aware of our new product"
       }
     }
   },
   "order": [
+    "b61aaf84-3291-4cfd-bcb0-00f6b701add0",
     "template",
     "featured-collection",
     "997a5cd0-993c-41d2-be6e-7f780d14c558"
