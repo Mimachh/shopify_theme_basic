@@ -1,13 +1,18 @@
 <div
   class="mb-8">
   <div
-    class="relative h-[80vh] w-full flex justify-center items-center"
+    class="relative h-[30vh] md:h-[80vh] w-full flex justify-center items-center"
     style="background-image: url('{{ section.settings.banner_image | img_url: 'original' }}'); background-size: cover; background-position: 50% {{ section.settings.focal_y }}%;">
     <div
-      class="bg-midnight z-1 absolute inset-0 opacity-25  w-full h-full"></div>
+      class="bg-dark z-1 absolute inset-0 opacity-[0.60]  w-full h-full"></div>
 
-    <h1>{{ section.settings.title }}</h1>
-    <p>{{ section.settings.slogan }}</p>
+    <div
+      class="relative z-2">
+      <h1
+        class="text-center text-3xl md:text-5xl lg:text-7xl font-bold text-primary mb-4">{{ section.settings.title }}</h1>
+      <p
+        class="text-base text-center text-silver">{{ section.settings.slogan }}</p>
+    </div>
   </div>
 </div>
 
