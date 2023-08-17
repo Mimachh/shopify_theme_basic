@@ -15,8 +15,8 @@
     </div>
     <div
       class="grid grid-cols-1 md:grid-cols-3 gap-3">
-      {% paginate collection.products by section.settings.number_of_collection_list_to_show %}
-        {% for collection in collection.products %}
+      {% paginate collections by section.settings.number_of_collection_list_to_show %}
+        {% for collection in collections %}
           {% render 'collection-card', collection: collection %}
         {% endfor %}
       {% endpaginate %}
