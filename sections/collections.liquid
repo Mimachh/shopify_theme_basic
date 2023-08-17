@@ -15,12 +15,15 @@
     </div>
     <div
       class="grid grid-cols-1 md:grid-cols-3 gap-3">
-      {% for collection in collections %}
-        {% if collection.all_products_count > 0 %}
+      {% paginate collection.products by section.settings.number_of_collection_list_to_show %}
+        {% for collection in collection.products %}
+          {% if collection.all_products_count > 0 %}
 
-          {% render 'collection-card', collection: collection %}
-        {% endif %}
-      {% endfor %}
+            {% render 'collection-card', collection: collection %}
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+
     </div>
   </div>
 </div>
@@ -34,6 +37,14 @@
         "id": "title",
         "default": "Our collections",
         "label": "Title"
+      }, {
+        "type": "range",
+        "id": "number_of_collection_list_to_show",
+        "min": 3,
+        "max": 12,
+        "step": 1,
+        "default": 3,
+        "label": "Number of collections to show"
       }
     ],
     "presets": [
