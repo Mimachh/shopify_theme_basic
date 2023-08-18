@@ -1,103 +1,108 @@
-<div
-  class="flex flex-col items-center my-8">
-  {% form 'contact' %}
-    <div
-      class="max-w-6xl bg-primaryDark mx-auto justify-center flex-1 items-center px-4 border border-dark rounded-xl pb-4 md:pb-6">
-      {% if section.settings.title != blank %}
-        <h1
-          class="text-xl md:text-3xl font-bold text-center py-8">{{ section.settings.title }}</h1>
-      {% endif %}
-      {% if form.errors %}
+<div>
+  <div
+    class="flex flex-col items-center my-8">
+    {% form 'contact' %}
+      <div
+        class="bg-dark rounded-xl">
         <div
-          class="border p-5">
-          <div
-            class="flex flex-row items-center w-full my-3">
+          class="max-w-lg bg-white mx-auto justify-center flex-1 items-center px-4 border border-dark rounded-xl pt-6 pb-8 -translate-x-1.5 -translate-y-1.5">
+          {% if section.settings.title != blank %}
+            <h1
+              class="text-xl md:text-3xl font-bold text-center py-8">{{ section.settings.title }}</h1>
+          {% endif %}
+          {% if form.errors %}
             <div
-              class="text-red-500">
-              {% render 'icon-failed' %}
+              class="border p-5">
+              <div
+                class="flex flex-row items-center w-full my-3">
+                <div
+                  class="text-red-500">
+                  {% render 'icon-failed' %}
+                </div>
+                <div
+                  class="text-sm font-medium ml-3">
+                  Oh no ! Your message is not sent
+                </div>
+              </div>
+              <ul
+                class="px-4 mb-3 ml-7 list-decimal">
+                {% for error in form.errors %}
+                  <li>
+                    <span>{{ form.errors.messages[error] }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% elsif form.posted_successfully? %}
+            <div
+              class="flex flex-row items-center w-full my-3 p-5">
+              <div
+                class="text-green-500">
+                {% render 'icon-success' %}
+              </div>
+              <div
+                class="text-sm font-medium ml-3">
+                Your message is sent successfully
+              </div>
+            </div>
+          {% endif %}
+          <div
+            class="flex px-1 mb-3">
+            <div
+              class="px-3 md:w-1/2">
+              <label
+                class="uppercase text-xs font-medium"
+                for="contact_name">Name</label>
+              <input
+                class="border border-dark py-3 px-4 mb-3 w-full rounded-xl"
+                type="text"
+                name="contact[name]"
+                id="contact_name">
             </div>
             <div
-              class="text-sm font-medium ml-3">
-              Oh no ! Your message is not sent
+              class="px-3 md:w-1/2">
+              <label
+                class="uppercase text-xs font-medium"
+                for="contact_email">Email</label>
+              <input
+                class="border border-dark py-3 px-4 mb-3 w-full rounded-xl"
+                type="email"
+                name="contact[email]"
+                id="contact_email">
             </div>
           </div>
-          <ul
-            class="px-4 mb-3 ml-7 list-decimal">
-            {% for error in form.errors %}
-              <li>
-                <span>{{ form.errors.messages[error] }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% elsif form.posted_successfully? %}
-        <div
-          class="flex flex-row items-center w-full my-3 p-5">
+
           <div
-            class="text-green-500">
-            {% render 'icon-success' %}
+            class="flex px-1 mb-3">
+            <div
+              class="w-full px-3">
+              <label
+                class="uppercase text-xs font-medium"
+                for="contact_message">Message</label>
+              <textarea
+                class="border border-dark py-3 px-4 mb-3 w-full rounded-xl"
+                name="contact[body]"
+                id="contact_message"></textarea>
+            </div>
           </div>
+
           <div
-            class="text-sm font-medium ml-3">
-            Your message is sent successfully
+            class="flex px-1 mb-3">
+            <div
+              class="w-full px-3">
+              <input
+                class="w-full cursor-pointer px-4 py-2 border border-dark text-base font-medium rounded-xl bg-dark text-light hover:bg-primaryDark hover:text-dark hover:border-primaryDark transitionColor"
+                type="submit"
+                value="Submit">
+            </div>
           </div>
         </div>
-      {% endif %}
-      <div
-        class="flex px-1 mb-3">
-        <div
-          class="px-3 md:w-1/2">
-          <label
-            class="uppercase text-xs font-medium"
-            for="contact_name">Name</label>
-          <input
-            class="border py-3 px-4 mb-3 w-full rounded-xl"
-            type="text"
-            name="contact[name]"
-            id="contact_name">
-        </div>
-        <div
-          class="px-3 md:w-1/2">
-          <label
-            class="uppercase text-xs font-medium"
-            for="contact_email">Email</label>
-          <input
-            class="border py-3 px-4 mb-3 w-full rounded-xl"
-            type="email"
-            name="contact[email]"
-            id="contact_email">
-        </div>
       </div>
 
-      <div
-        class="flex px-1 mb-3">
-        <div
-          class="w-full px-3">
-          <label
-            class="uppercase text-xs font-medium"
-            for="contact_message">Message</label>
-          <textarea
-            class="border py-3 px-4 mb-3 w-full rounded-xl"
-            name="contact[body]"
-            id="contact_message"></textarea>
-        </div>
-      </div>
-
-      <div
-        class="flex px-1 mb-3">
-        <div
-          class="w-full px-3">
-          <input
-            class="w-full cursor-pointer px-4 py-2 border border-dark text-base font-medium rounded-xl bg-dark text-light hover:bg-light hover:text-dark transitionColor"
-            type="submit"
-            value="Submit">
-        </div>
-      </div>
-    </div>
 
 
-
-  {% endform %}
+    {% endform %}
+  </div>
 </div>
 
 

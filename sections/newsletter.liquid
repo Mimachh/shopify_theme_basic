@@ -4,7 +4,7 @@
   <div
     class="bg-dark z-1 absolute inset-0 opacity-[0.55]  w-full h-full"></div>
   <div
-    class="relative z-2 max-w-md mx-auto py-8 px-4">
+    class="relative z-2 max-w-md mx-auto py-8 md:py-12 px-4">
     <div
       class="w-full h-full py-16">
       {% form 'customer' %}
@@ -26,13 +26,11 @@
 
         <div
           class="submit ">
-          <div
-            class="bg-tahiti w-full h-fit rounded-md group">
-            <input
-              class="border bg-primary py-2 w-full rounded-md cursor-pointer border-none text-dark font-medium  hoverTranslate transitionAll block"
-              type="submit"
-              value="Sign up" />
-          </div>
+          <input
+            class="border bg-primary hover:border-light py-2 w-full rounded-md cursor-pointer border-none text-dark font-medium  hover:bg-dark hover:text-light transitionAll block"
+            type="submit"
+            value="Sign up" />
+
 
         </div>
       {% endform %}
