@@ -2,9 +2,21 @@
   "sections": {
     "hero": {
       "type": "hero-premium"
+    },
+    "trust-bar": {
+      "type": "trust-bar"
+    },
+    "storytelling-intro": {
+      "type": "storytelling-intro"
+    },
+    "product-features": {
+      "type": "product-features"
     }
   },
   "order": [
-    "hero"
+    "hero",
+    "trust-bar",
+    "storytelling-intro",
+    "product-features"
   ]
 }

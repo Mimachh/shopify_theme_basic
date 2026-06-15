@@ -58,6 +58,29 @@
         }
       }
     },
+    "social": {
+      "name": "Social media",
+      "settings": {
+        "social_instagram_link": {
+          "label": "Instagram"
+        },
+        "social_facebook_link": {
+          "label": "Facebook"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok"
+        },
+        "social_x_link": {
+          "label": "X (Twitter)"
+        },
+        "social_youtube_link": {
+          "label": "YouTube"
+        }
+      }
+    },
     "animations": {
       "name": "Animations",
       "settings": {
@@ -81,6 +104,12 @@
     }
   },
   "sections": {
+    "header-group": {
+      "name": "Header"
+    },
+    "footer-group": {
+      "name": "Footer"
+    },
     "hero-premium": {
       "name": "Hero Premium",
       "settings": {
@@ -165,6 +194,206 @@
       },
       "presets": {
         "name": "Hero Premium"
+      }
+    },
+    "trust-bar": {
+      "name": "Trust Bar",
+      "settings": {
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Reveal"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "blocks": {
+        "item": {
+          "name": "Item",
+          "settings": {
+            "icon": {
+              "label": "Icon",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Shipping"
+              },
+              "options__3": {
+                "label": "Warranty"
+              },
+              "options__4": {
+                "label": "Secure payment"
+              },
+              "options__5": {
+                "label": "Quality"
+              },
+              "options__6": {
+                "label": "Premium"
+              }
+            },
+            "title": {
+              "label": "Title"
+            },
+            "description": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Trust Bar"
+      }
+    },
+    "storytelling-intro": {
+      "name": "Storytelling Intro",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "rich_text": {
+          "label": "Text"
+        },
+        "media_header": {
+          "content": "Media"
+        },
+        "image": {
+          "label": "Image"
+        },
+        "video": {
+          "label": "Video",
+          "info": "Replaces the image when set"
+        },
+        "layout_header": {
+          "content": "Layout & animation"
+        },
+        "layout": {
+          "label": "Layout",
+          "options__1": {
+            "label": "Image left"
+          },
+          "options__2": {
+            "label": "Image right"
+          },
+          "options__3": {
+            "label": "Full width"
+          }
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Reveal"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "presets": {
+        "name": "Storytelling Intro"
+      }
+    },
+    "product-features": {
+      "name": "Product Features",
+      "settings": {
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Slide"
+          },
+          "options__4": {
+            "label": "Reveal"
+          }
+        }
+      },
+      "blocks": {
+        "feature": {
+          "name": "Feature",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "description": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Product Features"
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": {
+        "logo": {
+          "label": "Logo"
+        },
+        "logo_width": {
+          "label": "Logo width"
+        },
+        "newsletter_header": {
+          "content": "Newsletter"
+        },
+        "newsletter_heading": {
+          "label": "Heading"
+        },
+        "newsletter_text": {
+          "label": "Text"
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        }
+      },
+      "blocks": {
+        "menu": {
+          "name": "Menu",
+          "settings": {
+            "heading": {
+              "label": "Heading",
+              "info": "Defaults to the menu's title if empty"
+            },
+            "menu": {
+              "label": "Menu"
+            }
+          }
+        }
       }
     }
   }

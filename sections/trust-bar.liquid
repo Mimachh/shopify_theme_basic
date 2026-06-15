@@ -1,0 +1,187 @@
+{%- comment -%}
+  Section 02 — Trust Bar
+  A row of up to 6 reassurance blocks (icon + title + description), e.g.
+  free shipping, lifetime warranty, handmade, secure payment.
+{%- endcomment -%}
+
+{%- liquid
+  assign block_animate = blank
+  case section.settings.animation
+    when 'fade' or 'reveal' or 'zoom'
+      assign block_animate = section.settings.animation
+  endcase
+-%}
+
+<section class="py-12 md:py-16" {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}>
+  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-x-8 gap-y-10 px-6 md:grid-cols-3 md:gap-x-12">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        case forloop.index0
+          when 0
+            assign stagger_delay = '0'
+          when 1
+            assign stagger_delay = '0.1'
+          when 2
+            assign stagger_delay = '0.2'
+          when 3
+            assign stagger_delay = '0.3'
+          when 4
+            assign stagger_delay = '0.4'
+          else
+            assign stagger_delay = '0.5'
+        endcase
+      -%}
+      <div
+        class="flex flex-col items-center text-center"
+        {%- if block_animate %} data-animate="{{ block_animate }}" data-animate-delay="{{ stagger_delay }}"{% endif %}
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.icon != 'none' -%}
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-surface text-accent">
+            {%- render 'icon', name: block.settings.icon, class: 'h-6 w-6' -%}
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.title != blank -%}
+          <p class="mt-4 text-sm font-semibold tracking-wide text-text">{{ block.settings.title | escape }}</p>
+        {%- endif -%}
+
+        {%- if block.settings.description != blank -%}
+          <p class="mt-1 text-sm text-secondary">{{ block.settings.description | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.trust-bar.name",
+  "tag": "section",
+  "class": "section-trust-bar",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.trust-bar.settings.background_color.label",
+      "info": "t:sections.trust-bar.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.trust-bar.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.trust-bar.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.trust-bar.settings.animation.options__2.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.trust-bar.settings.animation.options__3.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.trust-bar.settings.animation.options__4.label"
+        }
+      ],
+      "default": "fade"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "t:sections.trust-bar.blocks.item.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:sections.trust-bar.blocks.item.settings.icon.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__1.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__2.label"
+            },
+            {
+              "value": "shield-check",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__3.label"
+            },
+            {
+              "value": "lock",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__4.label"
+            },
+            {
+              "value": "check",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__5.label"
+            },
+            {
+              "value": "star",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__6.label"
+            }
+          ],
+          "default": "shield-check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.trust-bar.blocks.item.settings.title.label",
+          "default": "Lifetime warranty"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "t:sections.trust-bar.blocks.item.settings.description.label",
+          "default": "Built to last, guaranteed."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.trust-bar.presets.name",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "description": "On every order, worldwide."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Lifetime warranty",
+            "description": "Built to last, guaranteed."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Handmade",
+            "description": "Crafted with care, piece by piece."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure payment",
+            "description": "Your data is always protected."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

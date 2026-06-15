@@ -1,5 +1,16 @@
 {
+  "name": "t:sections.footer-group.name",
   "type": "footer",
-  "sections": {},
-  "order": []
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu-1": {
+          "type": "menu"
+        }
+      },
+      "block_order": ["menu-1"]
+    }
+  },
+  "order": ["footer"]
 }

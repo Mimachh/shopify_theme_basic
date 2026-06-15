@@ -1,0 +1,146 @@
+{%- comment -%}
+  Section 04 — Product Features
+  An unlimited list of premium features, each with an image, a title and a
+  description. Rows alternate the image side (left/right) for an editorial
+  zigzag layout.
+{%- endcomment -%}
+
+{%- liquid
+  assign animate = blank
+  case section.settings.animation
+    when 'fade' or 'slide' or 'reveal'
+      assign animate = section.settings.animation
+  endcase
+-%}
+
+<section class="flex flex-col gap-16 py-16 md:gap-24 md:py-24" {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}>
+  {%- for block in section.blocks -%}
+    {%- liquid
+      assign is_odd = forloop.index0 | modulo: 2
+      if is_odd == 0
+        assign media_order_class = ''
+        assign media_from = 'left'
+        assign text_from = 'right'
+      else
+        assign media_order_class = ' md:order-2'
+        assign media_from = 'right'
+        assign text_from = 'left'
+      endif
+    -%}
+
+    {%- capture text_markup -%}
+      {%- if block.settings.title != blank -%}
+        <h3 class="text-2xl md:text-3xl">{{ block.settings.title | escape }}</h3>
+      {%- endif -%}
+      {%- if block.settings.description != blank -%}
+        <div class="text-base text-secondary md:text-lg">{{ block.settings.description }}</div>
+      {%- endif -%}
+    {%- endcapture -%}
+
+    {%- if block.settings.image != blank -%}
+      <div class="grid md:grid-cols-2" {{ block.shopify_attributes }}>
+        <div
+          class="relative aspect-[4/5] overflow-hidden md:aspect-auto{{ media_order_class }}"
+          {%- if animate == 'slide' %} data-animate="slide" data-animate-from="{{ media_from }}"{% elsif animate %} data-animate="{{ animate }}"{% endif %}
+        >
+          {%- render 'responsive-image', image: block.settings.image, class: 'absolute inset-0 h-full w-full object-cover' -%}
+        </div>
+        <div
+          class="flex flex-col justify-center gap-4 px-6 py-12 md:px-16 md:py-0"
+          {%- if animate == 'slide' %} data-animate="slide" data-animate-from="{{ text_from }}"{% elsif animate %} data-animate="{{ animate }}"{% endif %}
+        >
+          {{ text_markup }}
+        </div>
+      </div>
+    {%- else -%}
+      <div
+        class="mx-auto flex max-w-2xl flex-col gap-4 px-6 text-center"
+        {{ block.shopify_attributes }}
+        {%- if animate == 'slide' %} data-animate="slide" data-animate-from="{{ text_from }}"{% elsif animate %} data-animate="{{ animate }}"{% endif %}
+      >
+        {{ text_markup }}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.product-features.name",
+  "tag": "section",
+  "class": "section-product-features",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.product-features.settings.background_color.label",
+      "info": "t:sections.product-features.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.product-features.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.product-features.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.product-features.settings.animation.options__2.label"
+        },
+        {
+          "value": "slide",
+          "label": "t:sections.product-features.settings.animation.options__3.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.product-features.settings.animation.options__4.label"
+        }
+      ],
+      "default": "fade"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "t:sections.product-features.blocks.feature.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.product-features.blocks.feature.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.product-features.blocks.feature.settings.title.label",
+          "default": "Premium craftsmanship"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.product-features.blocks.feature.settings.description.label",
+          "default": "<p>Every detail is considered, from material selection to the final finish.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.product-features.presets.name",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -6,5 +6,22 @@
     "pagination": {
       "page": "Page {{ page }}"
     }
+  },
+  "newsletter": {
+    "email_label": "Adresse e-mail",
+    "email_placeholder": "Votre adresse e-mail",
+    "submit": "S'abonner",
+    "success": "Merci pour votre inscription !"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "pinterest": "Pinterest",
+    "tiktok": "TikTok",
+    "x": "X (Twitter)",
+    "youtube": "YouTube"
+  },
+  "footer": {
+    "copyright": "© {{ year }} {{ shop }}. Tous droits réservés."
   }
 }

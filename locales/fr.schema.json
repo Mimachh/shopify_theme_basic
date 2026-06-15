@@ -58,6 +58,29 @@
         }
       }
     },
+    "social": {
+      "name": "Réseaux sociaux",
+      "settings": {
+        "social_instagram_link": {
+          "label": "Instagram"
+        },
+        "social_facebook_link": {
+          "label": "Facebook"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok"
+        },
+        "social_x_link": {
+          "label": "X (Twitter)"
+        },
+        "social_youtube_link": {
+          "label": "YouTube"
+        }
+      }
+    },
     "animations": {
       "name": "Animations",
       "settings": {
@@ -81,6 +104,12 @@
     }
   },
   "sections": {
+    "header-group": {
+      "name": "En-tête"
+    },
+    "footer-group": {
+      "name": "Pied de page"
+    },
     "hero-premium": {
       "name": "Hero premium",
       "settings": {
@@ -165,6 +194,206 @@
       },
       "presets": {
         "name": "Hero premium"
+      }
+    },
+    "trust-bar": {
+      "name": "Bandeau de confiance",
+      "settings": {
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Apparition"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "blocks": {
+        "item": {
+          "name": "Élément",
+          "settings": {
+            "icon": {
+              "label": "Icône",
+              "options__1": {
+                "label": "Aucune"
+              },
+              "options__2": {
+                "label": "Livraison"
+              },
+              "options__3": {
+                "label": "Garantie"
+              },
+              "options__4": {
+                "label": "Paiement sécurisé"
+              },
+              "options__5": {
+                "label": "Qualité"
+              },
+              "options__6": {
+                "label": "Premium"
+              }
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "description": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Bandeau de confiance"
+      }
+    },
+    "storytelling-intro": {
+      "name": "Intro storytelling",
+      "settings": {
+        "heading": {
+          "label": "Titre"
+        },
+        "rich_text": {
+          "label": "Texte"
+        },
+        "media_header": {
+          "content": "Média"
+        },
+        "image": {
+          "label": "Image"
+        },
+        "video": {
+          "label": "Vidéo",
+          "info": "Remplace l'image si renseignée"
+        },
+        "layout_header": {
+          "content": "Mise en page et animation"
+        },
+        "layout": {
+          "label": "Mise en page",
+          "options__1": {
+            "label": "Image à gauche"
+          },
+          "options__2": {
+            "label": "Image à droite"
+          },
+          "options__3": {
+            "label": "Pleine largeur"
+          }
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Apparition"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "presets": {
+        "name": "Intro storytelling"
+      }
+    },
+    "product-features": {
+      "name": "Caractéristiques produit",
+      "settings": {
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Glissement"
+          },
+          "options__4": {
+            "label": "Apparition"
+          }
+        }
+      },
+      "blocks": {
+        "feature": {
+          "name": "Caractéristique",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "description": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Caractéristiques produit"
+      }
+    },
+    "footer": {
+      "name": "Pied de page",
+      "settings": {
+        "logo": {
+          "label": "Logo"
+        },
+        "logo_width": {
+          "label": "Largeur du logo"
+        },
+        "newsletter_header": {
+          "content": "Newsletter"
+        },
+        "newsletter_heading": {
+          "label": "Titre"
+        },
+        "newsletter_text": {
+          "label": "Texte"
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        }
+      },
+      "blocks": {
+        "menu": {
+          "name": "Menu",
+          "settings": {
+            "heading": {
+              "label": "Titre",
+              "info": "Utilise le titre du menu si vide"
+            },
+            "menu": {
+              "label": "Menu"
+            }
+          }
+        }
       }
     }
   }

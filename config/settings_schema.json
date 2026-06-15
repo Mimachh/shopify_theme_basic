@@ -5,7 +5,6 @@
     "theme_author": "Mimach",
     "theme_version": "0.1.0",
     "theme_support_email": "mimach.dev@gmail.com",
-    // TODO
     "theme_documentation_url": "https://tofix.com"
   },
   {
@@ -102,6 +101,41 @@
         "default": "standard",
         "label": "t:settings_schema.spacing.settings.spacing_density.label",
         "info": "t:settings_schema.spacing.settings.spacing_density.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.social.name",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram_link",
+        "label": "t:settings_schema.social.settings.social_instagram_link.label"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook_link",
+        "label": "t:settings_schema.social.settings.social_facebook_link.label"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest_link",
+        "label": "t:settings_schema.social.settings.social_pinterest_link.label"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok_link",
+        "label": "t:settings_schema.social.settings.social_tiktok_link.label"
+      },
+      {
+        "type": "url",
+        "id": "social_x_link",
+        "label": "t:settings_schema.social.settings.social_x_link.label"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube_link",
+        "label": "t:settings_schema.social.settings.social_youtube_link.label"
       }
     ]
   },

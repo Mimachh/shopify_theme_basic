@@ -34,10 +34,10 @@
 - [x] Vérification `shopify theme check` (via `validate_theme` — tous les fichiers de la Phase 1 passent)
 
 ## Phase 2 — Core Sections
-- [ ] Section 02 — Trust Bar
-- [ ] Section 03 — Storytelling Intro
-- [ ] Section 04 — Product Features
-- [ ] Section 22 — Luxury Footer
+- [x] Section 02 — Trust Bar
+- [x] Section 03 — Storytelling Intro
+- [x] Section 04 — Product Features
+- [x] Section 22 — Luxury Footer
 
 ## Phase 3 — Product Experience
 - [ ] Section 21 — Product Purchase Block

@@ -1,0 +1,164 @@
+{%- comment -%}
+  Section 03 — Storytelling Intro
+  Introduces the product story: title + rich text alongside an image or
+  video. Layout can place the media on the left, on the right, or full
+  width above the text.
+{%- endcomment -%}
+
+{%- liquid
+  assign heading = section.settings.heading
+  assign rich_text = section.settings.rich_text
+  assign image = section.settings.image
+  assign video = section.settings.video
+  assign layout = section.settings.layout
+
+  assign content_animate = blank
+  case section.settings.animation
+    when 'fade' or 'reveal' or 'zoom'
+      assign content_animate = section.settings.animation
+  endcase
+
+  assign media_order_class = ''
+  if layout == 'image_right'
+    assign media_order_class = ' md:order-2'
+  endif
+-%}
+
+{%- capture media_markup -%}
+  {%- if video != blank -%}
+    {%- render 'video', video: video, poster: image, autoplay: true, loop: true, controls: false, class: 'absolute inset-0 h-full w-full object-cover' -%}
+  {%- elsif image != blank -%}
+    {%- render 'responsive-image', image: image, class: 'absolute inset-0 h-full w-full object-cover' -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture text_markup -%}
+  {%- if heading != blank -%}
+    <h2 class="text-3xl md:text-4xl">{{ heading }}</h2>
+  {%- endif -%}
+  {%- if rich_text != blank -%}
+    <div class="text-base text-secondary md:text-lg">{{ rich_text }}</div>
+  {%- endif -%}
+{%- endcapture -%}
+
+<section class="overflow-hidden" {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}>
+  {%- if media_markup == blank -%}
+    <div class="mx-auto flex max-w-2xl flex-col gap-4 px-6 py-16 text-center md:py-24"{% if content_animate %} data-animate="{{ content_animate }}"{% endif %}>
+      {{ text_markup }}
+    </div>
+  {%- elsif layout == 'full_width' -%}
+    <div class="flex flex-col">
+      <div class="relative aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]">
+        {{ media_markup }}
+      </div>
+      <div class="mx-auto flex max-w-2xl flex-col gap-4 px-6 py-16 text-center md:py-24"{% if content_animate %} data-animate="{{ content_animate }}"{% endif %}>
+        {{ text_markup }}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="grid md:grid-cols-2">
+      <div class="relative aspect-[4/5] overflow-hidden md:aspect-auto{{ media_order_class }}">
+        {{ media_markup }}
+      </div>
+      <div class="flex flex-col justify-center gap-4 px-6 py-16 md:px-16 md:py-24"{% if content_animate %} data-animate="{{ content_animate }}"{% endif %}>
+        {{ text_markup }}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.storytelling-intro.name",
+  "tag": "section",
+  "class": "section-storytelling-intro",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.storytelling-intro.settings.heading.label",
+      "default": "A story behind every detail"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text",
+      "label": "t:sections.storytelling-intro.settings.rich_text.label",
+      "default": "<p>Every material is chosen for a reason. Every detail is considered. This is more than a product — it's a philosophy.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.storytelling-intro.settings.media_header.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.storytelling-intro.settings.image.label"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.storytelling-intro.settings.video.label",
+      "info": "t:sections.storytelling-intro.settings.video.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.storytelling-intro.settings.layout_header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.storytelling-intro.settings.layout.label",
+      "options": [
+        {
+          "value": "image_left",
+          "label": "t:sections.storytelling-intro.settings.layout.options__1.label"
+        },
+        {
+          "value": "image_right",
+          "label": "t:sections.storytelling-intro.settings.layout.options__2.label"
+        },
+        {
+          "value": "full_width",
+          "label": "t:sections.storytelling-intro.settings.layout.options__3.label"
+        }
+      ],
+      "default": "image_left"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.storytelling-intro.settings.background_color.label",
+      "info": "t:sections.storytelling-intro.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.storytelling-intro.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.storytelling-intro.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.storytelling-intro.settings.animation.options__2.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.storytelling-intro.settings.animation.options__3.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.storytelling-intro.settings.animation.options__4.label"
+        }
+      ],
+      "default": "reveal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.storytelling-intro.presets.name"
+    }
+  ]
+}
+{% endschema %}

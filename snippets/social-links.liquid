@@ -1,0 +1,81 @@
+{%- comment -%}
+  Renders an inline list of social media icon links, reading URLs from the
+  theme's global "Social media" settings. Renders nothing if none are set.
+
+  Accepts:
+  - class: {String} classes for the wrapping <ul> (default "flex items-center gap-4")
+  - icon_class: {String} classes for each icon (default "h-5 w-5")
+
+  Usage:
+  {% render 'social-links' %}
+  {% render 'social-links', class: 'flex gap-3', icon_class: 'h-4 w-4' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign wrapper_class = class | default: 'flex items-center gap-4'
+  assign icon_size = icon_class | default: 'h-5 w-5'
+-%}
+
+{%- if settings.social_instagram_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_tiktok_link != blank
+  or settings.social_x_link != blank
+  or settings.social_youtube_link != blank
+-%}
+  <ul class="{{ wrapper_class }}">
+    {%- if settings.social_instagram_link != blank -%}
+      <li>
+        <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" class="text-secondary transition-colors hover:text-text">
+          <span class="sr-only">{{ 'social.instagram' | t }}</span>
+          {%- render 'icon', name: 'instagram', class: icon_size -%}
+        </a>
+      </li>
+    {%- endif -%}
+
+    {%- if settings.social_facebook_link != blank -%}
+      <li>
+        <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" class="text-secondary transition-colors hover:text-text">
+          <span class="sr-only">{{ 'social.facebook' | t }}</span>
+          {%- render 'icon', name: 'facebook', class: icon_size -%}
+        </a>
+      </li>
+    {%- endif -%}
+
+    {%- if settings.social_pinterest_link != blank -%}
+      <li>
+        <a href="{{ settings.social_pinterest_link }}" target="_blank" rel="noopener" class="text-secondary transition-colors hover:text-text">
+          <span class="sr-only">{{ 'social.pinterest' | t }}</span>
+          {%- render 'icon', name: 'pinterest', class: icon_size -%}
+        </a>
+      </li>
+    {%- endif -%}
+
+    {%- if settings.social_tiktok_link != blank -%}
+      <li>
+        <a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" class="text-secondary transition-colors hover:text-text">
+          <span class="sr-only">{{ 'social.tiktok' | t }}</span>
+          {%- render 'icon', name: 'tiktok', class: icon_size -%}
+        </a>
+      </li>
+    {%- endif -%}
+
+    {%- if settings.social_x_link != blank -%}
+      <li>
+        <a href="{{ settings.social_x_link }}" target="_blank" rel="noopener" class="text-secondary transition-colors hover:text-text">
+          <span class="sr-only">{{ 'social.x' | t }}</span>
+          {%- render 'icon', name: 'x', class: icon_size -%}
+        </a>
+      </li>
+    {%- endif -%}
+
+    {%- if settings.social_youtube_link != blank -%}
+      <li>
+        <a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener" class="text-secondary transition-colors hover:text-text">
+          <span class="sr-only">{{ 'social.youtube' | t }}</span>
+          {%- render 'icon', name: 'youtube', class: icon_size -%}
+        </a>
+      </li>
+    {%- endif -%}
+  </ul>
+{%- endif -%}

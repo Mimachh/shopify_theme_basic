@@ -4,7 +4,8 @@ window.Theme = window.Theme || {};
  * Reusable GSAP animation library, driven by data-attributes so any
  * section/snippet can opt in without writing JS:
  *
- *   data-animate="fade|reveal|zoom"   reveal-on-scroll, once
+ *   data-animate="fade|reveal|zoom|slide"   reveal-on-scroll, once
+ *   data-animate-from="left|right"    slide direction (data-animate="slide" only, default "left")
  *   data-animate-delay="0.2"          optional delay (seconds)
  *   data-animate-duration="1"         optional duration override (seconds)
  *   data-parallax="0.3"               vertical parallax speed
@@ -54,6 +55,15 @@ Theme.animations = (() => {
     document.querySelectorAll('[data-animate="zoom"]').forEach((el) => {
       gsap.set(el, { opacity: 0, scale: 1.08 });
       revealTween(el, { opacity: 1, scale: 1 }, 1);
+    });
+  }
+
+  function initSlide(config) {
+    if (!config.reveal) return;
+    document.querySelectorAll('[data-animate="slide"]').forEach((el) => {
+      const from = el.dataset.animateFrom === 'right' ? 60 : -60;
+      gsap.set(el, { opacity: 0, x: from });
+      revealTween(el, { opacity: 1, x: 0 }, 0.8);
     });
   }
 
@@ -115,6 +125,7 @@ Theme.animations = (() => {
     initFade(config);
     initReveal(config);
     initZoom(config);
+    initSlide(config);
     initParallax(config);
     initCounters(config);
     initCtaHover(config);
