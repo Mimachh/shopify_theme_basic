@@ -1,0 +1,18 @@
+{
+  "name": "luxury-one-product",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Luxury One Product - Shopify OS 2.0 theme",
+  "scripts": {
+    "dev:css": "tailwindcss -i ./src/tailwind.css -o ./assets/application.css --watch",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/application.css --minify",
+    "vendor": "cp node_modules/gsap/dist/gsap.min.js assets/gsap.min.js && cp node_modules/gsap/dist/ScrollTrigger.min.js assets/gsap-scrolltrigger.min.js && cp node_modules/alpinejs/dist/cdn.min.js assets/alpine.min.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "alpinejs": "^3.14.1"
+  }
+}

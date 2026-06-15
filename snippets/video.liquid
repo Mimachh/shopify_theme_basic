@@ -1,0 +1,30 @@
+{%- comment -%}
+  Renders a video from either a Shopify-hosted `video` setting or an
+  external `video_url` setting (YouTube/Vimeo).
+
+  Accepts:
+  - video: {Object} value from a `video` type setting
+  - video_url: {Object} value from a `video_url` type setting
+  - poster: {Object} image, poster for the hosted video
+  - autoplay: {Boolean} default false (hosted video only)
+  - loop: {Boolean} default false (hosted video only)
+  - controls: {Boolean} default true (hosted video only)
+  - class: {String} additional classes
+
+  Usage:
+  {% render 'video', video: section.settings.video, poster: section.settings.poster, autoplay: true, loop: true, controls: false %}
+  {% render 'video', video_url: section.settings.video_url %}
+{%- endcomment -%}
+
+{%- if video_url != blank -%}
+  {{ video_url | external_video_tag: class: class }}
+{%- elsif video != blank -%}
+  {%- liquid
+    assign show_controls = controls | default: true
+    assign is_muted = false
+    if autoplay
+      assign is_muted = true
+    endif
+  -%}
+  {{ video | video_tag: image: poster, controls: show_controls, autoplay: autoplay, loop: loop, muted: is_muted, class: class }}
+{%- endif -%}

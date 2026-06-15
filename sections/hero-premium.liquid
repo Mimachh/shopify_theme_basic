@@ -1,0 +1,254 @@
+{%- comment -%}
+  Section 01 — Hero Premium
+  Immediate luxury product presentation: badge, subheading, heading, rich
+  text, two CTAs, and a desktop/mobile image or background video.
+  Configurable content alignment and reveal/parallax animation.
+{%- endcomment -%}
+
+{%- liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign rich_text = section.settings.rich_text
+  assign badge = section.settings.badge
+  assign image_desktop = section.settings.image_desktop
+  assign image_mobile = section.settings.image_mobile
+  assign video = section.settings.video
+
+  assign content_animate = blank
+  assign media_parallax = false
+  case section.settings.animation
+    when 'fade' or 'reveal' or 'zoom'
+      assign content_animate = section.settings.animation
+    when 'parallax'
+      assign media_parallax = true
+  endcase
+
+  case section.settings.content_alignment
+    when 'left'
+      assign justify_class = 'justify-start'
+      assign align_classes = 'items-start text-left'
+    when 'right'
+      assign justify_class = 'justify-end'
+      assign align_classes = 'items-end text-right'
+    else
+      assign justify_class = 'justify-center'
+      assign align_classes = 'items-center text-center'
+  endcase
+
+  if media_parallax
+    assign media_inner_class = 'absolute inset-x-0 -top-[15%] h-[130%] w-full'
+  else
+    assign media_inner_class = 'absolute inset-0 h-full w-full'
+  endif
+-%}
+
+<section
+  class="relative flex min-h-screen items-center overflow-hidden {{ justify_class }}"
+  {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}
+>
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="{{ media_inner_class }}"{% if media_parallax %} data-parallax="0.3"{% endif %}>
+      {%- if video != blank -%}
+        {%- render 'video', video: video, poster: image_desktop, autoplay: true, loop: true, controls: false, class: 'h-full w-full object-cover' -%}
+      {%- elsif image_desktop != blank or image_mobile != blank -%}
+        {%- if image_desktop != blank -%}
+          <div class="absolute inset-0 hidden h-full w-full md:block">
+            {%- render 'responsive-image', image: image_desktop, sizes_attr: '100vw', loading: 'eager', fetchpriority: 'high', class: 'h-full w-full object-cover' -%}
+          </div>
+        {%- endif -%}
+        <div class="absolute inset-0 h-full w-full{% if image_desktop != blank %} md:hidden{% endif %}">
+          {%- render 'responsive-image', image: image_mobile | default: image_desktop, sizes_attr: '100vw', loading: 'eager', fetchpriority: 'high', class: 'h-full w-full object-cover' -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div
+    class="relative z-10 mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-24 {{ align_classes }}"
+    {%- if content_animate %} data-animate="{{ content_animate }}"{% endif %}
+  >
+    {%- if badge != blank -%}
+      <span class="inline-flex items-center rounded-full bg-accent px-4 py-1 text-xs font-medium uppercase tracking-widest text-primary">
+        {{ badge }}
+      </span>
+    {%- endif -%}
+
+    {%- if subheading != blank -%}
+      <p class="text-sm font-medium uppercase tracking-widest text-secondary">{{ subheading }}</p>
+    {%- endif -%}
+
+    {%- if heading != blank -%}
+      <h1 class="text-4xl leading-tight md:text-6xl">{{ heading }}</h1>
+    {%- endif -%}
+
+    {%- if rich_text != blank -%}
+      <div class="max-w-xl text-base text-secondary md:text-lg">{{ rich_text }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.primary_cta_text != blank or section.settings.secondary_cta_text != blank -%}
+      <div class="mt-2 flex flex-wrap gap-4">
+        {%- if section.settings.primary_cta_text != blank -%}
+          <a
+            {%- if section.settings.primary_cta_link != blank %} href="{{ section.settings.primary_cta_link }}"{% else %} role="link" aria-disabled="true"{% endif %}
+            class="btn btn-primary"
+            data-hover-lift
+          >
+            {{ section.settings.primary_cta_text }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_cta_text != blank -%}
+          <a
+            {%- if section.settings.secondary_cta_link != blank %} href="{{ section.settings.secondary_cta_link }}"{% else %} role="link" aria-disabled="true"{% endif %}
+            class="btn btn-secondary"
+            data-hover-lift
+          >
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.hero-premium.name",
+  "tag": "section",
+  "class": "section-hero-premium",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "t:sections.hero-premium.settings.badge.label"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.hero-premium.settings.subheading.label",
+      "default": "New arrival"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.hero-premium.settings.heading.label",
+      "default": "Timeless design, crafted to last"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text",
+      "label": "t:sections.hero-premium.settings.rich_text.label",
+      "default": "<p>Discover a piece made to be kept, not replaced.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero-premium.settings.cta_header.content"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "t:sections.hero-premium.settings.primary_cta_text.label",
+      "default": "Discover"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "t:sections.hero-premium.settings.primary_cta_link.label"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "t:sections.hero-premium.settings.secondary_cta_text.label"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "t:sections.hero-premium.settings.secondary_cta_link.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero-premium.settings.media_header.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "t:sections.hero-premium.settings.image_desktop.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.hero-premium.settings.image_mobile.label",
+      "info": "t:sections.hero-premium.settings.image_mobile.info"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.hero-premium.settings.video.label",
+      "info": "t:sections.hero-premium.settings.video.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero-premium.settings.layout_header.content"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "t:sections.hero-premium.settings.content_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.hero-premium.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.hero-premium.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.hero-premium.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.hero-premium.settings.background_color.label",
+      "info": "t:sections.hero-premium.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.hero-premium.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.hero-premium.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.hero-premium.settings.animation.options__2.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.hero-premium.settings.animation.options__3.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.hero-premium.settings.animation.options__4.label"
+        },
+        {
+          "value": "parallax",
+          "label": "t:sections.hero-premium.settings.animation.options__5.label"
+        }
+      ],
+      "default": "fade"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero-premium.presets.name"
+    }
+  ]
+}
+{% endschema %}

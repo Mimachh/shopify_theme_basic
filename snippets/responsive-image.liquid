@@ -1,0 +1,43 @@
+{%- comment -%}
+  Renders a responsive <img> with srcset/sizes from a Shopify image object.
+  Falls back to a placeholder when no image is set (useful in the editor).
+
+  Accepts:
+  - image: {Object} Shopify image (required)
+  - alt: {String} alt text override (defaults to image.alt)
+  - sizes_attr: {String} sizes attribute (default "100vw")
+  - widths: {String} comma-separated srcset widths
+  - class: {String} additional classes
+  - loading: {String} "lazy" | "eager" (default "lazy")
+  - fetchpriority: {String} "high" | "low" | "auto"
+  - aspect_ratio: {String} e.g. "4/5" — forces a crop via CSS
+  - object_fit: {String} "cover" | "contain" (default "cover" when aspect_ratio is set)
+
+  Usage:
+  {% render 'responsive-image', image: product.featured_image, alt: product.title, sizes_attr: '(min-width: 1024px) 50vw, 100vw', aspect_ratio: '4/5' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign img_alt = alt | default: image.alt | default: ''
+  assign img_loading = loading | default: 'lazy'
+  assign img_sizes = sizes_attr | default: '100vw'
+  assign img_widths = widths | default: '375,550,750,1100,1500,1780,2000,3000,3840'
+  assign widths_array = img_widths | split: ','
+-%}
+
+{%- if image -%}
+  <img
+    srcset="{%- for w in widths_array -%}{%- assign w = w | strip | times: 1 -%}{{ image | image_url: width: w }} {{ w }}w{%- unless forloop.last -%}, {%- endunless -%}{%- endfor -%}"
+    src="{{ image | image_url: width: 1500 }}"
+    sizes="{{ img_sizes }}"
+    alt="{{ img_alt | escape }}"
+    width="{{ image.width }}"
+    height="{{ image.height }}"
+    loading="{{ img_loading }}"
+    {%- if fetchpriority %} fetchpriority="{{ fetchpriority }}"{% endif %}
+    {%- if class %} class="{{ class }}"{% endif %}
+    {%- if aspect_ratio %} style="aspect-ratio:{{ aspect_ratio }};object-fit:{{ object_fit | default: 'cover' }};"{% endif %}
+  >
+{%- else -%}
+  {{ 'image' | placeholder_svg_tag: class }}
+{%- endif -%}

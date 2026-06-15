@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_background }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_page != 1 %} &ndash; {{ 'general.pagination.page' | t: page: current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {{ content_for_header }}
+
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+    {%- render 'css-variables' -%}
+
+    {%- if settings.enable_animations -%}
+      <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'gsap-scrolltrigger.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'alpine.min.js' | asset_url }}" defer="defer"></script>
+  </head>
+
+  <body
+    data-enable-animations="{{ settings.enable_animations }}"
+    data-enable-parallax="{{ settings.enable_parallax }}"
+    data-enable-reveal="{{ settings.enable_reveal }}"
+    data-enable-counters="{{ settings.enable_counters }}"
+    data-enable-scroll-storytelling="{{ settings.enable_scroll_storytelling }}"
+  >
+    <a href="#MainContent" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-background focus:px-4 focus:py-2 focus:text-text focus:shadow-lg">
+      {{ 'accessibility.skip_to_content' | t }}
+    </a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+  </body>
+</html>

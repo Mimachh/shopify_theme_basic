@@ -1,0 +1,28 @@
+{%- liquid
+  assign space_unit = '0.25rem'
+  case settings.spacing_density
+    when 'compact'
+      assign space_unit = '0.2rem'
+    when 'luxury'
+      assign space_unit = '0.375rem'
+  endcase
+-%}
+{%- style -%}
+  {{ settings.type_header_font | font_face: font_display: 'swap' }}
+  {{ settings.type_body_font | font_face: font_display: 'swap' }}
+
+  :root {
+    --color-background: {{ settings.color_background }};
+    --color-surface: {{ settings.color_surface }};
+    --color-primary: {{ settings.color_primary }};
+    --color-secondary: {{ settings.color_secondary }};
+    --color-accent: {{ settings.color_accent }};
+    --color-text: {{ settings.color_text }};
+
+    --font-heading: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    --font-body: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    --font-scale: {{ settings.font_scale }};
+
+    --space-unit: {{ space_unit }};
+  }
+{%- endstyle -%}

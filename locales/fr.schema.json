@@ -1,0 +1,171 @@
+{
+  "settings_schema": {
+    "typography": {
+      "name": "Typographie",
+      "settings": {
+        "type_header_font": {
+          "label": "Police des titres",
+          "info": "Utilisée pour tous les titres de section"
+        },
+        "type_body_font": {
+          "label": "Police du texte",
+          "info": "Utilisée pour le texte courant, les boutons et les étiquettes"
+        },
+        "font_scale": {
+          "label": "Échelle typographique",
+          "info": "Augmente ou réduit toutes les tailles de police du thème"
+        }
+      }
+    },
+    "colors": {
+      "name": "Couleurs",
+      "settings": {
+        "color_background": {
+          "label": "Arrière-plan"
+        },
+        "color_surface": {
+          "label": "Surface"
+        },
+        "color_primary": {
+          "label": "Primaire"
+        },
+        "color_secondary": {
+          "label": "Secondaire"
+        },
+        "color_accent": {
+          "label": "Accent"
+        },
+        "color_text": {
+          "label": "Texte"
+        }
+      }
+    },
+    "spacing": {
+      "name": "Espacements",
+      "settings": {
+        "spacing_density": {
+          "label": "Densité des espacements",
+          "info": "Définit l'échelle d'espacement de base utilisée par toutes les sections",
+          "options__1": {
+            "label": "Compact"
+          },
+          "options__2": {
+            "label": "Standard"
+          },
+          "options__3": {
+            "label": "Luxe"
+          }
+        }
+      }
+    },
+    "animations": {
+      "name": "Animations",
+      "settings": {
+        "enable_animations": {
+          "label": "Activer les animations",
+          "info": "Interrupteur général pour tous les effets de mouvement du thème"
+        },
+        "enable_parallax": {
+          "label": "Activer le parallax"
+        },
+        "enable_reveal": {
+          "label": "Activer les apparitions au scroll"
+        },
+        "enable_counters": {
+          "label": "Activer les compteurs animés"
+        },
+        "enable_scroll_storytelling": {
+          "label": "Activer le storytelling au scroll"
+        }
+      }
+    }
+  },
+  "sections": {
+    "hero-premium": {
+      "name": "Hero premium",
+      "settings": {
+        "badge": {
+          "label": "Badge"
+        },
+        "subheading": {
+          "label": "Sous-titre"
+        },
+        "heading": {
+          "label": "Titre"
+        },
+        "rich_text": {
+          "label": "Texte"
+        },
+        "cta_header": {
+          "content": "Boutons"
+        },
+        "primary_cta_text": {
+          "label": "Libellé du bouton principal"
+        },
+        "primary_cta_link": {
+          "label": "Lien du bouton principal"
+        },
+        "secondary_cta_text": {
+          "label": "Libellé du bouton secondaire"
+        },
+        "secondary_cta_link": {
+          "label": "Lien du bouton secondaire"
+        },
+        "media_header": {
+          "content": "Média"
+        },
+        "image_desktop": {
+          "label": "Image bureau"
+        },
+        "image_mobile": {
+          "label": "Image mobile",
+          "info": "Utilise l'image bureau si vide"
+        },
+        "video": {
+          "label": "Vidéo de fond",
+          "info": "Remplace l'image si renseignée"
+        },
+        "layout_header": {
+          "content": "Mise en page et animation"
+        },
+        "content_alignment": {
+          "label": "Alignement du contenu",
+          "options__1": {
+            "label": "Gauche"
+          },
+          "options__2": {
+            "label": "Centre"
+          },
+          "options__3": {
+            "label": "Droite"
+          }
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Apparition"
+          },
+          "options__4": {
+            "label": "Zoom"
+          },
+          "options__5": {
+            "label": "Parallaxe"
+          }
+        }
+      },
+      "presets": {
+        "name": "Hero premium"
+      }
+    }
+  }
+}

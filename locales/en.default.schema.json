@@ -1,0 +1,171 @@
+{
+  "settings_schema": {
+    "typography": {
+      "name": "Typography",
+      "settings": {
+        "type_header_font": {
+          "label": "Heading font",
+          "info": "Used for all section headings"
+        },
+        "type_body_font": {
+          "label": "Body font",
+          "info": "Used for body text, buttons and labels"
+        },
+        "font_scale": {
+          "label": "Font scale",
+          "info": "Scales all font sizes up or down across the theme"
+        }
+      }
+    },
+    "colors": {
+      "name": "Colors",
+      "settings": {
+        "color_background": {
+          "label": "Background"
+        },
+        "color_surface": {
+          "label": "Surface"
+        },
+        "color_primary": {
+          "label": "Primary"
+        },
+        "color_secondary": {
+          "label": "Secondary"
+        },
+        "color_accent": {
+          "label": "Accent"
+        },
+        "color_text": {
+          "label": "Text"
+        }
+      }
+    },
+    "spacing": {
+      "name": "Spacing",
+      "settings": {
+        "spacing_density": {
+          "label": "Spacing density",
+          "info": "Controls the base spacing scale used across all sections",
+          "options__1": {
+            "label": "Compact"
+          },
+          "options__2": {
+            "label": "Standard"
+          },
+          "options__3": {
+            "label": "Luxury"
+          }
+        }
+      }
+    },
+    "animations": {
+      "name": "Animations",
+      "settings": {
+        "enable_animations": {
+          "label": "Enable animations",
+          "info": "Master switch for all motion effects in this theme"
+        },
+        "enable_parallax": {
+          "label": "Enable parallax"
+        },
+        "enable_reveal": {
+          "label": "Enable reveal effects"
+        },
+        "enable_counters": {
+          "label": "Enable animated counters"
+        },
+        "enable_scroll_storytelling": {
+          "label": "Enable scroll storytelling"
+        }
+      }
+    }
+  },
+  "sections": {
+    "hero-premium": {
+      "name": "Hero Premium",
+      "settings": {
+        "badge": {
+          "label": "Badge"
+        },
+        "subheading": {
+          "label": "Subheading"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "rich_text": {
+          "label": "Text"
+        },
+        "cta_header": {
+          "content": "Buttons"
+        },
+        "primary_cta_text": {
+          "label": "Primary button label"
+        },
+        "primary_cta_link": {
+          "label": "Primary button link"
+        },
+        "secondary_cta_text": {
+          "label": "Secondary button label"
+        },
+        "secondary_cta_link": {
+          "label": "Secondary button link"
+        },
+        "media_header": {
+          "content": "Media"
+        },
+        "image_desktop": {
+          "label": "Desktop image"
+        },
+        "image_mobile": {
+          "label": "Mobile image",
+          "info": "Defaults to the desktop image if empty"
+        },
+        "video": {
+          "label": "Background video",
+          "info": "Replaces the image when set"
+        },
+        "layout_header": {
+          "content": "Layout & animation"
+        },
+        "content_alignment": {
+          "label": "Content alignment",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          },
+          "options__3": {
+            "label": "Right"
+          }
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Reveal"
+          },
+          "options__4": {
+            "label": "Zoom"
+          },
+          "options__5": {
+            "label": "Parallax"
+          }
+        }
+      },
+      "presets": {
+        "name": "Hero Premium"
+      }
+    }
+  }
+}

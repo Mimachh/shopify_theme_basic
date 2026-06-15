@@ -1,0 +1,144 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Luxury One Product",
+    "theme_author": "Mimach",
+    "theme_version": "0.1.0",
+    "theme_support_email": "mimach.dev@gmail.com",
+    // TODO
+    "theme_documentation_url": "https://tofix.com"
+  },
+  {
+    "name": "t:settings_schema.typography.name",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "playfair_display_n4",
+        "label": "t:settings_schema.typography.settings.type_header_font.label",
+        "info": "t:settings_schema.typography.settings.type_header_font.info"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_body_font.label",
+        "info": "t:settings_schema.typography.settings.type_body_font.info"
+      },
+      {
+        "type": "range",
+        "id": "font_scale",
+        "min": 0.8,
+        "max": 1.2,
+        "step": 0.1,
+        "unit": "x",
+        "default": 1,
+        "label": "t:settings_schema.typography.settings.font_scale.label",
+        "info": "t:settings_schema.typography.settings.font_scale.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.colors.name",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "default": "#FAF8F5",
+        "label": "t:settings_schema.colors.settings.color_background.label"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "default": "#F1ECE6",
+        "label": "t:settings_schema.colors.settings.color_surface.label"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "default": "#15171A",
+        "label": "t:settings_schema.colors.settings.color_primary.label"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "default": "#6E6A65",
+        "label": "t:settings_schema.colors.settings.color_secondary.label"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "default": "#B8915A",
+        "label": "t:settings_schema.colors.settings.color_accent.label"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "default": "#1A1A1A",
+        "label": "t:settings_schema.colors.settings.color_text.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.spacing.name",
+    "settings": [
+      {
+        "type": "select",
+        "id": "spacing_density",
+        "options": [
+          {
+            "value": "compact",
+            "label": "t:settings_schema.spacing.settings.spacing_density.options__1.label"
+          },
+          {
+            "value": "standard",
+            "label": "t:settings_schema.spacing.settings.spacing_density.options__2.label"
+          },
+          {
+            "value": "luxury",
+            "label": "t:settings_schema.spacing.settings.spacing_density.options__3.label"
+          }
+        ],
+        "default": "standard",
+        "label": "t:settings_schema.spacing.settings.spacing_density.label",
+        "info": "t:settings_schema.spacing.settings.spacing_density.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.animations.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_animations",
+        "default": true,
+        "label": "t:settings_schema.animations.settings.enable_animations.label",
+        "info": "t:settings_schema.animations.settings.enable_animations.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "default": true,
+        "label": "t:settings_schema.animations.settings.enable_parallax.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_reveal",
+        "default": true,
+        "label": "t:settings_schema.animations.settings.enable_reveal.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_counters",
+        "default": true,
+        "label": "t:settings_schema.animations.settings.enable_counters.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_scroll_storytelling",
+        "default": true,
+        "label": "t:settings_schema.animations.settings.enable_scroll_storytelling.label"
+      }
+    ]
+  }
+]
