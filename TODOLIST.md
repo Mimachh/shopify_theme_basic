@@ -40,7 +40,7 @@
 - [x] Section 22 — Luxury Footer
 
 ## Phase 3 — Product Experience
-- [ ] Section 21 — Product Purchase Block
+- [x] Section 21 — Product Purchase Block
 
 ## Phase 4 — Storytelling Features
 - [ ] Section 05 — Sticky Storytelling (GSAP ScrollTrigger)

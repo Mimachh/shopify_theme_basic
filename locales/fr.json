@@ -23,5 +23,20 @@
   },
   "footer": {
     "copyright": "© {{ year }} {{ shop }}. Tous droits réservés."
+  },
+  "product": {
+    "sale": "Promo",
+    "in_stock": "En stock",
+    "low_stock": "Plus que {{ count }} en stock",
+    "sold_out": "Épuisé",
+    "add_to_cart": "Ajouter au panier",
+    "adding": "Ajout en cours...",
+    "added": "Ajouté",
+    "decrease_quantity": "Diminuer la quantité",
+    "increase_quantity": "Augmenter la quantité",
+    "quantity": "Quantité",
+    "gallery_thumbnails": "Médias du produit",
+    "view_media": "Voir le média {{ index }}",
+    "no_product_selected": "Sélectionnez un produit à mettre en avant dans cette section."
   }
 }

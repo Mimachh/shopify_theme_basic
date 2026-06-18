@@ -1,0 +1,138 @@
+{%- comment -%}
+  Renders the purchase form: title, price, variant picker, quantity,
+  buy buttons, inventory status and info blocks. Must be rendered inside
+  an element using the `productForm` Alpine component.
+
+  Accepts:
+  - product: {Object} product (required)
+  - section: {Object} section (required)
+  - current_variant: {Object} initial selected variant (required)
+
+  Usage:
+  {% render 'product-buy-box', product: product, section: section, current_variant: current_variant %}
+{%- endcomment -%}
+
+<div x-ref="buyBox" class="flex flex-col gap-6">
+  {%- if product.vendor != blank -%}
+    <p class="text-sm uppercase tracking-widest text-secondary">{{ product.vendor }}</p>
+  {%- endif -%}
+
+  <h1 class="font-heading text-2xl md:text-3xl">{{ product.title }}</h1>
+
+  <div>
+    {%- for variant in product.variants -%}
+      <div x-show="currentVariant && currentVariant.id === {{ variant.id }}" x-cloak class="flex items-baseline gap-3">
+        <span class="text-xl font-semibold text-text md:text-2xl">{{ variant.price | money }}</span>
+        {%- if variant.compare_at_price > variant.price -%}
+          <span class="text-base text-secondary line-through">{{ variant.compare_at_price | money }}</span>
+          <span class="text-sm font-medium text-accent">{{ 'product.sale' | t }}</span>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_description and product.description != blank -%}
+    <div class="flex flex-col gap-3 text-sm text-secondary md:text-base">{{ product.description }}</div>
+  {%- endif -%}
+
+  {%- unless product.has_only_default_variant -%}
+    <div class="flex flex-col gap-4">
+      {%- for option in product.options_with_values -%}
+        <fieldset>
+          <legend class="mb-2 text-sm font-medium text-text">{{ option.name }}</legend>
+          <div class="flex flex-wrap gap-2">
+            {%- for value in option.values -%}
+              <button
+                type="button"
+                data-option-index="{{ forloop.parentloop.index0 }}"
+                data-option-value="{{ value | escape }}"
+                @click="selectOption(Number($el.dataset.optionIndex), $el.dataset.optionValue)"
+                :class="isOptionSelected(Number($el.dataset.optionIndex), $el.dataset.optionValue) ? 'border-primary bg-primary text-background' : 'border-surface text-text hover:border-primary'"
+                class="rounded-full border px-4 py-2 text-sm transition-colors"
+              >
+                {{ value }}
+              </button>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endfor -%}
+    </div>
+  {%- endunless -%}
+
+  <div>
+    {%- for variant in product.variants -%}
+      <div x-show="currentVariant && currentVariant.id === {{ variant.id }}" x-cloak class="text-sm">
+        {%- if variant.available -%}
+          {%- if section.settings.show_inventory and variant.inventory_management != blank and variant.inventory_policy != 'continue' -%}
+            {%- if variant.inventory_quantity <= section.settings.low_stock_threshold and variant.inventory_quantity > 0 -%}
+              <span class="text-accent">{{ 'product.low_stock' | t: count: variant.inventory_quantity }}</span>
+            {%- else -%}
+              <span class="text-secondary">{{ 'product.in_stock' | t }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- else -%}
+          <span class="text-secondary">{{ 'product.sold_out' | t }}</span>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- form 'product', product, class: 'flex flex-col gap-4' -%}
+    <input type="hidden" name="id" :value="currentVariant ? currentVariant.id : ''">
+
+    <div class="flex items-center gap-4">
+      <div class="inline-flex items-center rounded-full border border-surface">
+        <button type="button" @click="decrement()" aria-label="{{ 'product.decrease_quantity' | t }}" class="flex h-10 w-10 items-center justify-center text-text">
+          {%- render 'icon', name: 'minus', class: 'h-4 w-4' -%}
+        </button>
+        <input type="number" name="quantity" x-model.number="quantity" min="1" aria-label="{{ 'product.quantity' | t }}" class="h-10 w-12 border-0 bg-transparent text-center text-sm focus:outline-none">
+        <button type="button" @click="increment()" aria-label="{{ 'product.increase_quantity' | t }}" class="flex h-10 w-10 items-center justify-center text-text">
+          {%- render 'icon', name: 'plus', class: 'h-4 w-4' -%}
+        </button>
+      </div>
+
+      <button
+        type="button"
+        @click="addToCart()"
+        class="btn btn-primary flex-1"
+        :disabled="!canAdd"
+        :aria-disabled="(!canAdd).toString()"
+      >
+        <span x-text="buttonLabel"></span>
+      </button>
+    </div>
+
+    {%- if section.settings.enable_dynamic_checkout -%}
+      <div x-show="canAdd" x-cloak>
+        {{ form | payment_button }}
+      </div>
+    {%- endif -%}
+  {%- endform -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <ul class="flex flex-col gap-3 border-t border-surface pt-6 text-sm text-secondary">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'info_item' -%}
+          <li class="flex items-center gap-3" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != 'none' -%}
+              {%- render 'icon', name: block.settings.icon, class: 'h-5 w-5 text-accent' -%}
+            {%- endif -%}
+            <span>{{ block.settings.text }}</span>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  <script type="application/json" data-product-variants>
+    {{ product.variants | json }}
+  </script>
+  <script type="application/json" data-product-i18n>
+    {
+      "addToCart": {{ 'product.add_to_cart' | t | json }},
+      "adding": {{ 'product.adding' | t | json }},
+      "added": {{ 'product.added' | t | json }},
+      "soldOut": {{ 'product.sold_out' | t | json }}
+    }
+  </script>
+</div>

@@ -23,5 +23,20 @@
   },
   "footer": {
     "copyright": "© {{ year }} {{ shop }}. All rights reserved."
+  },
+  "product": {
+    "sale": "Sale",
+    "in_stock": "In stock",
+    "low_stock": "Only {{ count }} left in stock",
+    "sold_out": "Sold out",
+    "add_to_cart": "Add to cart",
+    "adding": "Adding...",
+    "added": "Added",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
+    "quantity": "Quantity",
+    "gallery_thumbnails": "Product media",
+    "view_media": "View image {{ index }}",
+    "no_product_selected": "Select a product to feature in this section."
   }
 }

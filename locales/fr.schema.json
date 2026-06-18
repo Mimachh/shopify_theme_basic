@@ -358,6 +358,83 @@
         "name": "Caractéristiques produit"
       }
     },
+    "product-purchase": {
+      "name": "Bloc d'achat produit",
+      "settings": {
+        "product": {
+          "label": "Produit",
+          "info": "Laisser vide pour utiliser la page produit actuelle. Renseignez ce champ pour mettre en avant un produit spécifique sur une autre page, comme la page d'accueil."
+        },
+        "show_description": {
+          "label": "Afficher la description du produit"
+        },
+        "show_inventory": {
+          "label": "Afficher le statut du stock"
+        },
+        "low_stock_threshold": {
+          "label": "Seuil de stock faible"
+        },
+        "enable_dynamic_checkout": {
+          "label": "Afficher le bouton de paiement dynamique"
+        },
+        "enable_sticky_atc": {
+          "label": "Activer la barre d'achat fixe"
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Glissement"
+          },
+          "options__4": {
+            "label": "Apparition"
+          }
+        }
+      },
+      "blocks": {
+        "info_item": {
+          "name": "Élément d'information",
+          "settings": {
+            "icon": {
+              "label": "Icône",
+              "options__1": {
+                "label": "Aucune"
+              },
+              "options__2": {
+                "label": "Livraison"
+              },
+              "options__3": {
+                "label": "Garantie"
+              },
+              "options__4": {
+                "label": "Paiement sécurisé"
+              },
+              "options__5": {
+                "label": "Qualité"
+              },
+              "options__6": {
+                "label": "Premium"
+              }
+            },
+            "text": {
+              "label": "Texte"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Bloc d'achat produit"
+      }
+    },
     "footer": {
       "name": "Pied de page",
       "settings": {

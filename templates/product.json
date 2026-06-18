@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "product-purchase": {
+      "type": "product-purchase"
+    }
+  },
+  "order": ["product-purchase"]
+}

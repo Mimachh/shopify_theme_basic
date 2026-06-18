@@ -1,0 +1,50 @@
+{%- comment -%}
+  Renders the product media gallery: a main media viewer with thumbnail
+  navigation. Must be rendered inside an element using the `productForm`
+  Alpine component (relies on its `activeMediaId` state).
+
+  Accepts:
+  - product: {Object} product (required)
+
+  Usage:
+  {% render 'product-gallery', product: product %}
+{%- endcomment -%}
+
+<div class="relative">
+  {%- if product.media.size > 0 -%}
+    <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-surface md:aspect-[3/4]">
+      {%- for media in product.media -%}
+        <div x-show="activeMediaId === {{ media.id }}" x-cloak class="absolute inset-0">
+          {%- case media.media_type -%}
+            {%- when 'video' -%}
+              {%- render 'video', video: media, autoplay: false, loop: false, controls: true, class: 'h-full w-full object-cover' -%}
+            {%- else -%}
+              {%- render 'responsive-image', image: media.preview_image, alt: media.alt | default: product.title, sizes_attr: '(min-width: 768px) 50vw, 100vw', aspect_ratio: '4/5' -%}
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if product.media.size > 1 -%}
+      <div class="mt-4 flex gap-3 overflow-x-auto" role="tablist" aria-label="{{ 'product.gallery_thumbnails' | t }}">
+        {%- for media in product.media -%}
+          <button
+            type="button"
+            role="tab"
+            @click="activeMediaId = {{ media.id }}"
+            :aria-selected="(activeMediaId === {{ media.id }}).toString()"
+            :class="activeMediaId === {{ media.id }} ? 'border-accent' : 'border-transparent'"
+            class="relative aspect-square h-16 w-16 flex-shrink-0 overflow-hidden rounded border-2 transition-colors md:h-20 md:w-20"
+          >
+            <span class="sr-only">{{ 'product.view_media' | t: index: forloop.index }}</span>
+            {%- render 'responsive-image', image: media.preview_image, alt: '', sizes_attr: '80px', widths: '80,160', class: 'h-full w-full object-cover' -%}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <div class="aspect-[4/5] overflow-hidden rounded-lg bg-surface md:aspect-[3/4]">
+      {{ 'image' | placeholder_svg_tag: 'h-full w-full object-cover text-secondary' }}
+    </div>
+  {%- endif -%}
+</div>

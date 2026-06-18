@@ -1,0 +1,213 @@
+{%- comment -%}
+  Section 21 — Product Purchase Block
+  The main purchase experience: media gallery, variant picker, quantity,
+  buy buttons (with optional dynamic checkout), inventory status and a
+  sticky add-to-cart bar.
+
+  Works on the product template (uses the contextual `product`) and on
+  any other template via the "Product" setting (e.g. featuring the single
+  product on the home page).
+{%- endcomment -%}
+
+{%- liquid
+  assign featured_product = section.settings.product
+  if featured_product == blank
+    assign featured_product = product
+  endif
+-%}
+
+{%- if featured_product != blank -%}
+  {%- liquid
+    assign current_variant = featured_product.selected_or_first_available_variant
+    assign initial_media_id = current_variant.featured_media.id | default: featured_product.featured_media.id
+
+    assign animate = ''
+    case section.settings.animation
+      when 'fade' or 'slide' or 'reveal'
+        assign animate = section.settings.animation
+    endcase
+  -%}
+
+  <section
+    class="py-16 md:py-24"
+    {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}
+    x-data="productForm()"
+    data-current-variant-id="{{ current_variant.id }}"
+    data-initial-media-id="{{ initial_media_id }}"
+  >
+    <div class="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2 md:gap-16">
+      <div{% if animate != '' %} data-animate="{{ animate }}"{% if animate == 'slide' %} data-animate-from="left"{% endif %}{% endif %}>
+        {%- render 'product-gallery', product: featured_product -%}
+      </div>
+
+      <div{% if animate != '' %} data-animate="{{ animate }}"{% if animate == 'slide' %} data-animate-from="right"{% endif %}{% endif %}>
+        {%- render 'product-buy-box', product: featured_product, section: section, current_variant: current_variant -%}
+      </div>
+    </div>
+
+    {%- if section.settings.enable_sticky_atc -%}
+      {%- render 'product-sticky-bar', product: featured_product -%}
+    {%- endif -%}
+  </section>
+{%- elsif request.design_mode -%}
+  <section class="py-16 md:py-24">
+    <div class="mx-auto max-w-6xl px-6 text-center text-secondary">
+      <p>{{ 'product.no_product_selected' | t }}</p>
+    </div>
+  </section>
+{%- endif -%}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "t:sections.product-purchase.name",
+  "tag": "section",
+  "class": "section-product-purchase",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:sections.product-purchase.settings.product.label",
+      "info": "t:sections.product-purchase.settings.product.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:sections.product-purchase.settings.show_description.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_inventory",
+      "label": "t:sections.product-purchase.settings.show_inventory.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "low_stock_threshold",
+      "label": "t:sections.product-purchase.settings.low_stock_threshold.label",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_dynamic_checkout",
+      "label": "t:sections.product-purchase.settings.enable_dynamic_checkout.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_atc",
+      "label": "t:sections.product-purchase.settings.enable_sticky_atc.label",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.product-purchase.settings.background_color.label",
+      "info": "t:sections.product-purchase.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.product-purchase.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.product-purchase.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.product-purchase.settings.animation.options__2.label"
+        },
+        {
+          "value": "slide",
+          "label": "t:sections.product-purchase.settings.animation.options__3.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.product-purchase.settings.animation.options__4.label"
+        }
+      ],
+      "default": "fade"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info_item",
+      "name": "t:sections.product-purchase.blocks.info_item.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:sections.product-purchase.blocks.info_item.settings.icon.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.product-purchase.blocks.info_item.settings.icon.options__1.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:sections.product-purchase.blocks.info_item.settings.icon.options__2.label"
+            },
+            {
+              "value": "shield-check",
+              "label": "t:sections.product-purchase.blocks.info_item.settings.icon.options__3.label"
+            },
+            {
+              "value": "lock",
+              "label": "t:sections.product-purchase.blocks.info_item.settings.icon.options__4.label"
+            },
+            {
+              "value": "check",
+              "label": "t:sections.product-purchase.blocks.info_item.settings.icon.options__5.label"
+            },
+            {
+              "value": "star",
+              "label": "t:sections.product-purchase.blocks.info_item.settings.icon.options__6.label"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.product-purchase.blocks.info_item.settings.text.label",
+          "default": "Estimated delivery: 3-5 business days"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.product-purchase.presets.name",
+      "blocks": [
+        {
+          "type": "info_item",
+          "settings": {
+            "icon": "truck",
+            "text": "Estimated delivery: 3-5 business days"
+          }
+        },
+        {
+          "type": "info_item",
+          "settings": {
+            "icon": "shield-check",
+            "text": "Free returns within 30 days"
+          }
+        },
+        {
+          "type": "info_item",
+          "settings": {
+            "icon": "lock",
+            "text": "Secure checkout"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+{%- comment -%}
+  Renders a sticky add-to-cart bar that appears once the main purchase
+  block scrolls out of view. Must be rendered inside an element using the
+  `productForm` Alpine component.
+
+  Accepts:
+  - product: {Object} product (required)
+
+  Usage:
+  {% render 'product-sticky-bar', product: product %}
+{%- endcomment -%}
+
+<div
+  x-show="showSticky"
+  x-transition
+  x-cloak
+  class="fixed inset-x-0 bottom-0 z-40 border-t border-surface bg-background px-4 py-3 shadow-lg md:px-8"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      {%- if product.featured_image -%}
+        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded">
+          {%- render 'responsive-image', image: product.featured_image, sizes_attr: '48px', widths: '48,96', class: 'h-full w-full object-cover' -%}
+        </div>
+      {%- endif -%}
+      <div>
+        <p class="text-sm font-medium text-text">{{ product.title }}</p>
+        {%- unless product.has_only_default_variant -%}
+          <p class="text-xs text-secondary" x-text="currentVariant ? currentVariant.title : ''"></p>
+        {%- endunless -%}
+      </div>
+    </div>
+    <button
+      type="button"
+      @click="addToCart()"
+      class="btn btn-primary"
+      :disabled="!canAdd"
+      :aria-disabled="(!canAdd).toString()"
+    >
+      <span x-text="buttonLabel"></span>
+    </button>
+  </div>
+</div>

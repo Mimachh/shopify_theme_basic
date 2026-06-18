@@ -358,6 +358,83 @@
         "name": "Product Features"
       }
     },
+    "product-purchase": {
+      "name": "Product Purchase Block",
+      "settings": {
+        "product": {
+          "label": "Product",
+          "info": "Leave empty to use the current product page. Set this to feature a specific product on another page, such as the home page."
+        },
+        "show_description": {
+          "label": "Show product description"
+        },
+        "show_inventory": {
+          "label": "Show inventory status"
+        },
+        "low_stock_threshold": {
+          "label": "Low stock threshold"
+        },
+        "enable_dynamic_checkout": {
+          "label": "Show dynamic checkout button"
+        },
+        "enable_sticky_atc": {
+          "label": "Enable sticky add-to-cart bar"
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Slide"
+          },
+          "options__4": {
+            "label": "Reveal"
+          }
+        }
+      },
+      "blocks": {
+        "info_item": {
+          "name": "Info item",
+          "settings": {
+            "icon": {
+              "label": "Icon",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Shipping"
+              },
+              "options__3": {
+                "label": "Warranty"
+              },
+              "options__4": {
+                "label": "Secure payment"
+              },
+              "options__5": {
+                "label": "Quality"
+              },
+              "options__6": {
+                "label": "Premium"
+              }
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Product Purchase Block"
+      }
+    },
     "footer": {
       "name": "Footer",
       "settings": {

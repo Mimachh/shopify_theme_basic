@@ -3,6 +3,9 @@
     "hero": {
       "type": "hero-premium"
     },
+    "product-purchase": {
+      "type": "product-purchase"
+    },
     "trust-bar": {
       "type": "trust-bar"
     },
@@ -15,6 +18,7 @@
   },
   "order": [
     "hero",
+    "product-purchase",
     "trust-bar",
     "storytelling-intro",
     "product-features"
