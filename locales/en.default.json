@@ -27,6 +27,12 @@
   "before_after": {
     "slider_label": "Before/after comparison slider"
   },
+  "gallery": {
+    "open_item": "View image {{ index }} in full screen",
+    "lightbox_close": "Close",
+    "previous": "Previous",
+    "next": "Next"
+  },
   "gift_card": {
     "heading": "Your gift card",
     "subheading": "Thank you for shopping at {{ shop }}",

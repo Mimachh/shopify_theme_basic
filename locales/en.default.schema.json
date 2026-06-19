@@ -486,6 +486,76 @@
         "name": "Before / After"
       }
     },
+    "premium-gallery": {
+      "name": "Premium Gallery",
+      "settings": {
+        "subheading": {
+          "label": "Subheading"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "layout": {
+          "label": "Layout",
+          "options__1": {
+            "label": "Grid"
+          },
+          "options__2": {
+            "label": "Masonry"
+          },
+          "options__3": {
+            "label": "Carousel"
+          }
+        },
+        "columns_desktop": {
+          "label": "Columns on desktop",
+          "info": "Used by the grid and masonry layouts"
+        },
+        "enable_lightbox": {
+          "label": "Enable lightbox",
+          "info": "Click an item to view it full screen"
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Reveal"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "blocks": {
+        "media_item": {
+          "name": "Media item",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "video": {
+              "label": "Video",
+              "info": "Replaces the image thumbnail with a play icon overlay"
+            },
+            "caption": {
+              "label": "Caption"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Premium Gallery"
+      }
+    },
     "sticky-storytelling": {
       "name": "Sticky Storytelling",
       "settings": {

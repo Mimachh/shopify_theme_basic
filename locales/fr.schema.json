@@ -486,6 +486,76 @@
         "name": "Avant / Après"
       }
     },
+    "premium-gallery": {
+      "name": "Galerie premium",
+      "settings": {
+        "subheading": {
+          "label": "Sous-titre"
+        },
+        "heading": {
+          "label": "Titre"
+        },
+        "layout": {
+          "label": "Mise en page",
+          "options__1": {
+            "label": "Grille"
+          },
+          "options__2": {
+            "label": "Mosaïque"
+          },
+          "options__3": {
+            "label": "Carrousel"
+          }
+        },
+        "columns_desktop": {
+          "label": "Colonnes sur bureau",
+          "info": "Utilisé par les mises en page grille et mosaïque"
+        },
+        "enable_lightbox": {
+          "label": "Activer la visionneuse plein écran",
+          "info": "Cliquer sur un élément l'affiche en plein écran"
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Apparition"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "blocks": {
+        "media_item": {
+          "name": "Élément média",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "video": {
+              "label": "Vidéo",
+              "info": "Remplace la miniature par une icône de lecture"
+            },
+            "caption": {
+              "label": "Légende"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Galerie premium"
+      }
+    },
     "sticky-storytelling": {
       "name": "Storytelling collant",
       "settings": {

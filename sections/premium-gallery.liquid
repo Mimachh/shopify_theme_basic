@@ -1,0 +1,315 @@
+{%- comment -%}
+  Section 10 — Premium Gallery
+  Product showcase supporting images and videos, in grid/masonry/carousel
+  layouts, with an optional native <dialog> lightbox.
+{%- endcomment -%}
+
+{%- liquid
+  assign layout = section.settings.layout
+  assign columns = section.settings.columns_desktop
+  assign total = section.blocks.size
+
+  assign content_animate = blank
+  case section.settings.animation
+    when 'fade' or 'reveal' or 'zoom'
+      assign content_animate = section.settings.animation
+  endcase
+
+  assign col_class = 'md:grid-cols-3'
+  if columns == 2
+    assign col_class = 'md:grid-cols-2'
+  elsif columns == 4
+    assign col_class = 'md:grid-cols-4'
+  endif
+
+  assign mason_class = 'md:columns-3'
+  if columns == 2
+    assign mason_class = 'md:columns-2'
+  elsif columns == 4
+    assign mason_class = 'md:columns-4'
+  endif
+-%}
+
+<section
+  {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}
+  x-data="{ lightboxIndex: null }"
+>
+  <div class="px-6 py-16 md:py-24">
+    {%- if section.settings.subheading != blank or section.settings.heading != blank -%}
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        {%- if section.settings.subheading != blank -%}
+          <p class="mb-3 text-sm font-medium uppercase tracking-widest text-secondary">
+            {{- section.settings.subheading | escape -}}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="text-3xl md:text-5xl">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- liquid
+      assign track_class = 'grid grid-cols-2 gap-4 ' | append: col_class
+      assign item_class = ''
+      case layout
+        when 'masonry'
+          assign track_class = 'columns-2 gap-4 ' | append: mason_class
+          assign item_class = 'mb-4 break-inside-avoid'
+        when 'carousel'
+          assign track_class = 'flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2'
+          assign item_class = 'w-[80%] shrink-0 snap-start md:w-[45%] lg:w-[30%]'
+      endcase
+    -%}
+
+    <div class="relative">
+      <div x-ref="carousel_track_{{ section.id }}" class="{{ track_class }}" {%- if content_animate %} data-animate="{{ content_animate }}"{% endif %}>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign item_image = block.settings.image
+          assign item_video = block.settings.video
+        -%}
+        <div class="{{ item_class }}">
+          {%- if section.settings.enable_lightbox -%}
+            <button
+              type="button"
+              class="group relative block w-full overflow-hidden rounded-xl"
+              @click="lightboxIndex = {{ forloop.index0 }}; $refs['lightbox_{{ section.id }}'].showModal()"
+              aria-label="{{ 'gallery.open_item' | t: index: forloop.index }}"
+              {{ block.shopify_attributes }}
+            >
+          {%- else -%}
+            <div class="relative block w-full overflow-hidden rounded-xl" {{ block.shopify_attributes }}>
+          {%- endif -%}
+
+            {%- if layout == 'masonry' -%}
+              {%- if item_video != blank -%}
+                {%- render 'video', video: item_video, poster: item_image, controls: false, class: 'w-full transition-transform duration-300 group-hover:scale-105' -%}
+              {%- else -%}
+                {%- render 'responsive-image', image: item_image, class: 'w-full transition-transform duration-300 group-hover:scale-105' -%}
+              {%- endif -%}
+            {%- else -%}
+              <div class="aspect-square">
+                {%- if item_video != blank -%}
+                  {%- render 'video', video: item_video, poster: item_image, controls: false, class: 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105' -%}
+                {%- elsif item_image != blank -%}
+                  {%- render 'responsive-image', image: item_image, class: 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105' -%}
+                {%- else -%}
+                  <div class="flex h-full w-full items-center justify-center bg-surface">
+                    {{ 'image' | placeholder_svg_tag: 'h-16 w-16 opacity-30' }}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if item_video != blank -%}
+              <span class="pointer-events-none absolute inset-0 flex items-center justify-center bg-text/10">
+                <span class="flex h-12 w-12 items-center justify-center rounded-full bg-background/90">
+                  {%- render 'icon', name: 'play', class: 'h-5 w-5' -%}
+                </span>
+              </span>
+            {%- endif -%}
+
+            {%- if block.settings.caption != blank -%}
+              <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-text/60 px-4 py-2 text-left text-sm text-background">
+                {{- block.settings.caption | escape -}}
+              </span>
+            {%- endif -%}
+
+          {%- if section.settings.enable_lightbox -%}
+            </button>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+      </div>
+
+      {%- if layout == 'carousel' and total > 1 -%}
+        <button
+          type="button"
+          class="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-text shadow-lg"
+          @click="$refs['carousel_track_{{ section.id }}'].scrollBy({ left: -$refs['carousel_track_{{ section.id }}'].clientWidth * 0.85, behavior: 'smooth' })"
+          aria-label="{{ 'gallery.previous' | t }}"
+        >
+          {%- render 'icon', name: 'arrow-left', class: 'h-5 w-5' -%}
+        </button>
+        <button
+          type="button"
+          class="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-text shadow-lg"
+          @click="$refs['carousel_track_{{ section.id }}'].scrollBy({ left: $refs['carousel_track_{{ section.id }}'].clientWidth * 0.85, behavior: 'smooth' })"
+          aria-label="{{ 'gallery.next' | t }}"
+        >
+          {%- render 'icon', name: 'arrow-right', class: 'h-5 w-5' -%}
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.enable_lightbox -%}
+    <dialog
+      x-ref="lightbox_{{ section.id }}"
+      class="m-auto max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-xl bg-background p-0 [&::backdrop]:bg-text/80"
+    >
+      <div class="relative aspect-video bg-text">
+        {%- for block in section.blocks -%}
+          <div class="absolute inset-0" x-show="lightboxIndex === {{ forloop.index0 }}" x-cloak>
+            {%- if block.settings.video != blank -%}
+              {%- render 'video', video: block.settings.video, poster: block.settings.image, controls: true, class: 'h-full w-full object-contain' -%}
+            {%- elsif block.settings.image != blank -%}
+              {%- render 'responsive-image', image: block.settings.image, class: 'h-full w-full object-contain' -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <button
+        type="button"
+        class="fixed right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background text-text shadow-lg"
+        @click="$refs['lightbox_{{ section.id }}'].close()"
+        aria-label="{{ 'gallery.lightbox_close' | t }}"
+      >
+        {%- render 'icon', name: 'close', class: 'h-5 w-5' -%}
+      </button>
+
+      {%- if total > 1 -%}
+        <button
+          type="button"
+          class="fixed left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background text-text shadow-lg"
+          @click="lightboxIndex = (lightboxIndex - 1 + {{ total }}) % {{ total }}"
+          aria-label="{{ 'gallery.previous' | t }}"
+        >
+          {%- render 'icon', name: 'arrow-left', class: 'h-5 w-5' -%}
+        </button>
+        <button
+          type="button"
+          class="fixed right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background text-text shadow-lg"
+          @click="lightboxIndex = (lightboxIndex + 1) % {{ total }}"
+          aria-label="{{ 'gallery.next' | t }}"
+        >
+          {%- render 'icon', name: 'arrow-right', class: 'h-5 w-5' -%}
+        </button>
+      {%- endif -%}
+    </dialog>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.premium-gallery.name",
+  "tag": "section",
+  "class": "section-premium-gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.premium-gallery.settings.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.premium-gallery.settings.heading.label",
+      "default": "Gallery"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.premium-gallery.settings.layout.label",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.premium-gallery.settings.layout.options__1.label"
+        },
+        {
+          "value": "masonry",
+          "label": "t:sections.premium-gallery.settings.layout.options__2.label"
+        },
+        {
+          "value": "carousel",
+          "label": "t:sections.premium-gallery.settings.layout.options__3.label"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "t:sections.premium-gallery.settings.columns_desktop.label",
+      "info": "t:sections.premium-gallery.settings.columns_desktop.info",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lightbox",
+      "label": "t:sections.premium-gallery.settings.enable_lightbox.label",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.premium-gallery.settings.background_color.label",
+      "info": "t:sections.premium-gallery.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.premium-gallery.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.premium-gallery.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.premium-gallery.settings.animation.options__2.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.premium-gallery.settings.animation.options__3.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.premium-gallery.settings.animation.options__4.label"
+        }
+      ],
+      "default": "fade"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_item",
+      "name": "t:sections.premium-gallery.blocks.media_item.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.premium-gallery.blocks.media_item.settings.image.label"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:sections.premium-gallery.blocks.media_item.settings.video.label",
+          "info": "t:sections.premium-gallery.blocks.media_item.settings.video.info"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "t:sections.premium-gallery.blocks.media_item.settings.caption.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.premium-gallery.presets.name",
+      "blocks": [
+        { "type": "media_item" },
+        { "type": "media_item" },
+        { "type": "media_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

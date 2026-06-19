@@ -18,6 +18,9 @@
     "before-after": {
       "type": "before-after"
     },
+    "premium-gallery": {
+      "type": "premium-gallery"
+    },
     "product-features": {
       "type": "product-features"
     }
@@ -29,6 +32,7 @@
     "storytelling-intro",
     "sticky-storytelling",
     "before-after",
+    "premium-gallery",
     "product-features"
   ]
 }

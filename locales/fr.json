@@ -27,6 +27,12 @@
   "before_after": {
     "slider_label": "Curseur de comparaison avant/après"
   },
+  "gallery": {
+    "open_item": "Voir l'image {{ index }} en plein écran",
+    "lightbox_close": "Fermer",
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
   "gift_card": {
     "heading": "Votre carte cadeau",
     "subheading": "Merci pour votre achat chez {{ shop }}",
