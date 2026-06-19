@@ -435,6 +435,57 @@
         "name": "Bloc d'achat produit"
       }
     },
+    "before-after": {
+      "name": "Avant / Après",
+      "settings": {
+        "subheading": {
+          "label": "Sous-titre"
+        },
+        "heading": {
+          "label": "Titre"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "media_header": {
+          "content": "Images"
+        },
+        "before_image": {
+          "label": "Image avant"
+        },
+        "before_label": {
+          "label": "Étiquette avant"
+        },
+        "after_image": {
+          "label": "Image après"
+        },
+        "after_label": {
+          "label": "Étiquette après"
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Fondu"
+          },
+          "options__3": {
+            "label": "Apparition"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "presets": {
+        "name": "Avant / Après"
+      }
+    },
     "sticky-storytelling": {
       "name": "Storytelling collant",
       "settings": {

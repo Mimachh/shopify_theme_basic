@@ -24,6 +24,9 @@
   "footer": {
     "copyright": "© {{ year }} {{ shop }}. Tous droits réservés."
   },
+  "before_after": {
+    "slider_label": "Curseur de comparaison avant/après"
+  },
   "gift_card": {
     "heading": "Votre carte cadeau",
     "subheading": "Merci pour votre achat chez {{ shop }}",

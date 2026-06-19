@@ -1,0 +1,185 @@
+{%- comment -%}
+  Section 09 — Before / After
+  Interactive comparison slider: a native range input (keyboard + touch
+  accessible) drives a clip-path reveal between two stacked images.
+{%- endcomment -%}
+
+{%- liquid
+  assign content_animate = blank
+  case section.settings.animation
+    when 'fade' or 'reveal' or 'zoom'
+      assign content_animate = section.settings.animation
+  endcase
+-%}
+
+<section {%- if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}>
+  <div class="px-6 py-16 md:py-24">
+    {%- if section.settings.subheading != blank or section.settings.heading != blank -%}
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        {%- if section.settings.subheading != blank -%}
+          <p class="mb-3 text-sm font-medium uppercase tracking-widest text-secondary">
+            {{- section.settings.subheading | escape -}}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="text-3xl md:text-5xl">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div
+      class="relative mx-auto aspect-[4/3] w-full max-w-4xl select-none overflow-hidden rounded-xl bg-surface md:aspect-[16/9]"
+      x-data="{ position: 50 }"
+      {%- if content_animate %} data-animate="{{ content_animate }}"{% endif %}
+    >
+      {%- comment -%} After image — base layer, full width {%- endcomment -%}
+      <div class="absolute inset-0">
+        {%- if section.settings.after_image != blank -%}
+          {%- render 'responsive-image', image: section.settings.after_image, class: 'h-full w-full object-cover' -%}
+        {%- else -%}
+          <div class="flex h-full w-full items-center justify-center">
+            {{ 'image' | placeholder_svg_tag: 'h-24 w-24 opacity-30' }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Before image — clipped to the slider position {%- endcomment -%}
+      <div class="absolute inset-0" :style="`clip-path: inset(0 ${100 - position}% 0 0);`">
+        {%- if section.settings.before_image != blank -%}
+          {%- render 'responsive-image', image: section.settings.before_image, class: 'h-full w-full object-cover' -%}
+        {%- else -%}
+          <div class="flex h-full w-full items-center justify-center">
+            {{ 'image' | placeholder_svg_tag: 'h-24 w-24 opacity-30' }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.before_label != blank -%}
+        <span class="pointer-events-none absolute bottom-4 left-4 rounded-full bg-background/80 px-3 py-1 text-xs font-medium uppercase tracking-wide">
+          {{- section.settings.before_label | escape -}}
+        </span>
+      {%- endif -%}
+      {%- if section.settings.after_label != blank -%}
+        <span class="pointer-events-none absolute bottom-4 right-4 rounded-full bg-background/80 px-3 py-1 text-xs font-medium uppercase tracking-wide">
+          {{- section.settings.after_label | escape -}}
+        </span>
+      {%- endif -%}
+
+      {%- comment -%} Visual divider line + handle {%- endcomment -%}
+      <div
+        class="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-background"
+        :style="`left: ${position}%`"
+      ></div>
+      <div
+        class="pointer-events-none absolute top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-background text-text shadow-lg"
+        :style="`left: ${position}%`"
+      >
+        {%- render 'icon', name: 'compare', class: 'h-5 w-5' -%}
+      </div>
+
+      {%- comment -%} Native range input drives the interaction + accessibility {%- endcomment -%}
+      <input
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        x-model.number="position"
+        class="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+        aria-label="{{ 'before_after.slider_label' | t }}"
+      >
+    </div>
+
+    {%- if section.settings.description != blank -%}
+      <div class="mx-auto mt-10 max-w-2xl text-center text-base text-secondary md:text-lg">
+        {{ section.settings.description }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.before-after.name",
+  "tag": "section",
+  "class": "section-before-after",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.before-after.settings.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.before-after.settings.heading.label",
+      "default": "See the difference"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.before-after.settings.description.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.before-after.settings.media_header.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image",
+      "label": "t:sections.before-after.settings.before_image.label"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "t:sections.before-after.settings.before_label.label",
+      "default": "Before"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image",
+      "label": "t:sections.before-after.settings.after_image.label"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "t:sections.before-after.settings.after_label.label",
+      "default": "After"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.before-after.settings.background_color.label",
+      "info": "t:sections.before-after.settings.background_color.info"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:sections.before-after.settings.animation.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.before-after.settings.animation.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.before-after.settings.animation.options__2.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.before-after.settings.animation.options__3.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.before-after.settings.animation.options__4.label"
+        }
+      ],
+      "default": "reveal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.before-after.presets.name"
+    }
+  ]
+}
+{% endschema %}

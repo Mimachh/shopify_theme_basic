@@ -24,6 +24,9 @@
   "footer": {
     "copyright": "© {{ year }} {{ shop }}. All rights reserved."
   },
+  "before_after": {
+    "slider_label": "Before/after comparison slider"
+  },
   "gift_card": {
     "heading": "Your gift card",
     "subheading": "Thank you for shopping at {{ shop }}",

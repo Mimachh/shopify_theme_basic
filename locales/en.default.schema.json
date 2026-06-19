@@ -435,6 +435,57 @@
         "name": "Product Purchase Block"
       }
     },
+    "before-after": {
+      "name": "Before / After",
+      "settings": {
+        "subheading": {
+          "label": "Subheading"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "media_header": {
+          "content": "Images"
+        },
+        "before_image": {
+          "label": "Before image"
+        },
+        "before_label": {
+          "label": "Before label"
+        },
+        "after_image": {
+          "label": "After image"
+        },
+        "after_label": {
+          "label": "After label"
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        },
+        "animation": {
+          "label": "Animation",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Fade"
+          },
+          "options__3": {
+            "label": "Reveal"
+          },
+          "options__4": {
+            "label": "Zoom"
+          }
+        }
+      },
+      "presets": {
+        "name": "Before / After"
+      }
+    },
     "sticky-storytelling": {
       "name": "Sticky Storytelling",
       "settings": {

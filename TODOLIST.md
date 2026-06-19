@@ -44,7 +44,7 @@
 
 ## Phase 4 — Storytelling Features
 - [x] Section 05 — Sticky Storytelling (GSAP ScrollTrigger)
-- [ ] Section 09 — Before / After
+- [x] Section 09 — Before / After
 - [ ] Section 10 — Premium Gallery
 - [ ] Section 11 — Video Story
 - [ ] Section 15 — Craftsmanship Timeline
