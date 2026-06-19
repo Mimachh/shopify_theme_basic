@@ -435,6 +435,55 @@
         "name": "Product Purchase Block"
       }
     },
+    "sticky-storytelling": {
+      "name": "Sticky Storytelling",
+      "settings": {
+        "subheading": {
+          "label": "Subheading"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "layout": {
+          "label": "Media position",
+          "options__1": {
+            "label": "Right"
+          },
+          "options__2": {
+            "label": "Left"
+          }
+        },
+        "background_color": {
+          "label": "Background color",
+          "info": "Leave empty to use the theme background"
+        }
+      },
+      "blocks": {
+        "step": {
+          "name": "Step",
+          "settings": {
+            "title": {
+              "label": "Title",
+              "default": "Step title"
+            },
+            "description": {
+              "label": "Description",
+              "default": "<p>Describe this step of your product story.</p>"
+            },
+            "image": {
+              "label": "Image"
+            },
+            "video": {
+              "label": "Video",
+              "info": "Replaces image if set"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Sticky Storytelling"
+      }
+    },
     "footer": {
       "name": "Footer",
       "settings": {

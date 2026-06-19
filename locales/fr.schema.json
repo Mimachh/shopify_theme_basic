@@ -435,6 +435,55 @@
         "name": "Bloc d'achat produit"
       }
     },
+    "sticky-storytelling": {
+      "name": "Storytelling collant",
+      "settings": {
+        "subheading": {
+          "label": "Sous-titre"
+        },
+        "heading": {
+          "label": "Titre"
+        },
+        "layout": {
+          "label": "Position du média",
+          "options__1": {
+            "label": "Droite"
+          },
+          "options__2": {
+            "label": "Gauche"
+          }
+        },
+        "background_color": {
+          "label": "Couleur de fond",
+          "info": "Laisser vide pour utiliser le fond du thème"
+        }
+      },
+      "blocks": {
+        "step": {
+          "name": "Étape",
+          "settings": {
+            "title": {
+              "label": "Titre",
+              "default": "Titre de l'étape"
+            },
+            "description": {
+              "label": "Description",
+              "default": "<p>Décrivez cette étape de l'histoire de votre produit.</p>"
+            },
+            "image": {
+              "label": "Image"
+            },
+            "video": {
+              "label": "Vidéo",
+              "info": "Remplace l'image si renseignée"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Storytelling collant"
+      }
+    },
     "footer": {
       "name": "Pied de page",
       "settings": {

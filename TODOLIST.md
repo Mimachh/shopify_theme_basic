@@ -43,7 +43,7 @@
 - [x] Section 21 — Product Purchase Block
 
 ## Phase 4 — Storytelling Features
-- [ ] Section 05 — Sticky Storytelling (GSAP ScrollTrigger)
+- [x] Section 05 — Sticky Storytelling (GSAP ScrollTrigger)
 - [ ] Section 09 — Before / After
 - [ ] Section 10 — Premium Gallery
 - [ ] Section 11 — Video Story

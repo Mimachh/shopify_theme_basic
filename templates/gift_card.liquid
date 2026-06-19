@@ -1,0 +1,48 @@
+{% layout 'theme' %}
+
+<div class="mx-auto max-w-2xl px-6 py-16 text-center">
+  <h1 class="mb-2 text-3xl md:text-4xl">{{ 'gift_card.heading' | t }}</h1>
+  <p class="mb-10 text-secondary">{{ 'gift_card.subheading' | t: shop: shop.name }}</p>
+
+  <div class="mx-auto mb-8 max-w-xs">
+    {%- if gift_card.product.featured_image -%}
+      {{- gift_card.product.featured_image | image_url: width: 480 | image_tag: class: 'mx-auto rounded-xl', alt: gift_card.product.title -}}
+    {%- else -%}
+      {{- 'gift-card' | placeholder_svg_tag: 'mx-auto h-40 w-40 opacity-30' -}}
+    {%- endif -%}
+  </div>
+
+  <p class="mb-1 text-sm uppercase tracking-widest text-secondary">{{ 'gift_card.initial_value' | t }}</p>
+  <p class="mb-6 text-4xl font-bold">{{ gift_card.initial_value | money }}</p>
+
+  {%- if gift_card.balance != gift_card.initial_value -%}
+    <p class="mb-6 text-base text-secondary">
+      {{ 'gift_card.remaining_balance' | t: balance: gift_card.balance | money }}
+    </p>
+  {%- endif -%}
+
+  <div class="mb-8 inline-block rounded-xl border border-primary/20 bg-surface px-8 py-4">
+    <p class="mb-1 text-xs uppercase tracking-widest text-secondary">{{ 'gift_card.code_label' | t }}</p>
+    <p class="font-mono text-2xl tracking-widest">{{ gift_card.code | format_code }}</p>
+  </div>
+
+  {%- if gift_card.expires_on -%}
+    <p class="mb-6 text-sm text-secondary">
+      {{ 'gift_card.expires_on' | t: date: gift_card.expires_on | date: '%B %d, %Y' }}
+    </p>
+  {%- endif -%}
+
+  {%- unless gift_card.enabled -%}
+    <p class="mb-6 font-medium text-red-600">{{ 'gift_card.disabled' | t }}</p>
+  {%- endunless -%}
+
+  <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+    <a href="{{ shop.url }}" class="btn btn-primary">{{ 'gift_card.shop_link' | t: shop: shop.name }}</a>
+    <button
+      class="btn btn-secondary"
+      onclick="window.print()"
+    >
+      {{ 'gift_card.print' | t }}
+    </button>
+  </div>
+</div>

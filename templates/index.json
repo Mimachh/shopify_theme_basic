@@ -12,6 +12,9 @@
     "storytelling-intro": {
       "type": "storytelling-intro"
     },
+    "sticky-storytelling": {
+      "type": "sticky-storytelling"
+    },
     "product-features": {
       "type": "product-features"
     }
@@ -21,6 +24,7 @@
     "product-purchase",
     "trust-bar",
     "storytelling-intro",
+    "sticky-storytelling",
     "product-features"
   ]
 }

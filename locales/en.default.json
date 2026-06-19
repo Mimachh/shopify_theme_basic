@@ -24,6 +24,17 @@
   "footer": {
     "copyright": "© {{ year }} {{ shop }}. All rights reserved."
   },
+  "gift_card": {
+    "heading": "Your gift card",
+    "subheading": "Thank you for shopping at {{ shop }}",
+    "initial_value": "Value",
+    "remaining_balance": "Remaining balance: {{ balance }}",
+    "code_label": "Gift card code",
+    "expires_on": "Expires {{ date }}",
+    "disabled": "This gift card has been disabled.",
+    "shop_link": "Shop at {{ shop }}",
+    "print": "Print"
+  },
   "product": {
     "sale": "Sale",
     "in_stock": "In stock",

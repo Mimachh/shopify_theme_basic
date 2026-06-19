@@ -24,6 +24,17 @@
   "footer": {
     "copyright": "© {{ year }} {{ shop }}. Tous droits réservés."
   },
+  "gift_card": {
+    "heading": "Votre carte cadeau",
+    "subheading": "Merci pour votre achat chez {{ shop }}",
+    "initial_value": "Valeur",
+    "remaining_balance": "Solde restant : {{ balance }}",
+    "code_label": "Code carte cadeau",
+    "expires_on": "Expire le {{ date }}",
+    "disabled": "Cette carte cadeau a été désactivée.",
+    "shop_link": "Acheter chez {{ shop }}",
+    "print": "Imprimer"
+  },
   "product": {
     "sale": "Promo",
     "in_stock": "En stock",
